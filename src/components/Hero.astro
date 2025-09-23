@@ -1,0 +1,585 @@
+---
+import logo from "../assets/logo.webp";
+import heroImage from "../assets/hero.jpg";
+---
+
+<div id="hero">
+  <!-- Navigation -->
+  <nav id="main-nav">
+    <div class="nav-links">
+      <a href="#hero" data-section="hero">Top</a>
+      <a href="#spotify" data-section="spotify">Music</a>
+      <a href="#bands-in-town" data-section="bands-in-town">Shows</a>
+    </div>
+    <div class="social-icons">
+      <a href="https://open.spotify.com/artist/your-artist-id" target="_blank" aria-label="Spotify">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0c-6.6 0-12 5.4-12 12 0 6.6 5.4 12 12 12s12-5.4 12-12c0-6.6-5.4-12-12-12zm5.5 17.3c-.2.3-.6.4-.9.2-2.5-1.5-5.7-1.8-9.4-1-.4.1-.8-.2-.9-.6-.1-.4.2-.8.6-.9 4.1-.9 7.7-.5 10.7 1.1.3.2.4.7.1 1-.1 0-.1 0 0 0zm1.3-2.9c-.3.4-.8.5-1.2.2-2.8-1.7-7.1-2.2-10.4-1.2-.5.1-1-.2-1.1-.7s.2-1 .7-1.1c3.8-1.1 8.6-.6 11.8 1.4.4.2.5.8.2 1.2v.2zm.1-3c-3.4-2-9-2.2-12.3-1.2-.6.2-1.2-.2-1.4-.8s.2-1.2.8-1.4c3.8-1.1 10.1-.9 14 1.4.5.3.7 1 .4 1.5s-1 .7-1.5.4l-.1-.1z"/>
+        </svg>
+      </a>
+      <a href="https://www.instagram.com/your-handle" target="_blank" aria-label="Instagram">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </a>
+      <a href="https://www.youtube.com/channel/your-channel" target="_blank" aria-label="YouTube">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+        </svg>
+      </a>
+      <a href="https://soundcloud.com/your-profile" target="_blank" aria-label="SoundCloud">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M1.175 12.225c-.051 0-.094.046-.101.105l-.233 2.154.233 2.105c.007.058.05.104.101.104.053 0 .096-.046.103-.104l.262-2.105-.262-2.154c-.007-.059-.05-.105-.103-.105zm1.49.105c-.007-.058-.05-.104-.103-.104-.051 0-.094.046-.101.104l-.244 2.049.244 2.105c.007.058.05.104.101.104.053 0 .096-.046.103-.104l.262-2.105-.262-2.049zm1.33-1.026c-.007-.058-.05-.104-.103-.104-.051 0-.094.046-.101.104l-.244 3.075.244 2.105c.007.058.05.104.101.104.053 0 .096-.046.103-.104l.262-2.105-.262-3.075zm1.281-.883c-.007-.058-.05-.104-.103-.104-.051 0-.094.046-.101.104l-.244 3.958.244 2.105c.007.058.05.104.101.104.053 0 .096-.046.103-.104l.262-2.105-.262-3.958zm1.406-2.173c-.007-.058-.05-.104-.103-.104-.051 0-.094.046-.101.104l-.244 6.131.244 2.105c.007.058.05.104.101.104.053 0 .096-.046.103-.104l.262-2.105-.262-6.131zm1.262-1.026c-.007-.058-.05-.104-.103-.104-.051 0-.094.046-.101.104l-.244 7.157.244 2.105c.007.058.05.104.101.104.053 0 .096-.046.103-.104l.262-2.105-.262-7.157zm1.262.883c-.007-.058-.05-.104-.103-.104-.051 0-.094.046-.101.104l-.244 6.274.244 2.105c.007.058.05.104.101.104.053 0 .096-.046.103-.104l.262-2.105-.262-6.274zm1.25-.883c-.007-.058-.05-.104-.103-.104-.051 0-.094.046-.101.104l-.244 7.157.244 2.105c.007.058.05.104.101.104.053 0 .096-.046.103-.104l.262-2.105-.262-7.157zm1.344.883c-.007-.058-.05-.104-.103-.104-.051 0-.094.046-.101.104l-.244 6.274.244 2.105c.007.058.05.104.101.104.053 0 .096-.046.103-.104l.262-2.105-.262-6.274zm1.307 1.026c-.007-.058-.05-.104-.103-.104-.051 0-.094.046-.101.104l-.233 5.248.233 2.105c.007.058.05.104.101.104.053 0 .096-.046.103-.104l.262-2.105-.262-5.248zm1.307.883c-.007-.058-.05-.104-.103-.104-.051 0-.094.046-.101.104l-.244 4.365.244 2.105c.007.058.05.104.101.104.053 0 .096-.046.103-.104l.262-2.105-.262-4.365zm6.519 2.677c0 .349-.066.687-.196.994-.13.308-.322.58-.563.802a2.405 2.405 0 0 1-.863.528c-.342.122-.717.122-1.059 0a2.405 2.405 0 0 1-.863-.528c-.241-.222-.433-.494-.563-.802-.13-.307-.196-.645-.196-.994s.066-.687.196-.994c.13-.308.322-.58.563-.802.241-.222.529-.395.863-.528.342-.122.717-.122 1.059 0 .334.133.622.306.863.528.241.222.433.494.563.802.13.307.196.645.196.994z"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <div id="background">
+    <!-- Video background for desktop/tablet -->
+    <iframe
+      id="hero-video"
+      width="100%"
+      src="https://www.youtube.com/embed/WB4ADyYDm2k?si=IbKobge8HYv62Grf&playsinline=1&iv_load_policy=3&cc_load_policy=0&controls=0&enablejsapi=0&autoplay=1&mute=1&disablekb=1&fs=0&modestbranding=1&rel=0&showinfo=0&loop=1&playlist=WB4ADyYDm2k"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen></iframe>
+    
+    <!-- Image background for mobile -->
+    <div id="hero-image" style={`background-image: url(${heroImage.src})`}></div>
+  </div>
+  <img id="logo" src={logo.src} alt="Background Image" />
+  <button id="scroll-down-btn" aria-label="Scroll to music section">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M7 10L12 15L17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</div>
+
+<style>
+  #hero {
+    display: block;
+    position: relative;
+    min-height: 100vh;
+  }
+
+  /* Global scroll margin for navigation sections */
+  #spotify, #bands-in-town, #newsletter {
+    scroll-margin-top: 120px; /* Increased margin for better spacing */
+    padding-top: 20px; /* Additional padding */
+  }
+
+  /* Navigation Styles */
+  #main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transform: translateY(-100%);
+    animation: flyInFromTop 1s ease-out 0.5s forwards;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 30px;
+    transform: translateX(-50px);
+    opacity: 0;
+    animation: flyInFromLeft 1s ease-out 1s forwards;
+  }
+
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .nav-links a:hover::before {
+    left: 100%;
+  }
+
+  .nav-links a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+  }
+
+  .nav-links a.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 20px;
+    transform: translateX(50px);
+    opacity: 0;
+    animation: flyInFromRight 1s ease-out 1.2s forwards;
+  }
+
+  .social-icons a {
+    color: white;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .social-icons a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(255, 255, 255, 0.2);
+  }
+
+  .social-icons svg {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease;
+  }
+
+  .social-icons a:hover svg {
+    transform: scale(1.1);
+  }
+
+  /* Navigation Animations */
+  @keyframes flyInFromTop {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes flyInFromLeft {
+    0% {
+      transform: translateX(-50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes flyInFromRight {
+    0% {
+      transform: translateX(50px);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  /* Navigation Responsive Design */
+  @media (max-width: 768px) {
+    #main-nav {
+      padding: 15px 20px;
+    }
+
+    .nav-links {
+      gap: 20px;
+    }
+
+    .nav-links a {
+      font-size: 0.85rem;
+      padding: 6px 12px;
+    }
+
+    .social-icons {
+      gap: 15px;
+    }
+
+    .social-icons a {
+      width: 35px;
+      height: 35px;
+    }
+
+    .social-icons svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    #main-nav {
+      flex-direction: column;
+      gap: 12px;
+      padding: 12px 15px;
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .nav-links, .social-icons {
+      transform: none;
+      opacity: 0;
+      animation: fadeIn 1s ease-out 1s forwards;
+    }
+
+    .nav-links {
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-links a {
+      font-size: 0.75rem;
+      padding: 4px 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .social-icons {
+      gap: 12px;
+    }
+
+    .social-icons a {
+      width: 30px;
+      height: 30px;
+    }
+
+    .social-icons svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+
+  /* Extra small screens */
+  @media (max-width: 360px) {
+    #main-nav {
+      padding: 10px 12px;
+    }
+
+    .nav-links a {
+      font-size: 0.7rem;
+      padding: 3px 6px;
+    }
+
+    .social-icons a {
+      width: 28px;
+      height: 28px;
+    }
+
+    .social-icons svg {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  #background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+  }
+
+  #background iframe {
+    width: 100%;
+    height: 100vh;
+    border: none;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 8s ease-in-out;
+  }
+
+  #background iframe.loaded {
+    opacity: 1;
+  }
+
+  #hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: none;
+  }
+
+  /* Show video on desktop/tablet, image on mobile */
+  @media (min-width: 769px) {
+    #hero-video {
+      display: none;
+    }
+    #hero-image {
+      display: block;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #hero-video {
+      display: none;
+    }
+    #hero-image {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: -1;
+    }
+  }
+
+  #logo {
+    position: absolute;
+    width: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    animation: fallIn 1.5s ease-out forwards, pulsate 2s ease-in-out infinite 1.5s;
+    /* Add any logo positioning styles you need */
+  }
+
+  @keyframes fallIn {
+    0% {
+      transform: translate(-50%, -150vh) scale(0.8);
+      opacity: 0;
+    }
+    70% {
+      transform: translate(-50%, -45%) scale(1.1);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes pulsate {
+    0% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.05);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 1;
+    }
+  }
+
+  #scroll-down-btn {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 2;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    animation: bounce 2s infinite;
+  }
+
+  #scroll-down-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateX(-50%) scale(1.1);
+  }
+
+  #scroll-down-btn svg {
+    color: white;
+    width: 24px;
+    height: 24px;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateX(-50%) translateY(0);
+    }
+    40% {
+      transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+      transform: translateX(-50%) translateY(-5px);
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('hero-video');
+    const scrollBtn = document.getElementById('scroll-down-btn');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    if (video) {
+      // Add loaded class after a delay to allow video to start and hide controls
+      setTimeout(() => {
+        video.classList.add('loaded');
+      }, 1500); // 1.5 second delay to ensure video has started
+      
+      // Fallback: Add class when iframe loads (in case setTimeout isn't enough)
+      video.addEventListener('load', () => {
+        setTimeout(() => {
+          video.classList.add('loaded');
+        }, 1000);
+      });
+    }
+
+    // Scroll down functionality
+    if (scrollBtn) {
+      scrollBtn.addEventListener('click', function() {
+        // Scroll to spotify section
+        const spotifySection = document.getElementById('spotify');
+        if (spotifySection) {
+          const elementTop = spotifySection.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementTop - 100,
+            behavior: 'smooth'
+          });
+        } else {
+          // Fallback: scroll down by viewport height
+          window.scrollTo({
+            top: window.innerHeight,
+            behavior: 'smooth'
+          });
+        }
+      });
+    }
+
+    // Navigation smooth scrolling - SIMPLIFIED AND RELIABLE
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1); // Remove # from href
+        const targetElement = document.getElementById(targetId);
+        
+        console.log('Clicked:', targetId, 'Found element:', targetElement); // Debug log
+        
+        if (targetElement) {
+          const elementTop = targetElement.getBoundingClientRect().top + window.scrollY;
+          const navOffset = 100; // Fixed offset for navigation
+          
+          window.scrollTo({
+            top: elementTop - navOffset,
+            behavior: 'smooth'
+          });
+        } else if (targetId === 'hero') {
+          // Special case for hero - scroll to top
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        } else {
+          console.error('Section not found:', targetId);
+          // Fallback - try to find by class or other selector
+          const fallbackElement = document.querySelector('.' + targetId) || document.querySelector('[data-section="' + targetId + '"]');
+          if (fallbackElement) {
+            const elementTop = fallbackElement.getBoundingClientRect().top + window.scrollY;
+            window.scrollTo({
+              top: elementTop - 100,
+              behavior: 'smooth'
+            });
+          }
+        }
+      });
+    });
+
+    // Add active class to nav links based on scroll position
+    function updateActiveNavLink() {
+      const scrollPos = window.scrollY + 150; // Fixed offset for nav detection
+      let activeSet = false;
+      
+      navLinks.forEach(link => {
+        const targetId = link.getAttribute('href');
+        const targetElement = document.querySelector(targetId);
+        
+        if (targetElement && !activeSet) {
+          const offsetTop = targetElement.offsetTop;
+          const offsetHeight = targetElement.offsetHeight;
+          
+          // Check if this section is in view
+          if (scrollPos >= offsetTop && scrollPos < offsetTop + offsetHeight) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+            activeSet = true;
+          }
+        }
+      });
+      
+      // Default to "Top" if at very top of page
+      if (window.scrollY < 100) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const topLink = document.querySelector('a[href="#hero"]');
+        if (topLink) topLink.classList.add('active');
+      }
+    }
+
+    // Listen for scroll events to update active nav link
+    let ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          updateActiveNavLink();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // Initial check
+    updateActiveNavLink();
+  });
+</script>

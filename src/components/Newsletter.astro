@@ -1,0 +1,402 @@
+---
+// Newsletter subscription component
+---
+
+<div id="newsletter">
+  <div class="newsletter-container">
+    <div class="newsletter-content">
+      <h2>Stay in the Loop</h2>
+      <p>Subscribe to our newsletter and never miss a beat. Get the latest updates on new releases, upcoming shows, and exclusive content delivered straight to your inbox.</p>
+      
+      <form class="newsletter-form" id="newsletter-form">
+        <div class="input-group">
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            placeholder="Enter your email address" 
+            required
+            autocomplete="email"
+          />
+          <button type="submit" class="subscribe-btn">
+            <span class="btn-text">Subscribe</span>
+            <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M22 2L11 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+        
+        <div class="form-footer">
+          <label class="checkbox-container">
+            <input type="checkbox" id="marketing" name="marketing" checked>
+            <span class="checkmark"></span>
+            I agree to receive marketing emails and promotional content
+          </label>
+          
+          <p class="privacy-text">
+            We respect your privacy. Unsubscribe at any time. 
+            <a href="#privacy" class="privacy-link">Privacy Policy</a>
+          </p>
+        </div>
+      </form>
+      
+      <div class="success-message" id="success-message">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+          <path d="M9 12L11 14L15 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <h3>Welcome to the family!</h3>
+        <p>Thank you for subscribing. Check your inbox for a confirmation email.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #newsletter {
+    width: 100%;
+    padding: 80px 40px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(255, 255, 255, 0.05));
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+  }
+
+  .newsletter-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .newsletter-content h2 {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    animation: fadeInUp 1s ease-out;
+  }
+
+  .newsletter-content p {
+    color: #b3b3b3;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    animation: fadeInUp 1s ease-out 0.2s both;
+  }
+
+  .newsletter-form {
+    animation: fadeInUp 1s ease-out 0.4s both;
+  }
+
+  .input-group {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto 30px auto;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    padding: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .input-group::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.8s ease;
+  }
+
+  .input-group:focus-within::before {
+    left: 100%;
+  }
+
+  .input-group:focus-within {
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+  }
+
+  #email {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 15px 20px;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+    outline: none;
+  }
+
+  #email::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .subscribe-btn {
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    color: #000000;
+    border: none;
+    padding: 15px 25px;
+    border-radius: 40px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .subscribe-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .subscribe-btn:hover::before {
+    left: 100%;
+  }
+
+  .subscribe-btn:hover {
+    background: linear-gradient(135deg, #f8f8f8, #e0e0e0);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
+  }
+
+  .btn-icon {
+    transition: transform 0.3s ease;
+  }
+
+  .subscribe-btn:hover .btn-icon {
+    transform: translateX(3px);
+  }
+
+  .form-footer {
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #cccccc;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .checkbox-container:hover {
+    color: #ffffff;
+  }
+
+  .checkbox-container input[type="checkbox"] {
+    display: none;
+  }
+
+  .checkmark {
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+    position: relative;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .checkbox-container input[type="checkbox"]:checked + .checkmark {
+    background: linear-gradient(135deg, #ffffff, #f0f0f0);
+    border-color: #ffffff;
+  }
+
+  .checkbox-container input[type="checkbox"]:checked + .checkmark::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 6px;
+    width: 6px;
+    height: 10px;
+    border: solid #000000;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+  }
+
+  .privacy-text {
+    color: #888888;
+    font-size: 0.8rem;
+    line-height: 1.4;
+  }
+
+  .privacy-link {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .privacy-link:hover {
+    color: #f0f0f0;
+    text-decoration: underline;
+  }
+
+  .success-message {
+    display: none;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 30px;
+    text-align: center;
+    animation: slideInUp 0.5s ease-out;
+  }
+
+  .success-message.show {
+    display: block;
+  }
+
+  .success-message svg {
+    color: #ffffff;
+    margin-bottom: 15px;
+  }
+
+  .success-message h3 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .success-message p {
+    color: #b3b3b3;
+    margin-bottom: 0;
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+    }
+  }
+
+  /* Responsive design */
+  @media (max-width: 768px) {
+    #newsletter {
+      padding: 60px 20px;
+    }
+
+    .newsletter-content h2 {
+      font-size: 2rem;
+    }
+
+    .newsletter-content p {
+      font-size: 1rem;
+    }
+
+    .input-group {
+      flex-direction: column;
+      border-radius: 20px;
+      padding: 12px;
+    }
+
+    #email {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .subscribe-btn {
+      align-self: stretch;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .newsletter-content h2 {
+      font-size: 1.8rem;
+    }
+
+    .form-footer {
+      text-align: center;
+    }
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('newsletter-form');
+    const successMessage = document.getElementById('success-message');
+    
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form data
+        const email = document.getElementById('email').value;
+        const marketing = document.getElementById('marketing').checked;
+        
+        // Simulate form submission
+        const submitBtn = form.querySelector('.subscribe-btn');
+        const originalText = submitBtn.querySelector('.btn-text').textContent;
+        
+        // Show loading state
+        submitBtn.querySelector('.btn-text').textContent = 'Subscribing...';
+        submitBtn.disabled = true;
+        
+        // Simulate API call delay
+        setTimeout(() => {
+          // Hide form and show success message
+          form.style.display = 'none';
+          successMessage.classList.add('show');
+          
+          // Reset form (in case user wants to subscribe again)
+          setTimeout(() => {
+            form.reset();
+            submitBtn.querySelector('.btn-text').textContent = originalText;
+            submitBtn.disabled = false;
+          }, 500);
+          
+        }, 1500);
+        
+        // Log subscription data (replace with actual API call)
+        console.log('Newsletter subscription:', {
+          email: email,
+          marketing: marketing,
+          timestamp: new Date().toISOString()
+        });
+      });
+    }
+  });
+</script>
