@@ -1,0 +1,300 @@
+---
+// Flag to track if all experiences should be shown
+const showAllExperiences = false;
+---
+<section class="experience-section">
+    <div class="timeline-container">
+        <h2>Work Experience</h2>
+        <div class="timeline">
+            <div class="timeline-items">
+                <div class="timeline-item visible">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Senior Software Architect</h3>
+                        <p class="company">Example Tech Inc.</p>
+                        <p class="period">2023 - Present</p>
+                        <ul>
+                            <li>Led architectural decisions for enterprise-scale applications</li>
+                            <li>Implemented microservices architecture serving 1M+ users</li>
+                            <li>Mentored development teams and established best practices</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item visible">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Senior Software Architect</h3>
+                        <p class="company">Example Tech Inc.</p>
+                        <p class="period">2023 - Present</p>
+                        <ul>
+                            <li>Led architectural decisions for enterprise-scale applications</li>
+                            <li>Implemented microservices architecture serving 1M+ users</li>
+                            <li>Mentored development teams and established best practices</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item hidden">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Senior Software Architect</h3>
+                        <p class="company">Example Tech Inc.</p>
+                        <p class="period">2023 - Present</p>
+                        <ul>
+                            <li>Led architectural decisions for enterprise-scale applications</li>
+                            <li>Implemented microservices architecture serving 1M+ users</li>
+                            <li>Mentored development teams and established best practices</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item hidden">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Senior Software Architect</h3>
+                        <p class="company">Example Tech Inc.</p>
+                        <p class="period">2023 - Present</p>
+                        <ul>
+                            <li>Led architectural decisions for enterprise-scale applications</li>
+                            <li>Implemented microservices architecture serving 1M+ users</li>
+                            <li>Mentored development teams and established best practices</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item hidden">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Senior Software Architect</h3>
+                        <p class="company">Example Tech Inc.</p>
+                        <p class="period">2023 - Present</p>
+                        <ul>
+                            <li>Led architectural decisions for enterprise-scale applications</li>
+                            <li>Implemented microservices architecture serving 1M+ users</li>
+                            <li>Mentored development teams and established best practices</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <button class="show-more-btn" id="showMoreBtn">
+                Show More
+                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 9l6 6 6-6"/>
+                </svg>
+            </button>
+        </div>
+
+        <h2>Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <h3>Master's in Computer Science</h3>
+                    <p class="company">University Name</p>
+                    <p class="period">2018 - 2020</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .experience-section {
+        padding: 4rem 2rem;
+        max-width: 800px;
+        margin: 0 auto;
+        width: 100%;
+    }
+
+    .timeline-container {
+        width: 100%;
+    }
+
+    .timeline-container h2 {
+        color: #fff;
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .timeline {
+        position: relative;
+        padding: 2rem 0;
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+    }
+
+    .timeline::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 2px;
+        background: #3b82f6;
+    }
+
+    .timeline-item {
+        position: relative;
+        padding-left: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    .timeline-dot {
+        position: absolute;
+        left: -6px;
+        top: 0;
+        width: 14px;
+        height: 14px;
+        background: #3b82f6;
+        border-radius: 50%;
+    }
+
+    .timeline-content {
+        background: rgba(59, 130, 246, 0.1);
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        border-left: 4px solid #3b82f6;
+    }
+
+    .timeline-content h3 {
+        color: #fff;
+        margin: 0 0 0.5rem 0;
+        font-size: 1.25rem;
+    }
+
+    .timeline-content .company {
+        color: #3b82f6;
+        margin: 0;
+        font-weight: 500;
+    }
+
+    .timeline-content .period {
+        color: #9ca3af;
+        font-size: 0.875rem;
+        margin: 0.5rem 0;
+    }
+
+    .timeline-content ul {
+        margin: 1rem 0 0 0;
+        padding-left: 1.25rem;
+        color: #d1d5db;
+    }
+
+    .timeline-content li {
+        margin-bottom: 0.5rem;
+    }
+
+    .timeline-items {
+        position: relative;
+    }
+
+    .timeline-item {
+        opacity: 1;
+        transform: translateY(0);
+        max-height: 500px;
+        overflow: hidden;
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .timeline-item.hidden {
+        opacity: 0;
+        transform: translateY(20px);
+        max-height: 0;
+        margin-bottom: 0;
+        pointer-events: none;
+    }
+
+    .timeline-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+        margin-bottom: 3rem;
+        pointer-events: all;
+    }
+
+    .show-more-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        margin: 2rem auto;
+        padding: 0.75rem 1.5rem;
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid #3b82f6;
+        color: #3b82f6;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        font-family: inherit;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        width: fit-content;
+        min-width: 140px;
+    }
+
+    .show-more-btn:hover {
+        background: rgba(59, 130, 246, 0.2);
+        transform: translateY(-2px);
+    }
+
+    .show-more-btn .arrow-icon {
+        width: 16px;
+        height: 16px;
+        transition: transform 0.3s ease;
+    }
+
+    .show-more-btn.expanded .arrow-icon {
+        transform: rotate(180deg);
+    }
+
+    .timeline-items {
+        width: 100%;
+    }
+
+    @media (max-width: 768px) {
+        .experience-section {
+            padding: 3rem 1rem;
+        }
+
+        .timeline-container h2 {
+            font-size: 2rem;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const showMoreBtn = document.getElementById('showMoreBtn');
+        const hiddenItems = document.querySelectorAll('.timeline-item.hidden');
+        let isExpanded = false;
+
+        if (showMoreBtn && hiddenItems.length > 0) {
+            showMoreBtn.addEventListener('click', () => {
+                isExpanded = !isExpanded;
+                
+                // Add transition class to all items for smooth height animation
+                const allItems = document.querySelectorAll('.timeline-item');
+                
+                if (isExpanded) {
+                    // Expand items one by one with a slight delay
+                    hiddenItems.forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.remove('hidden');
+                            item.classList.add('visible');
+                        }, index * 100);
+                    });
+                } else {
+                    // Collapse items in reverse order with a slight delay
+                    Array.from(hiddenItems).reverse().forEach((item, index) => {
+                        setTimeout(() => {
+                            item.classList.remove('visible');
+                            item.classList.add('hidden');
+                        }, index * 100);
+                    });
+                }
+
+                showMoreBtn.classList.toggle('expanded');
+                showMoreBtn.innerHTML = isExpanded ? 
+                    `Show Less <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>` :
+                    `Show More <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
+            });
+        }
+    });
+</script>

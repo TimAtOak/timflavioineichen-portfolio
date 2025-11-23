@@ -1,0 +1,115 @@
+---
+---
+<section class="projects-section">
+    <div class="projects-container">
+        <h2>Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Enterprise Microservices Platform</h3>
+                    <p class="project-description">
+                        Designed and implemented a scalable microservices architecture handling 1M+ daily transactions
+                    </p>
+                    <div class="tech-stack">
+                        <span>Kubernetes</span>
+                        <span>Docker</span>
+                        <span>Spring Boot</span>
+                        <span>MongoDB</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Cloud Migration Strategy</h3>
+                    <p class="project-description">
+                        Led the successful migration of legacy systems to cloud infrastructure, reducing operational costs by 40%
+                    </p>
+                    <div class="tech-stack">
+                        <span>AWS</span>
+                        <span>Terraform</span>
+                        <span>CI/CD</span>
+                        <span>Monitoring</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>API Gateway Solution</h3>
+                    <p class="project-description">
+                        Architected a centralized API gateway serving 200+ microservices with advanced security features
+                    </p>
+                    <div class="tech-stack">
+                        <span>Kong</span>
+                        <span>OAuth</span>
+                        <span>GraphQL</span>
+                        <span>Redis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .projects-section {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .projects-container h2 {
+        color: #fff;
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+    }
+
+    .project-card {
+        background: rgba(59, 130, 246, 0.1);
+        border-radius: 0.5rem;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .project-content {
+        padding: 1.5rem;
+    }
+
+    .project-content h3 {
+        color: #fff;
+        margin: 0 0 1rem 0;
+        font-size: 1.25rem;
+    }
+
+    .project-description {
+        color: #d1d5db;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+
+    .tech-stack span {
+        background: rgba(59, 130, 246, 0.2);
+        color: #3b82f6;
+        padding: 0.25rem 0.75rem;
+        border-radius: 9999px;
+        font-size: 0.875rem;
+    }
+</style>

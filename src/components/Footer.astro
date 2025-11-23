@@ -1,5 +1,5 @@
 ---
-// Footer component with copyright and legal links
+// Footer component with social links and copyright
 ---
 
 <footer id="footer">
@@ -9,29 +9,37 @@
         <div class="copyright">
           <span class="copyright-symbol">©</span>
           <span class="copyright-year">2025</span>
-          <span class="copyright-name">Alpzen</span>
+          <span class="copyright-name">Tim Flavio Ineichen</span>
           <span class="copyright-text">All rights reserved</span>
         </div>
       </div>
       
       <div class="footer-center">
-        <div class="brand-name">
-          COMASTATIC
-        </div>
+        <nav class="social-links">
+          <a href="https://github.com/TimAtOak" target="_blank" rel="noopener noreferrer" class="social-link">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/tim-flavio-ineichen-269a231a8/" target="_blank" rel="noopener noreferrer" class="social-link">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="mailto:tim.f.ineichen@gmail.com" class="social-link">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </nav>
       </div>
       
       <div class="footer-right">
         <nav class="legal-links">
           <a href="/impressum" class="legal-link">Impressum</a>
           <span class="separator">|</span>
-          <a href="/dsgvo" class="legal-link">DSGVO</a>
+          <a href="/dsgvo" class="legal-link">Privacy Policy</a>
         </nav>
       </div>
     </div>
     
     <div class="footer-bottom">
       <div class="made-with">
-        Made with <span class="heart">♥</span> for music lovers
+        Built with <span class="tech">Astro</span> & <span class="heart">♥</span>
       </div>
     </div>
   </div>
@@ -40,39 +48,20 @@
 <style>
   #footer {
     width: 100%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.98), rgba(255, 255, 255, 0.02));
-    backdrop-filter: blur(20px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(13, 17, 23, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(56, 139, 253, 0.15);
     padding: 40px 0 20px 0;
-    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', monospace;
     position: relative;
     overflow: hidden;
-  }
-
-  #footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-    animation: shimmer 3s ease-in-out infinite;
-  }
-
-  @keyframes shimmer {
-    0%, 100% {
-      opacity: 0.3;
-    }
-    50% {
-      opacity: 0.8;
-    }
+    color: #c9d1d9;
   }
 
   .footer-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 40px;
+    padding: 0 20px;
   }
 
   .footer-content {
@@ -80,115 +69,118 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
-    animation: fadeInUp 1s ease-out;
-  }
-
-  .footer-left {
-    flex: 1;
   }
 
   .copyright {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: #cccccc;
-    font-size: 0.9rem;
-    letter-spacing: 0.5px;
+    font-size: 14px;
+    color: #8b949e;
   }
 
-  .copyright-symbol {
-    color: #ffffff;
-    font-weight: bold;
-    font-size: 1.1rem;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
-  }
-
-  .copyright-year {
-    color: #ffffff;
-    font-weight: 600;
+  .copyright span {
+    margin-right: 5px;
   }
 
   .copyright-name {
-    color: #ffffff;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    position: relative;
+    color: #58a6ff;
+    transition: color 0.3s ease;
   }
 
-  .copyright-name::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: linear-gradient(90deg, #ffffff, rgba(255, 255, 255, 0.3));
-    transition: width 0.3s ease;
+  .copyright-name:hover {
+    color: #79c0ff;
   }
 
-  .copyright:hover .copyright-name::after {
-    width: 100%;
-  }
-
-  .copyright-text {
-    color: #888888;
-    font-size: 0.85rem;
-  }
-
-  .footer-center {
-    flex: 1;
-    text-align: center;
-  }
-
-  .brand-name {
-    color: #ffffff;
-    font-size: 1.5rem;
-    font-weight: bold;
-    letter-spacing: 3px;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-    position: relative;
-    display: inline-block;
-  }
-
-  .brand-name::before,
-  .brand-name::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 40px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5), transparent);
-  }
-
-  .brand-name::before {
-    left: -60px;
-  }
-
-  .brand-name::after {
-    right: -60px;
-  }
-
-  .footer-right {
-    flex: 1;
+  .social-links {
     display: flex;
-    justify-content: flex-end;
+    gap: 24px;
+    align-items: center;
+  }
+
+  .social-link {
+    color: #8b949e;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 22px;
+  }
+
+  .social-link:hover {
+    color: #58a6ff;
+    transform: translateY(-2px);
   }
 
   .legal-links {
     display: flex;
-    align-items: center;
     gap: 15px;
+    align-items: center;
   }
 
   .legal-link {
-    color: #cccccc;
+    color: #8b949e;
     text-decoration: none;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding: 8px 12px;
-    border-radius: 20px;
+    transition: color 0.3s ease;
+    font-size: 14px;
+  }
+
+  .legal-link:hover {
+    color: #58a6ff;
+  }
+
+  .separator {
+    color: #30363d;
+  }
+
+  .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(56, 139, 253, 0.15);
+  }
+
+  .made-with {
+    font-size: 14px;
+    color: #8b949e;
+  }
+
+  .tech {
+    color: #58a6ff;
+    transition: color 0.3s ease;
+  }
+
+  .tech:hover {
+    color: #79c0ff;
+  }
+
+  .heart {
+    color: #f85149;
+    font-size: 16px;
+    display: inline-block;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .footer-left, .footer-center, .footer-right {
+      width: 100%;
+    }
+
+    .social-links {
+      justify-content: center;
+      margin: 15px 0;
+    }
+
+    .legal-links {
+      justify-content: center;
+    }
+  }
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;

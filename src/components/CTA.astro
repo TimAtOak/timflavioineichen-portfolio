@@ -1,0 +1,137 @@
+---
+---
+<section class="cta-section">
+    <div class="cta-container">
+        <div class="cta-content">
+            <h2>Let's Build Something Amazing Together</h2>
+            <p>Looking for a software architect to help bring your vision to life?</p>
+            <div class="cta-buttons">
+                <a href="#contact" class="primary-button">Schedule a Call</a>
+                <a href="/resume.pdf" class="secondary-button" target="_blank">Download Resume</a>
+            </div>
+        </div>
+        
+        <div class="tech-orbit">
+            <div class="orbit-circle"></div>
+            <div class="tech-item" style="--i:0">
+                <span>Cloud</span>
+            </div>
+            <div class="tech-item" style="--i:1">
+                <span>DevOps</span>
+            </div>
+            <div class="tech-item" style="--i:2">
+                <span>Architecture</span>
+            </div>
+            <div class="tech-item" style="--i:3">
+                <span>Scalability</span>
+            </div>
+            <div class="tech-item" style="--i:4">
+                <span>Security</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .cta-section {
+        padding: 6rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .cta-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .cta-content {
+        flex: 1;
+    }
+
+    .cta-content h2 {
+        color: #fff;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .cta-content p {
+        color: #d1d5db;
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .primary-button, .secondary-button {
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: transform 0.3s ease;
+    }
+
+    .primary-button {
+        background: #3b82f6;
+        color: #fff;
+    }
+
+    .secondary-button {
+        background: rgba(59, 130, 246, 0.1);
+        color: #3b82f6;
+        border: 2px solid #3b82f6;
+    }
+
+    .primary-button:hover, .secondary-button:hover {
+        transform: translateY(-2px);
+    }
+
+    .tech-orbit {
+        position: relative;
+        width: 300px;
+        height: 300px;
+    }
+
+    .orbit-circle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        border: 2px solid rgba(59, 130, 246, 0.2);
+        border-radius: 50%;
+    }
+
+    .tech-item {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(calc(var(--i) * 72deg)) translateY(-100px);
+    }
+
+    .tech-item span {
+        display: inline-block;
+        padding: 0.5rem 1rem;
+        background: rgba(59, 130, 246, 0.1);
+        color: #3b82f6;
+        border-radius: 9999px;
+        transform: rotate(calc(var(--i) * -72deg));
+    }
+
+    @media (max-width: 768px) {
+        .cta-container {
+            flex-direction: column;
+        }
+
+        .tech-orbit {
+            display: none;
+        }
+    }
+</style>
