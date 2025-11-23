@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Hero from "../components/Hero.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
+import Hobbies from "../components/Hobbies.astro";
 import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
 ---
@@ -13,9 +14,18 @@ import Footer from "../components/Footer.astro";
   </header>
   <main>
     <div id="container">
-      <Experience />
-      <Projects />
-      <CTA />
+      <section id="experience">
+        <Experience />
+      </section>
+      <section id="projects">
+        <Projects />
+      </section>
+      <section id="hobbies">
+        <Hobbies />
+      </section>
+      <section id="contact">
+        <CTA />
+      </section>
     </div>
   </main>
   <Footer />
@@ -26,10 +36,14 @@ import Footer from "../components/Footer.astro";
     background-color: transparent;
     position: relative;
     z-index: 1;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 20px;
+  }
+
+  #container section {
+    width: 100%;
   }
 
   #container iframe {

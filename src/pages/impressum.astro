@@ -1,0 +1,99 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+  <main class="legal-page">
+    <div class="legal-container">
+      <h1>Impressum</h1>
+      
+      <section>
+        <h2>Information according to § 5 TMG</h2>
+        <p>
+          Tim Flavio Ineichen<br>
+          Stägbachweg 1<br>
+          6283 Baldegg<br>
+          Switzerland
+        </p>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>
+          Phone: +41 76 449 69 42<br>
+          Email: tim.f.ineichen@gmail.com
+        </p>
+      </section>
+
+      <section>
+        <h2>Liability for Contents</h2>
+        <p>
+          As service providers, we are liable for own contents of these websites according to Sec. 7, Para.1 of the TMG (Telemediengesetz – Tele Media Act by German law). However, according to Sec. 8 to 10 of the TMG, we as service providers are not under obligation to monitor external information provided or stored on our website. Once we have become aware of a specific infringement of law, we will immediately remove the content in question.
+        </p>
+      </section>
+
+      <section>
+        <h2>Liability for Links</h2>
+        <p>
+          Our offer includes links to external third party websites. We have no influence on the contents of those websites, therefore we cannot guarantee for those contents. Providers or administrators of linked websites are always responsible for their own contents.
+        </p>
+      </section>
+
+      <section>
+        <h2>Copyright</h2>
+        <p>
+          Contents and compilations published on these websites by the providers are subject to Swiss copyright laws. Reproduction, editing, distribution as well as the use of any kind outside the scope of the copyright law require a written permission of the author or originator.
+        </p>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .legal-page {
+    min-height: 100vh;
+    background: #0d1117;
+    color: #c9d1d9;
+    padding: 6rem 2rem 2rem;
+  }
+
+  .legal-container {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .legal-container h1 {
+    color: #58a6ff;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .legal-container h2 {
+    color: #fff;
+    font-size: 1.5rem;
+    margin: 2rem 0 1rem 0;
+    border-bottom: 1px solid rgba(56, 139, 253, 0.3);
+    padding-bottom: 0.5rem;
+  }
+
+  .legal-container section {
+    margin-bottom: 2rem;
+  }
+
+  .legal-container p {
+    margin-bottom: 1rem;
+    color: #8b949e;
+  }
+
+  @media (max-width: 768px) {
+    .legal-page {
+      padding: 4rem 1rem 2rem;
+    }
+    
+    .legal-container h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

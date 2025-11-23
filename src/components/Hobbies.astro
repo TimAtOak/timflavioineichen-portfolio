@@ -1,0 +1,225 @@
+---
+// Hobbies component showcasing personal interests
+---
+
+<section class="hobbies-section">
+    <div class="hobbies-container">
+        <h2>Hobbies & Interests</h2>
+        <div class="hobbies-grid">
+            <div class="hobby-item">
+                <div class="hobby-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 3v4a1 1 0 0 0 1 1h4"/>
+                        <path d="M17 21v-7a1 1 0 0 0-1-1h-5a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h5a1 1 0 0 0 1-1z"/>
+                        <path d="M9 7H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h3m5-6h4"/>
+                    </svg>
+                </div>
+                <h3>Climbing</h3>
+                <p>Conquering rock faces and bouldering problems, developing both physical strength and mental problem-solving skills.</p>
+            </div>
+
+            <div class="hobby-item">
+                <div class="hobby-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 12l2 2 4-4"/>
+                        <path d="M21 12c.552 0 1-.448 1-1V5c0-.552-.448-1-1-1H3c-.552 0-1 .448-1 1v6c0 .552.448 1 1 1h18z"/>
+                        <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7"/>
+                    </svg>
+                </div>
+                <h3>Fun Tech Projects</h3>
+                <p>Building creative side projects, experimenting with new technologies, and turning wild ideas into working prototypes.</p>
+            </div>
+
+            <div class="hobby-item">
+                <div class="hobby-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M2 18h1.5l1.5-6h6l1.5 6H14"/>
+                        <path d="M6 12V9a3 3 0 0 1 6 0v3"/>
+                        <circle cx="9" cy="7" r="2"/>
+                        <path d="M2 20h20"/>
+                        <path d="M12 18v2"/>
+                    </svg>
+                </div>
+                <h3>Snowboarding</h3>
+                <p>Carving through fresh powder and exploring mountain slopes, finding freedom and adrenaline on the snow.</p>
+            </div>
+
+            <div class="hobby-item">
+                <div class="hobby-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/>
+                        <path d="M7.5 4.21l4.5 2.6 4.5-2.6"/>
+                        <path d="M7.5 19.79V14.6L3 12"/>
+                        <path d="M21 12l-4.5 2.6v5.19"/>
+                        <path d="M3.27 6.96L12 12.01l8.73-5.05"/>
+                        <path d="M12 22.08V12"/>
+                    </svg>
+                </div>
+                <h3>Game Development</h3>
+                <p>Creating indie games in my spare time and exploring game design patterns.</p>
+            </div>
+
+            <div class="hobby-item">
+                <div class="hobby-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                        <line x1="4" y1="22" x2="4" y2="15"/>
+                    </svg>
+                </div>
+                <h3>Hiking</h3>
+                <p>Exploring nature trails and mountain peaks for inspiration and mental clarity.</p>
+            </div>
+
+            <div class="hobby-item">
+                <div class="hobby-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                    </svg>
+                </div>
+                <h3>Traveling</h3>
+                <p>Exploring new cultures, discovering hidden gems, and collecting experiences from around the world that inspire creativity.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hobbies-section {
+        padding: 4rem 0;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .hobbies-container {
+        width: 100%;
+        padding: 0 2rem;
+    }
+
+    .hobbies-container h2 {
+        color: #fff;
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+        text-align: center;
+        position: relative;
+    }
+
+    .hobbies-container h2::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 3px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        border-radius: 2px;
+    }
+
+    .hobbies-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+    }
+
+    .hobby-item {
+        background: rgba(59, 130, 246, 0.05);
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        border-radius: 1rem;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hobby-item::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .hobby-item:hover {
+        background: rgba(59, 130, 246, 0.1);
+        border-color: rgba(59, 130, 246, 0.4);
+        transform: translateY(-5px);
+        box-shadow: 0 10px 30px rgba(59, 130, 246, 0.1);
+    }
+
+    .hobby-item:hover::before {
+        opacity: 1;
+    }
+
+    .hobby-icon {
+        margin-bottom: 1.5rem;
+        color: #3b82f6;
+        display: inline-flex;
+        padding: 1rem;
+        border-radius: 50%;
+        background: rgba(59, 130, 246, 0.1);
+        transition: all 0.3s ease;
+    }
+
+    .hobby-item:hover .hobby-icon {
+        color: #60a5fa;
+        transform: scale(1.1);
+        background: rgba(59, 130, 246, 0.2);
+    }
+
+    .hobby-item h3 {
+        color: #fff;
+        margin: 0 0 1rem 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+
+    .hobby-item p {
+        color: #9ca3af;
+        line-height: 1.6;
+        font-size: 0.95rem;
+        margin: 0;
+    }
+
+    @media (max-width: 768px) {
+        .hobbies-section {
+            padding: 3rem 0;
+        }
+
+        .hobbies-container {
+            padding: 0 1rem;
+        }
+
+        .hobbies-container h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hobbies-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .hobby-item {
+            padding: 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .hobbies-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .hobby-item {
+            padding: 1.25rem;
+        }
+    }
+</style>
