@@ -1,0 +1,109 @@
+---
+import timPhoto from '../assets/tim-ineichen.jpg';
+---
+<section id="about">
+  <div class="about-container">
+    <div class="about-photo">
+      <img src={timPhoto.src} alt="Tim Flavio Ineichen" />
+    </div>
+    <div class="about-text">
+      <p class="section-label">Über mich</p>
+      <h2>Ich bringe Ideen zum Leben — von der Architektur bis zum fertigen Produkt.</h2>
+      <p>
+        Als freiberuflicher Software-Architekt und Full-Stack-Entwickler aus der Schweiz
+        begleite ich Unternehmen von der ersten Skizze bis zum laufenden System.
+        Mein Fokus liegt auf sauberer Architektur, pragmatischen Lösungen und enger
+        Zusammenarbeit mit den Teams vor Ort.
+      </p>
+      <p>
+        Mit Erfahrung in QM-Systemen, Webanwendungen und verteilten Architekturen
+        verstehe ich, was es bedeutet, Software zu bauen, die im echten Betrieb standhält.
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  #about {
+    padding: 6rem 2rem;
+  }
+
+  .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+
+  .about-photo {
+    position: relative;
+  }
+
+  .about-photo img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    border-radius: 1rem;
+    display: block;
+    box-shadow: var(--shadow);
+  }
+
+  .about-photo::before {
+    content: '';
+    position: absolute;
+    inset: -8px;
+    border-radius: 1.4rem;
+    border: 2px solid var(--border);
+    pointer-events: none;
+  }
+
+  .section-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent-soft);
+    margin: 0 0 1rem 0;
+  }
+
+  .about-text h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.25;
+    color: var(--heading);
+    margin: 0 0 1.5rem 0;
+  }
+
+  .about-text p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+    margin: 0 0 1.25rem 0;
+  }
+
+  .about-text p:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 900px) {
+    .about-container {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .about-photo {
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    .about-text {
+      text-align: center;
+    }
+
+    .about-text h2 {
+      font-size: 1.6rem;
+    }
+  }
+</style>

@@ -1,116 +1,332 @@
 ---
+import { projects } from '../data/projects';
+const [featured, ...rest] = projects;
 ---
 <section class="projects-section">
     <div class="projects-container">
-        <h2>Featured Projects</h2>
+        <div class="section-header reveal">
+            <span class="section-label">Ausgewählte Arbeiten</span>
+            <h2>Projekte</h2>
+        </div>
+
+        <!-- Featured project -->
+        <a href={`/projekte/${featured.slug}`} class="project-featured reveal">
+            <div class="featured-accent"></div>
+            <div class="featured-img" style={`background: linear-gradient(135deg, ${featured.gradientFrom} 0%, ${featured.gradientTo} 100%)`}>
+                <div class="img-bg-num">{featured.number}</div>
+                <svg class="proj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d={featured.iconPath}/>
+                </svg>
+            </div>
+            <div class="featured-body">
+                <div class="featured-top">
+                    <div class="featured-meta">
+                        <span class="proj-num">{featured.number}</span>
+                        {featured.badge && <span class="featured-badge">{featured.badge}</span>}
+                    </div>
+                    <span class="view-hint">Ansehen →</span>
+                </div>
+                <h3>{featured.title}</h3>
+                <p class="project-desc">{featured.shortDescription}</p>
+                <div class="tech-tags">
+                    {featured.techStack.slice(0, 4).map(t => <span>{t}</span>)}
+                </div>
+            </div>
+        </a>
+
+        <!-- Secondary projects -->
         <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>Alpzen</h3>
-                    <p class="project-description">
-                        Co-founded web and app development venture focusing on cloud solutions and modern web technologies. Experimenting with cutting-edge frameworks while exploring the business side of software development.
-                    </p>
-                    <div class="tech-stack">
-                        <span>Astro</span>
-                        <span>Cloud</span>
-                        <span>React</span>
-                        <span>Node.js</span>
-                        <span>Business</span>
+            {rest.map((p, i) => (
+                <a href={`/projekte/${p.slug}`} class={`project-card reveal d${i + 1}`}>
+                    <div class="card-img" style={`background: linear-gradient(135deg, ${p.gradientFrom} 0%, ${p.gradientTo} 100%)`}>
+                        <div class="img-bg-num">{p.number}</div>
+                        <svg class="proj-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d={p.iconPath}/>
+                        </svg>
                     </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>Rogue</h3>
-                    <p class="project-description">
-                        Building a complete indie game from scratch using Godot engine, with plans to launch on Steam in 2026. A passion project exploring game mechanics and design.
-                    </p>
-                    <div class="tech-stack">
-                        <span>Godot</span>
-                        <span>GDScript</span>
-                        <span>Game Design</span>
-                        <span>Steam</span>
+                    <div class="card-body">
+                        <div class="card-top">
+                            <span class="proj-num">{p.number}</span>
+                            <span class="view-hint">Ansehen →</span>
+                        </div>
+                        <h3>{p.title}</h3>
+                        <p class="project-desc">{p.shortDescription}</p>
+                        <div class="tech-tags">
+                            {p.techStack.slice(0, 4).map(t => <span>{t}</span>)}
+                        </div>
                     </div>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-content">
-                    <h3>CCleaner Tool</h3>
-                    <p class="project-description">
-                        Built a custom system cleanup tool from scratch in Python to address the need for a simple, effective cleaning utility without unnecessary complexity.
-                    </p>
-                    <div class="tech-stack">
-                        <span>Python</span>
-                        <span>System Utils</span>
-                        <span>File Management</span>
-                        <span>CLI</span>
-                    </div>
-                </div>
-            </div>
+                </a>
+            ))}
         </div>
     </div>
 </section>
 
 <style>
     .projects-section {
-        padding: 4rem 2rem;
+        padding: 6rem 2rem;
         max-width: 1200px;
         margin: 0 auto;
     }
 
-    .projects-container h2 {
-        color: #fff;
-        margin-bottom: 2rem;
-        font-size: 2.5rem;
+    .section-header {
         text-align: center;
+        margin-bottom: 3.5rem;
     }
 
+    .section-label {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--accent-soft);
+        margin-bottom: 0.75rem;
+    }
+
+    .section-header h2 {
+        color: var(--heading);
+        font-size: 3rem;
+        font-weight: 800;
+        margin: 0;
+        line-height: 1;
+    }
+
+    /* ── Featured card ────────────────────────────────── */
+    .project-featured {
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 1.25rem;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+        text-decoration: none;
+        position: relative;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        box-shadow: var(--shadow-card);
+    }
+
+    .project-featured:hover {
+        border-color: var(--border-hover);
+        box-shadow: 0 10px 48px rgba(59, 130, 246, 0.13);
+    }
+
+    .featured-accent {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: linear-gradient(90deg, var(--accent) 0%, #8b5cf6 100%);
+    }
+
+    .featured-img {
+        position: relative;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .img-bg-num {
+        position: absolute;
+        bottom: -10%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 9rem;
+        font-weight: 900;
+        color: rgba(255, 255, 255, 0.07);
+        line-height: 1;
+        user-select: none;
+        pointer-events: none;
+    }
+
+    .proj-icon {
+        width: 72px;
+        height: 72px;
+        color: rgba(255, 255, 255, 0.6);
+        position: relative;
+        z-index: 1;
+        transition: transform 0.35s ease, color 0.2s ease;
+    }
+
+    .project-featured:hover .proj-icon,
+    .project-card:hover .proj-icon {
+        transform: scale(1.12);
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .featured-body {
+        padding: 2.5rem 2.75rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .featured-top,
+    .card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+
+    .featured-meta {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .proj-num {
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: var(--text-faint);
+        text-transform: uppercase;
+    }
+
+    .featured-badge {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--accent-soft);
+        background: var(--accent-dim);
+        border: 1px solid var(--border);
+        padding: 0.2rem 0.6rem;
+        border-radius: 9999px;
+    }
+
+    .view-hint {
+        font-size: 0.8rem;
+        color: var(--text-faint);
+        transition: color 0.2s ease, transform 0.2s ease;
+        display: inline-block;
+    }
+
+    .project-featured:hover .view-hint,
+    .project-card:hover .view-hint {
+        color: var(--accent-soft);
+        transform: translateX(3px);
+    }
+
+    .project-featured h3 {
+        color: var(--heading);
+        font-size: 2rem;
+        font-weight: 800;
+        margin: 0 0 0.875rem 0;
+        line-height: 1.15;
+    }
+
+    .project-desc {
+        color: var(--text-muted);
+        font-size: 0.93rem;
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+    }
+
+    .tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .tech-tags span {
+        background: var(--tag-bg);
+        color: var(--tag-text);
+        padding: 0.2rem 0.65rem;
+        border-radius: 9999px;
+        font-size: 0.78rem;
+        font-weight: 500;
+    }
+
+    /* ── Secondary cards ──────────────────────────────── */
     .projects-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
     }
 
     .project-card {
-        background: rgba(59, 130, 246, 0.1);
-        border-radius: 0.5rem;
+        display: flex;
+        flex-direction: column;
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: 1.25rem;
         overflow: hidden;
-        transition: transform 0.3s ease;
+        text-decoration: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+        box-shadow: var(--shadow-card);
     }
 
     .project-card:hover {
+        border-color: var(--border-hover);
+        box-shadow: 0 8px 36px rgba(59, 130, 246, 0.11);
         transform: translateY(-5px);
     }
 
-    .project-content {
-        padding: 1.5rem;
-    }
-
-    .project-content h3 {
-        color: #fff;
-        margin: 0 0 1rem 0;
-        font-size: 1.25rem;
-    }
-
-    .project-description {
-        color: #d1d5db;
-        margin-bottom: 1.5rem;
-        line-height: 1.6;
-    }
-
-    .tech-stack {
+    .card-img {
+        position: relative;
+        height: 190px;
         display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
     }
 
-    .tech-stack span {
-        background: rgba(59, 130, 246, 0.2);
-        color: #3b82f6;
-        padding: 0.25rem 0.75rem;
-        border-radius: 9999px;
-        font-size: 0.875rem;
+    .card-img .img-bg-num {
+        font-size: 7rem;
+    }
+
+    .card-img .proj-icon {
+        width: 56px;
+        height: 56px;
+    }
+
+    .card-body {
+        padding: 1.75rem 2rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .project-card h3 {
+        color: var(--heading);
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin: 0 0 0.75rem 0;
+    }
+
+    @media (max-width: 900px) {
+        .project-featured {
+            grid-template-columns: 1fr;
+        }
+
+        .featured-img {
+            min-height: 220px;
+        }
+
+        .featured-body {
+            padding: 1.75rem 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .projects-section {
+            padding: 4rem 1rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.25rem;
+        }
+
+        .projects-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .project-featured h3 {
+            font-size: 1.6rem;
+        }
     }
 </style>

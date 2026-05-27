@@ -1,32 +1,165 @@
 <!doctype html>
-<html lang="en">
+<html lang="de" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Tim Flavio Ineichen | Software Architect</title>
+    <meta name="description" content="Tim Flavio Ineichen – Freiberuflicher Software-Architekt und Full-Stack-Entwickler aus der Schweiz. Ich entwickle skalierbare Webanwendungen und Softwarelösungen." />
+    <title>Tim Flavio Ineichen | Software-Architekt & Contractor</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+    <!-- Prevent theme flash -->
+    <script is:inline>
+      (function() {
+        const t = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+      })();
+    </script>
   </head>
   <body>
     <slot />
   </body>
 </html>
 
-<style>
-  html {
-    background-color: #000;
-	z-index: 0;
+<style is:global>
+  :root {
+    --bg:              #0a1120;
+    --bg2:             #141f33;
+    --surface:         rgba(59, 130, 246, 0.07);
+    --surface-hover:   rgba(59, 130, 246, 0.13);
+    --border:          rgba(59, 130, 246, 0.15);
+    --border-hover:    rgba(59, 130, 246, 0.45);
+    --text:            #e2e8f0;
+    --text-muted:      #94a3b8;
+    --text-faint:      #64748b;
+    --heading:         #ffffff;
+    --accent:          #3b82f6;
+    --accent-soft:     #60a5fa;
+    --accent-dim:      rgba(59, 130, 246, 0.10);
+    --tag-bg:          rgba(59, 130, 246, 0.15);
+    --tag-text:        #60a5fa;
+    --nav-bg:          rgba(8, 14, 28, 0.75);
+    --nav-border:      rgba(255, 255, 255, 0.07);
+    --input-bg:        rgba(255, 255, 255, 0.04);
+    --input-border:    rgba(255, 255, 255, 0.1);
+    --shadow:          0 4px 30px rgba(0, 0, 0, 0.35);
+    --shadow-card:     0 2px 16px rgba(0, 0, 0, 0.25);
+    --hero-from:       #0a1120;
+    --hero-to:         #141f33;
+    --welcome-bg:      rgba(99, 102, 241, 0.12);
+    --welcome-color:   #818cf8;
+    --name-from:       #60a5fa;
+    --name-to:         #818cf8;
+    --role-color:      #94a3b8;
+    --pill-bg:         rgba(99, 102, 241, 0.10);
+    --pill-color:      #818cf8;
+    --toggle-bg:       rgba(255, 255, 255, 0.07);
+    --toggle-border:   rgba(255, 255, 255, 0.12);
+    --toggle-color:    #94a3b8;
   }
-  html,
-  body {
+
+  [data-theme="light"] {
+    --bg:              #f0f6ff;
+    --bg2:             #e8f0fd;
+    --surface:         rgba(255, 255, 255, 0.90);
+    --surface-hover:   #ffffff;
+    --border:          rgba(59, 130, 246, 0.18);
+    --border-hover:    rgba(37, 99, 235, 0.55);
+    --text:            #334155;
+    --text-muted:      #64748b;
+    --text-faint:      #94a3b8;
+    --heading:         #0f172a;
+    --accent:          #2563eb;
+    --accent-soft:     #3b82f6;
+    --accent-dim:      rgba(37, 99, 235, 0.07);
+    --tag-bg:          rgba(37, 99, 235, 0.09);
+    --tag-text:        #1d4ed8;
+    --nav-bg:          rgba(240, 246, 255, 0.88);
+    --nav-border:      rgba(37, 99, 235, 0.12);
+    --input-bg:        rgba(255, 255, 255, 0.95);
+    --input-border:    rgba(37, 99, 235, 0.22);
+    --shadow:          0 4px 30px rgba(15, 23, 42, 0.08);
+    --shadow-card:     0 2px 16px rgba(15, 23, 42, 0.07);
+    --hero-from:       #f0f6ff;
+    --hero-to:         #eef2ff;
+    --welcome-bg:      rgba(99, 102, 241, 0.08);
+    --welcome-color:   #4f46e5;
+    --name-from:       #1d4ed8;
+    --name-to:         #4f46e5;
+    --role-color:      #475569;
+    --pill-bg:         rgba(99, 102, 241, 0.07);
+    --pill-color:      #4338ca;
+    --toggle-bg:       rgba(37, 99, 235, 0.07);
+    --toggle-border:   rgba(37, 99, 235, 0.18);
+    --toggle-color:    #64748b;
+  }
+
+  html, body {
     margin: 0;
-    font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro",
-      monospace;
+    background-color: var(--bg);
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   * {
-    font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro",
-      monospace;
+    font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", monospace;
+    box-sizing: border-box;
+  }
+
+  /* ── Scroll reveal ───────────────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-28px);
+    transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .reveal.is-visible,
+  .reveal-left.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  .d1 { transition-delay: 0.10s; }
+  .d2 { transition-delay: 0.20s; }
+  .d3 { transition-delay: 0.30s; }
+  .d4 { transition-delay: 0.40s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .reveal-left {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 </style>
+
+<script>
+  function initReveal() {
+    const els = document.querySelectorAll('.reveal, .reveal-left');
+    if (!els.length) return;
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    els.forEach((el) => obs.observe(el));
+  }
+
+  document.addEventListener('DOMContentLoaded', initReveal);
+</script>

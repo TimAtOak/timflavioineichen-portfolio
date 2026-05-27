@@ -1,5 +1,4 @@
 ---
-// Footer component with social links and copyright
 ---
 
 <footer id="footer">
@@ -7,39 +6,39 @@
     <div class="footer-content">
       <div class="footer-left">
         <div class="copyright">
-          <span class="copyright-symbol">©</span>
-          <span class="copyright-year">2025</span>
+          <span>©</span>
+          <span>2025</span>
           <span class="copyright-name">Tim Flavio Ineichen</span>
-          <span class="copyright-text">All rights reserved</span>
+          <span>– Alle Rechte vorbehalten</span>
         </div>
       </div>
-      
+
       <div class="footer-center">
         <nav class="social-links">
-          <a href="https://github.com/TimAtOak" target="_blank" rel="noopener noreferrer" class="social-link">
+          <a href="https://github.com/TimAtOak" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
             <i class="fab fa-github"></i>
           </a>
-          <a href="https://www.linkedin.com/in/tim-flavio-ineichen-269a231a8/" target="_blank" rel="noopener noreferrer" class="social-link">
+          <a href="https://www.linkedin.com/in/tim-flavio-ineichen-269a231a8/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
             <i class="fab fa-linkedin"></i>
           </a>
-          <a href="mailto:ineichen.tim@gmail.com" class="social-link">
+          <a href="mailto:ineichen.tim@gmail.com" class="social-link" aria-label="E-Mail">
             <i class="fas fa-envelope"></i>
           </a>
         </nav>
       </div>
-      
+
       <div class="footer-right">
         <nav class="legal-links">
           <a href="/impressum" class="legal-link">Impressum</a>
           <span class="separator">|</span>
-          <a href="/dsgvo" class="legal-link">Privacy Policy</a>
+          <a href="/dsgvo" class="legal-link">Datenschutz</a>
         </nav>
       </div>
     </div>
-    
+
     <div class="footer-bottom">
       <div class="made-with">
-        Built with <span class="tech">Astro</span> & <span class="heart">♥</span>
+        Gebaut mit <span class="tech">Astro</span> & <span class="heart">♥</span>
       </div>
     </div>
   </div>
@@ -48,14 +47,11 @@
 <style>
   #footer {
     width: 100%;
-    background: rgba(13, 17, 23, 0.95);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(56, 139, 253, 0.15);
+    background: rgba(8, 14, 28, 0.98);
+    border-top: 1px solid rgba(59, 130, 246, 0.12);
     padding: 40px 0 20px 0;
-    font-family: 'JetBrains Mono', 'Fira Code', 'Monaco', monospace;
-    position: relative;
-    overflow: hidden;
-    color: #c9d1d9;
+    font-family: inherit;
+    color: #8b949e;
   }
 
   .footer-container {
@@ -72,34 +68,28 @@
   }
 
   .copyright {
-    font-size: 14px;
-    color: #8b949e;
-  }
-
-  .copyright span {
-    margin-right: 5px;
+    font-size: 13px;
+    color: #6b7280;
+    display: flex;
+    gap: 5px;
+    align-items: center;
   }
 
   .copyright-name {
     color: #58a6ff;
-    transition: color 0.3s ease;
-  }
-
-  .copyright-name:hover {
-    color: #79c0ff;
   }
 
   .social-links {
     display: flex;
-    gap: 24px;
+    gap: 22px;
     align-items: center;
   }
 
   .social-link {
-    color: #8b949e;
+    color: #6b7280;
     text-decoration: none;
-    transition: all 0.3s ease;
-    font-size: 22px;
+    font-size: 20px;
+    transition: all 0.25s ease;
   }
 
   .social-link:hover {
@@ -109,15 +99,15 @@
 
   .legal-links {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     align-items: center;
   }
 
   .legal-link {
-    color: #8b949e;
+    color: #6b7280;
     text-decoration: none;
-    transition: color 0.3s ease;
-    font-size: 14px;
+    font-size: 13px;
+    transition: color 0.25s ease;
   }
 
   .legal-link:hover {
@@ -131,34 +121,27 @@
   .footer-bottom {
     text-align: center;
     padding-top: 20px;
-    border-top: 1px solid rgba(56, 139, 253, 0.15);
+    border-top: 1px solid rgba(59, 130, 246, 0.08);
   }
 
   .made-with {
-    font-size: 14px;
-    color: #8b949e;
+    font-size: 13px;
+    color: #6b7280;
   }
 
   .tech {
     color: #58a6ff;
-    transition: color 0.3s ease;
-  }
-
-  .tech:hover {
-    color: #79c0ff;
   }
 
   .heart {
     color: #f85149;
-    font-size: 16px;
     display: inline-block;
-    animation: pulse 1.5s infinite;
+    animation: pulse 1.8s ease-in-out infinite;
   }
 
   @keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+    0%, 100% { transform: scale(1); }
+    50%       { transform: scale(1.15); }
   }
 
   @media (max-width: 768px) {
@@ -168,156 +151,8 @@
       text-align: center;
     }
 
-    .footer-left, .footer-center, .footer-right {
-      width: 100%;
-    }
-
-    .social-links {
-      justify-content: center;
-      margin: 15px 0;
-    }
-
-    .legal-links {
-      justify-content: center;
-    }
-  }
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .legal-link::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-    transition: left 0.5s ease;
-  }
-
-  .legal-link:hover::before {
-    left: 100%;
-  }
-
-  .legal-link:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.05);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
-  }
-
-  .separator {
-    color: rgba(255, 255, 255, 0.3);
-    font-weight: 300;
-  }
-
-  .footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    animation: fadeInUp 1s ease-out 0.2s both;
-  }
-
-  .made-with {
-    color: #888888;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-  }
-
-  .heart {
-    color: #ff6b6b;
-    animation: heartbeat 2s ease-in-out infinite;
-    display: inline-block;
-    margin: 0 4px;
-  }
-
-  @keyframes heartbeat {
-    0%, 50%, 100% {
-      transform: scale(1);
-    }
-    25%, 75% {
-      transform: scale(1.2);
-    }
-  }
-
-  @keyframes fadeInUp {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .footer-container {
-      padding: 0 20px;
-    }
-
-    .footer-content {
-      flex-direction: column;
-      gap: 20px;
-      text-align: center;
-    }
-
-    .footer-left,
-    .footer-center,
-    .footer-right {
-      flex: none;
-    }
-
-    .copyright {
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .brand-name {
-      font-size: 1.3rem;
-      letter-spacing: 2px;
-      margin: 10px 0;
-    }
-
-    .brand-name::before,
-    .brand-name::after {
-      display: none;
-    }
-
-    .legal-links {
-      justify-content: center;
-    }
-  }
-
-  @media (max-width: 480px) {
-    #footer {
-      padding: 30px 0 15px 0;
-    }
-
-    .footer-content {
-      margin-bottom: 20px;
-    }
-
-    .copyright {
-      font-size: 0.8rem;
-      gap: 6px;
-    }
-
-    .brand-name {
-      font-size: 1.1rem;
-      letter-spacing: 1px;
-    }
-
-    .legal-link {
-      font-size: 0.8rem;
-      padding: 6px 10px;
-    }
-
-    .made-with {
-      font-size: 0.8rem;
-    }
+    .social-links { justify-content: center; }
+    .legal-links  { justify-content: center; }
+    .copyright    { justify-content: center; flex-wrap: wrap; }
   }
 </style>
