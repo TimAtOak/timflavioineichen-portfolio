@@ -1,4 +1,5 @@
 ---
+import Floaters from './Floaters.astro';
 import { getProjects, panelStyle } from '../data/projects';
 import { projectPath, type Lang } from '../i18n';
 import ProjectShot from './ProjectShot.astro';
@@ -28,15 +29,16 @@ const t = {
 }[lang];
 ---
 <section id="projekte" class="section">
+  <Floaters set="projects" />
   <div class="wrap">
-    <div class="section-head center reveal">
+    <div class="section-head center reveal rv-stagger rv-blur">
       <p class="eyebrow">{t.eyebrow}</p>
       <h2 class="section-title">{t.title}</h2>
       <p class="section-lead">{t.lead}</p>
     </div>
 
     <div class="projects">
-      <a href={projectPath(lang, featured.slug)} class="project card is-featured reveal" style={panelStyle(featured)}>
+      <a href={projectPath(lang, featured.slug)} class="project card is-featured reveal rv-zoom" style={panelStyle(featured)}>
         <div class="panel">
           {featured.image && featured.url ? (
             <ProjectShot image={featured.image} url={featured.url} width={1000} />
@@ -61,7 +63,7 @@ const t = {
       </a>
 
       {rest.map((p, i) => (
-        <a href={projectPath(lang, p.slug)} class={`project card reveal d${i + 1}`} style={panelStyle(p)}>
+        <a href={projectPath(lang, p.slug)} class={`project card reveal ${i % 2 ? "rv-right" : "rv-left"} d${i + 1}`} style={panelStyle(p)}>
           <div class="panel">
             {p.image && p.url ? (
               <ProjectShot image={p.image} url={p.url} width={800} />

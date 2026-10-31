@@ -1,0 +1,12 @@
+---
+import ServiceDetail from '../../../components/ServiceDetail.astro';
+import { servicePaths } from '../../../data/services';
+
+export function getStaticPaths() {
+  return servicePaths('en');
+}
+
+const { id, altSlug } = Astro.props;
+---
+
+<ServiceDetail lang="en" id={id} altSlug={altSlug} />

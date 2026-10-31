@@ -1,0 +1,178 @@
+---
+/**
+ * Decorative flat shapes for section backgrounds.
+ * Large, calm forms that sit behind the content and intersect with it.
+ * One arrangement per section so the page never repeats itself.
+ *
+ * Usage: place as first child of a `.section`, e.g. <Floaters set="about" />
+ */
+
+type Shape =
+  | 'disc'      // filled circle, soft accent
+  | 'blank'     // filled circle, card white
+  | 'ring'      // thin accent outline
+  | 'donut'     // thick soft-accent ring
+  | 'square'    // rounded square outline
+  | 'pill'      // filled capsule
+  | 'plus';     // small cross
+
+interface Item {
+  shape: Shape;
+  w: number;             // px
+  h?: number;            // px, defaults to w
+  top?: string;
+  left?: string;
+  right?: string;
+  bottom?: string;
+  rot?: number;          // base rotation in deg
+  delay?: number;        // s, offsets the drift loop
+  depth?: number;        // parallax strength: 0 (none) … 1 (strong)
+  mobile?: boolean;      // keep visible on small screens
+}
+
+const sets: Record<string, Item[]> = {
+  hero: [
+    { shape: 'donut',  w: 240, top: '4%',    right: '-70px',  delay: -1, depth: 0.6 },
+    { shape: 'disc',   w: 380, bottom: '12%', left: '-60px', delay: -3, depth: 0.5, mobile: true },
+    { shape: 'plus',   w: 36,  bottom: '26%', left: '34%',    delay: -5, depth: 0.4 },
+  ],
+  detail: [
+    { shape: 'ring',   w: 340, top: '8%',    left: '-120px',  delay: -2, depth: 0.6, mobile: true },
+    { shape: 'disc',   w: 360, bottom: '-40px', right: '-120px', delay: -4, depth: 0.7 },
+    { shape: 'plus',   w: 34,  top: '22%',   left: '50%',     delay: -1, depth: 0.4 },
+  ],
+  about: [
+    { shape: 'ring',   w: 360, top: '4%',    left: '-120px',  delay: -2, depth: 0.6, mobile: true },
+    { shape: 'disc',   w: 300, bottom: '6%', right: '-60px',  delay: -1, depth: 0.8, mobile: true },
+    { shape: 'plus',   w: 34,  bottom: '24%', left: '46%',    delay: -3, depth: 0.4 },
+  ],
+  services: [
+    { shape: 'donut',  w: 320, top: '-40px', left: 'calc(50% + 200px)', delay: -1, depth: 0.7, mobile: true },
+    { shape: 'pill',   w: 280, h: 96, top: '30%', left: '-80px', rot: -18, delay: -4, depth: 0.5 },
+    { shape: 'square', w: 140, bottom: '28%', left: '38%', rot: 14, delay: -2, depth: 0.4 },
+  ],
+  experience: [
+    { shape: 'disc',   w: 400, top: '6%',    right: '-140px', delay: -3, depth: 0.8, mobile: true },
+    { shape: 'ring',   w: 220, bottom: '10%', left: '-40px',  delay: -5, depth: 0.6 },
+    { shape: 'plus',   w: 36,  top: '58%',   right: '28%',    delay: -2, depth: 0.4 },
+  ],
+  projects: [
+    { shape: 'ring',   w: 380, top: '-60px', left: '6%',      delay: -2, depth: 0.6, mobile: true },
+    { shape: 'square', w: 160, bottom: '16%', right: '16%', rot: 22, delay: -1, depth: 0.5 },
+    { shape: 'blank',  w: 240, bottom: '4%', left: '28%',     delay: -6, depth: 0.7, mobile: true },
+  ],
+  contact: [
+    { shape: 'disc',   w: 440, top: '4%',    left: '-160px',  delay: -1, depth: 0.7, mobile: true },
+    { shape: 'donut',  w: 260, bottom: '8%', right: '6%',     delay: -5, depth: 0.6 },
+    { shape: 'plus',   w: 38,  bottom: '22%', left: '47%',    delay: -2, depth: 0.4 },
+  ],
+};
+
+interface Props {
+  set: keyof typeof sets;
+}
+
+const items = sets[Astro.props.set] ?? [];
+
+const style = (it: Item) =>
+  [
+    `--w:${it.w}px`,
+    `--h:${it.h ?? it.w}px`,
+    `--rot:${it.rot ?? 0}deg`,
+    `--delay:${it.delay ?? 0}s`,
+    `--depth:${it.depth ?? 0.5}`,
+    `top:${it.top ?? 'auto'}`,
+    `left:${it.left ?? 'auto'}`,
+    `right:${it.right ?? 'auto'}`,
+    `bottom:${it.bottom ?? 'auto'}`,
+  ].join(';');
+---
+<div class="floaters" aria-hidden="true">
+  {items.map((it) => (
+    <span class:list={['fl', { 'fl-mobile': it.mobile }]} style={style(it)}>
+      <span class={`shape ${it.shape}`}></span>
+    </span>
+  ))}
+</div>
+
+<style>
+  .floaters {
+    --fl-line: color-mix(in srgb, var(--accent) 28%, transparent);
+
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    /* Clip sideways (no horizontal scroll), let shapes bleed into neighbouring sections */
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  /* Outer span: placement + scroll parallax. Inner span: shape + idle drift. */
+  .fl {
+    position: absolute;
+    width: var(--w);
+    height: var(--h);
+  }
+
+  .shape {
+    display: block;
+    width: 100%;
+    height: 100%;
+    rotate: var(--rot);
+    animation: fl-drift 12s ease-in-out infinite;
+    animation-delay: var(--delay);
+  }
+
+  .disc   { border-radius: 50%; background: var(--accent-soft); }
+  .blank  { border-radius: 50%; background: var(--bg-elev); }
+  .ring   { border-radius: 50%; border: 2px solid var(--fl-line); }
+  .donut  { border-radius: 50%; border: 28px solid var(--accent-soft); }
+  .pill   { border-radius: 999px; background: var(--accent-soft); }
+
+  .square {
+    border-radius: 28px;
+    border: 2px solid var(--fl-line);
+    animation-name: fl-drift-turn;
+  }
+
+  .plus {
+    background:
+      linear-gradient(var(--accent), var(--accent)) center / 100% 4px no-repeat,
+      linear-gradient(var(--accent), var(--accent)) center / 4px 100% no-repeat;
+    opacity: 0.45;
+    animation-name: fl-drift-turn;
+  }
+
+  @keyframes fl-drift {
+    0%, 100% { translate: 0 0; }
+    50%      { translate: 0 -16px; }
+  }
+
+  @keyframes fl-drift-turn {
+    0%, 100% { translate: 0 0;     rotate: var(--rot); }
+    50%      { translate: 0 -16px; rotate: calc(var(--rot) + 12deg); }
+  }
+
+  /* Scroll parallax (progressive enhancement, no JS) */
+  @supports (animation-timeline: view()) {
+    .fl {
+      animation: fl-parallax linear both;
+      animation-timeline: view();
+    }
+
+    @keyframes fl-parallax {
+      from { transform: translateY(calc(var(--depth) * 90px)); }
+      to   { transform: translateY(calc(var(--depth) * -90px)); }
+    }
+  }
+
+  @media (max-width: 700px) {
+    .fl:not(.fl-mobile) { display: none; }
+    .fl { scale: 0.6; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .fl, .shape { animation: none; }
+  }
+</style>

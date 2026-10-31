@@ -1,4 +1,5 @@
 ---
+import Floaters from './Floaters.astro';
 import { positions as positionsByLang } from '../data/experience';
 import type { Lang } from '../i18n';
 
@@ -23,16 +24,17 @@ const t = {
 }[lang];
 ---
 <section id="werdegang" class="section">
+  <Floaters set="experience" />
   <div class="wrap">
-    <div class="section-head center reveal">
+    <div class="section-head center reveal rv-stagger rv-blur">
       <p class="eyebrow">{t.eyebrow}</p>
       <h2 class="section-title">{t.title}</h2>
       <p class="section-lead">{t.lead}</p>
     </div>
 
-    <ol class="timeline reveal">
+    <ol class="timeline">
       {positions.map((p, i) => (
-        <li class={`entry${p.current ? ' is-current' : ''}`}>
+        <li class={`entry reveal rv-left${p.current ? " is-current" : ""}`} style={`--rv-delay:${Math.min(i, 3) * 0.08}s`}>
           <span class="marker" aria-hidden="true"></span>
           <details open={i < 3}>
             <summary>

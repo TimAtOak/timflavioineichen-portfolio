@@ -3,8 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import Nav from './Nav.astro';
 import Footer from './Footer.astro';
 import { getProjects, getAdjacentProject, panelStyle } from '../data/projects';
-import { homePath, projectPath, type Lang } from '../i18n';
+import { homePath, projectPath, ogImagePath, type Lang } from '../i18n';
 import ProjectShot from './ProjectShot.astro';
+import { projectStructuredData } from '../data/structuredData';
 
 interface Props {
   lang: Lang;
@@ -34,12 +35,23 @@ const t = {
 <Layout
   lang={lang}
   title={`${project.title} – ${project.tagline} | Tim Flavio Ineichen`}
-  description={project.shortDescription}
+  description={project.metaDescription ?? project.shortDescription}
+  ogImage={ogImagePath(projectPath(lang, slug))}
+  ogImageAlt={`${project.title} – ${project.tagline}`}
   alternates={{ de: projectPath('de', slug), en: projectPath('en', slug) }}
+  structuredData={projectStructuredData(lang, project.title, slug)}
 >
   <Nav lang={lang} base={home} altHref={projectPath(otherLang, slug)} />
 
-  <main>
+  <main
+    data-og-eyebrow={lang === "de" ? "Projekt" : "Project"}
+    data-og-title={project.title}
+    data-og-tagline={project.tagline}
+    data-og-icon={project.iconPath}
+    data-og-tags={project.techStack.slice(0, 4).join("|")}
+    data-og-from={project.gradientFrom}
+    data-og-to={project.gradientTo}
+  >
     <header class="detail-hero">
       <div class="wrap">
         <div class="hero-card">

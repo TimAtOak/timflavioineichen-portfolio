@@ -1,5 +1,8 @@
 ---
-import type { Lang } from '../i18n';
+import Floaters from './Floaters.astro';
+import ProcessSteps from './ProcessSteps.astro';
+import { getServices } from '../data/services';
+import { servicePath, type Lang } from '../i18n';
 
 interface Props {
   lang?: Lang;
@@ -7,64 +10,27 @@ interface Props {
 
 const { lang = 'de' } = Astro.props;
 
-const icons = [
-  'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
-  'M8 6l-6 6 6 6M16 6l6 6-6 6',
-  'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
-  'M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 14l2 2 4-4',
-  'M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z',
-  'M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0L12 2.69z',
-];
-
 const t = {
   de: {
     eyebrow: 'Leistungen',
     title: 'Was ich für Ihr Projekt übernehme.',
     lead: 'Ich steige dort ein, wo Sie Unterstützung brauchen – als Architekt, Entwickler oder technische Leitung. Projektbasiert oder als Verstärkung Ihres Teams.',
-    process: 'So arbeiten wir zusammen',
-    services: [
-      { title: 'Software-Architektur', text: 'Tragfähige System- und API-Architekturen, fundierte Technologieentscheide und Architektur-Reviews bestehender Systeme – mit Blick auf Skalierbarkeit, Qualität und Wartbarkeit.', tags: ['System Design', 'API-Design', 'Reviews', 'Cloud'] },
-      { title: 'Full-Stack-Entwicklung', text: 'Umsetzung kompletter Webanwendungen von Frontend bis Backend – inklusive Datenbank, Schnittstellen und produktivem Deployment.', tags: ['React / TS', 'Symfony', 'Python', 'C#'] },
-      { title: 'Technische Leitung', text: 'Tech Lead auf Zeit oder Interim-CTO: Entwicklungsstandards, Prozesse, Code Reviews und Coaching von Teams – damit Ihr Team schneller und sicherer liefert.', tags: ['Tech Lead', 'Interim CTO', 'Scrum', 'Code Reviews'] },
-      { title: 'Requirements & Konzeption', text: 'Fachliche Anforderungen verstehen, strukturieren und in User Stories, technische Konzepte und realistische Machbarkeitsbewertungen übersetzen.', tags: ['Requirements', 'User Stories', 'Workshops', 'Machbarkeit'] },
-      { title: 'KI, ERP & Integrationen', text: 'Anbindung von Drittsystemen, Automatisierung von Geschäftsprozessen mit KI und Erweiterungen von Plattformen wie Odoo über saubere Schnittstellen.', tags: ['KI', 'Odoo', 'REST / APIs', 'Automatisierung'] },
-      { title: 'Frontend & Design Systems', text: 'Komponentenbibliotheken in React, konsistente UI/UX und performante Frontends, die Entwickler gerne verwenden und Nutzer gerne bedienen.', tags: ['Component Library', 'UI/UX', 'Accessibility', 'Performance'] },
-    ],
-    steps: [
-      { title: 'Erstgespräch', text: 'Kostenlos und unverbindlich: Wir klären Ziel, Ausgangslage und Rahmenbedingungen.' },
-      { title: 'Konzept & Angebot', text: 'Sie erhalten einen klaren Vorschlag zu Vorgehen, Aufwand und Zeitplan.' },
-      { title: 'Umsetzung', text: 'Iterativ, transparent und mit regelmässigen Abstimmungen – remote oder vor Ort.' },
-      { title: 'Übergabe & Begleitung', text: 'Dokumentation, Wissenstransfer an Ihr Team und auf Wunsch langfristige Betreuung.' },
-    ],
+    more: 'Mehr erfahren',
   },
   en: {
     eyebrow: 'Services',
     title: 'What I take on for your project.',
     lead: 'I step in wherever you need support – as architect, developer or technical lead. On a project basis or as an extension of your team.',
-    process: 'How we work together',
-    services: [
-      { title: 'Software Architecture', text: 'Robust system and API architectures, well-founded technology decisions and architecture reviews of existing systems – with scalability, quality and maintainability in mind.', tags: ['System Design', 'API Design', 'Reviews', 'Cloud'] },
-      { title: 'Full-Stack Development', text: 'Delivery of complete web applications from frontend to backend – including database, integrations and production deployment.', tags: ['React / TS', 'Symfony', 'Python', 'C#'] },
-      { title: 'Technical Leadership', text: 'Interim tech lead or CTO: development standards, processes, code reviews and team coaching – so your team ships faster and more safely.', tags: ['Tech Lead', 'Interim CTO', 'Scrum', 'Code Reviews'] },
-      { title: 'Requirements & Concepts', text: 'Understanding and structuring business requirements and turning them into user stories, technical concepts and realistic feasibility assessments.', tags: ['Requirements', 'User Stories', 'Workshops', 'Feasibility'] },
-      { title: 'AI, ERP & Integrations', text: 'Connecting third-party systems, automating business processes with AI and extending platforms such as Odoo through clean interfaces.', tags: ['AI', 'Odoo', 'REST / APIs', 'Automation'] },
-      { title: 'Frontend & Design Systems', text: 'React component libraries, consistent UI/UX and fast frontends that developers like to build with and users like to use.', tags: ['Component Library', 'UI/UX', 'Accessibility', 'Performance'] },
-    ],
-    steps: [
-      { title: 'Intro call', text: 'Free and without obligation: we clarify goals, starting point and constraints.' },
-      { title: 'Concept & proposal', text: 'You receive a clear proposal covering approach, effort and timeline.' },
-      { title: 'Delivery', text: 'Iterative, transparent and with regular check-ins – remote or on site.' },
-      { title: 'Handover & support', text: 'Documentation, knowledge transfer to your team and long-term support if needed.' },
-    ],
+    more: 'Learn more',
   },
 }[lang];
 
-const services = t.services.map((s, i) => ({ ...s, icon: icons[i] }));
-const steps = t.steps;
+const services = getServices(lang);
 ---
 <section id="leistungen" class="section">
+  <Floaters set="services" />
   <div class="wrap">
-    <div class="section-head center reveal">
+    <div class="section-head center reveal rv-stagger rv-blur">
       <p class="eyebrow">{t.eyebrow}</p>
       <h2 class="section-title">{t.title}</h2>
       <p class="section-lead">{t.lead}</p>
@@ -72,29 +38,19 @@ const steps = t.steps;
 
     <ul class="services">
       {services.map((s, i) => (
-        <li class={`service reveal d${(i % 3) + 1}`}>
+        <li class={`service reveal rv-tilt d${(i % 3) + 1}`}>
           <span class="service-icon" aria-hidden="true">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={s.icon}/></svg>
           </span>
-          <h3>{s.title}</h3>
+          <h3><a href={servicePath(lang, s.slug)} class="service-link">{s.title}</a></h3>
           <p>{s.text}</p>
-          <div class="tags">{s.tags.map((t) => <span class="tag">{t}</span>)}</div>
+          <div class="tags">{s.tags.map((tag) => <span class="tag">{tag}</span>)}</div>
+          <span class="more" aria-hidden="true">{t.more} <span>→</span></span>
         </li>
       ))}
     </ul>
 
-    <div class="process reveal">
-      <h3 class="process-title">{t.process}</h3>
-      <ol class="steps">
-        {steps.map((s, i) => (
-          <li>
-            <span class="step-num">{i + 1}</span>
-            <h4>{s.title}</h4>
-            <p>{s.text}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
+    <ProcessSteps lang={lang} />
   </div>
 </section>
 
@@ -109,14 +65,21 @@ const steps = t.steps;
   }
 
   .service {
+    position: relative;
     display: flex;
     flex-direction: column;
     padding-top: 1.75rem;
     border-top: 1px solid var(--line);
+    transition: border-color 0.3s ease;
   }
 
-  .service-icon { transition: transform 0.35s var(--ease); }
-  .service:hover .service-icon { transform: translateY(-4px) rotate(-4deg); }
+  .service:hover { border-top-color: var(--accent); }
+
+  /* Whole card is clickable via the heading link (keeps one accessible link per card) */
+  .service-link { color: inherit; text-decoration: none; }
+  .service-link::after { content: ''; position: absolute; inset: 0; }
+  .service-link:focus-visible { outline: none; }
+  .service:has(.service-link:focus-visible) { outline: 2px solid var(--accent); outline-offset: 8px; border-radius: 6px; }
 
   .service-icon {
     width: 56px;
@@ -128,7 +91,10 @@ const steps = t.steps;
     background: linear-gradient(140deg, #5fb3f7, var(--accent));
     box-shadow: var(--glow);
     margin-bottom: 1.5rem;
+    transition: transform 0.35s var(--ease);
   }
+
+  .service:hover .service-icon { transform: translateY(-4px) rotate(-4deg); }
 
   .service h3 {
     font-family: var(--font-display);
@@ -137,7 +103,10 @@ const steps = t.steps;
     font-weight: 750;
     color: var(--ink);
     margin: 0 0 0.6rem;
+    transition: color 0.2s ease;
   }
+
+  .service:hover h3 { color: var(--accent); }
 
   .service p {
     color: var(--muted);
@@ -147,65 +116,23 @@ const steps = t.steps;
     flex: 1;
   }
 
-  /* Process */
-  .process { margin-top: clamp(72px, 9vw, 112px); }
-
-  .process-title {
-    font-family: var(--font-display);
-    font-stretch: 115%;
-    font-size: 1.3rem;
-    font-weight: 800;
-    color: var(--ink);
-    margin: 0 0 2rem;
-    text-align: center;
-  }
-
-  .steps {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: clamp(16px, 3vw, 40px);
-    position: relative;
-  }
-
-  .steps::before {
-    content: '';
-    position: absolute;
-    top: 22px;
-    left: 12%;
-    right: 12%;
-    border-top: 2px dashed var(--line);
-  }
-
-  .steps li { position: relative; text-align: center; }
-
-  .step-num {
-    width: 46px;
-    height: 46px;
-    display: grid;
-    place-items: center;
-    margin: 0 auto 1rem;
-    border-radius: 50%;
-    background: var(--bg-elev);
+  .more {
+    margin-top: 1.2rem;
+    font-weight: 600;
+    font-size: 0.95rem;
     color: var(--accent);
-    font-family: var(--font-display);
-    font-weight: 800;
-    box-shadow: var(--shadow), inset 0 0 0 2px var(--accent-soft);
   }
 
-  .steps h4 { margin: 0 0 0.35rem; font-size: 1.05rem; color: var(--ink); font-weight: 600; }
-  .steps p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
+  .more span { display: inline-block; transition: transform 0.3s var(--ease); }
+  .service:hover .more span { transform: translateX(4px); }
+
+  .wrap > :global(.process) { margin-top: clamp(72px, 9vw, 112px); }
 
   @media (max-width: 1000px) {
     .services { grid-template-columns: repeat(2, 1fr); }
-    .steps { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; }
-    .steps::before { display: none; }
   }
 
   @media (max-width: 620px) {
     .services { grid-template-columns: minmax(0, 1fr); }
-    .steps { grid-template-columns: minmax(0, 1fr); }
   }
 </style>

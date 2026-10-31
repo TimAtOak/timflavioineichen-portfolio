@@ -3038,6 +3038,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"playwright-core@npm:1.56.0":
+  version: 1.56.0
+  resolution: "playwright-core@npm:1.56.0"
+  bin:
+    playwright-core: cli.js
+  checksum: 10c0/2ebf6138feb49722edd6d2df4afceb509309ebb3aadc24dcba2023a4d89c7a1d248c0b03b9e8fa9e31d51a8f72e909a271b98c9e48a82b94ce3ef1314d17a743
+  languageName: node
+  linkType: hard
+
 "postcss@npm:^8.5.3":
   version: 8.5.32
   resolution: "postcss@npm:8.5.32"
@@ -3375,6 +3384,7 @@ __metadata:
     "@fontsource-variable/archivo": "npm:^5.3.0"
     "@fontsource-variable/jost": "npm:^5.3.0"
     astro: "npm:^5.12.3"
+    playwright-core: "npm:1.56.0"
   languageName: unknown
   linkType: soft
 

@@ -15,6 +15,8 @@ interface ProjectText {
   period: string;
   tagline: string;
   shortDescription: string;
+  /** Meta description for search engines (≤ 155 chars); falls back to shortDescription. */
+  metaDescription?: string;
   fullDescription: string[];
   techStack: string[];
   highlights: ProjectHighlight[];
@@ -105,6 +107,8 @@ const projectData: ProjectBase[] = [
         tagline: 'KI, Digitalisierung & Software aus Luzern',
         shortDescription:
           'Als CTO von kimuno verantworte ich die Technik hinter Beratung, Digitalisierung und Software-Entwicklung für öffentliche Institutionen und KMU – mit Fokus auf Prozessoptimierung und KI.',
+        metaDescription:
+          'Als CTO von kimuno verantworte ich die Technik hinter Digitalisierung und Software für öffentliche Institutionen und KMU – mit Fokus auf KI.',
         fullDescription: [
           'kimuno ist ein Unternehmen aus Luzern, das öffentliche Institutionen und KMU mit Beratung, Digitalisierung und Software-Entwicklung unterstützt. Im Zentrum stehen Prozessoptimierung und der gezielte Einsatz von künstlicher Intelligenz – damit mehr Zeit für das Wesentliche bleibt.',
           'Als CTO trage ich die technische Gesamtverantwortung: Ich definiere Architektur, Technologieauswahl und Entwicklungsstandards und verantworte Entscheidungen von Frontend und Backend über Datenbanken und APIs bis zur Infrastruktur.',
@@ -125,6 +129,8 @@ const projectData: ProjectBase[] = [
         tagline: 'AI, digitalisation & software from Lucerne',
         shortDescription:
           'As CTO of kimuno, I own the technology behind consulting, digitalisation and software development for public institutions and SMEs – with a focus on process optimisation and AI.',
+        metaDescription:
+          'As CTO of kimuno, I own the technology behind digitalisation and software for public institutions and SMEs – with a focus on AI and process optimisation.',
         fullDescription: [
           'kimuno is a Lucerne-based company that supports public institutions and SMEs with consulting, digitalisation and software development. Its focus is process optimisation and the targeted use of artificial intelligence – so that more time is left for what matters.',
           'As CTO I carry overall technical responsibility: I define architecture, technology choices and development standards, and own decisions from frontend and backend through databases and APIs to infrastructure.',

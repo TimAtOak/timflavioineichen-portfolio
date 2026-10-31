@@ -1,4 +1,5 @@
 ---
+import Floaters from './Floaters.astro';
 import type { Lang } from '../i18n';
 
 interface Props {
@@ -37,15 +38,16 @@ const t = {
 }[lang];
 ---
 <section id="kontakt" class="section contact">
+  <Floaters set="contact" />
   <div class="wrap">
     <div class="contact-card">
 
-      <div class="contact-intro reveal">
+      <div class="contact-intro reveal rv-left">
         <p class="eyebrow">{t.eyebrow}</p>
         <h2>{t.title}</h2>
         <p class="contact-lead">{t.lead}</p>
 
-        <ul class="contact-list">
+        <ul class="contact-list reveal rv-stagger rv-left">
           <li>
             <span class="ci" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
@@ -82,7 +84,7 @@ const t = {
         </div>
       </div>
 
-      <form class="form reveal d1" id="contactForm" novalidate data-mail={JSON.stringify(t.mail)}>
+      <form class="form reveal rv-right d1" id="contactForm" novalidate data-mail={JSON.stringify(t.mail)}>
         <div class="row">
           <label>
             <span>{t.name}</span>

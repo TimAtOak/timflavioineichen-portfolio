@@ -1,0 +1,592 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from './Nav.astro';
+import Footer from './Footer.astro';
+import Floaters from './Floaters.astro';
+import ProcessSteps from './ProcessSteps.astro';
+import { getService, getServices } from '../data/services';
+import { serviceStructuredData } from '../data/structuredData';
+import { homePath, servicePath, ogImagePath, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  id: string;
+  altSlug: string;
+}
+
+const { lang, id, altSlug } = Astro.props;
+const service = getService(lang, id);
+const others = getServices(lang).filter((s) => s.id !== id);
+const home = homePath(lang);
+const otherLang: Lang = lang === 'de' ? 'en' : 'de';
+const path = servicePath(lang, service.slug);
+/** Longest word of the title – the h1 is sized so this word always fits on one line. */
+const longestWord = Math.max(...service.title.split(/[\s-]+/).map((w) => w.length));
+
+const t = {
+  de: {
+    home: 'Start', services: 'Leistungen', breadcrumb: 'Brotkrümelnavigation', eyebrow: 'Leistung',
+    cta: 'Projekt anfragen', all: 'Alle Leistungen',
+    scope: 'Leistungsumfang', scopeTitle: 'Das gehört dazu.',
+    situations: 'Typische Ausgangslagen', situationsTitle: 'Wann ich helfen kann.',
+    tech: 'Technologien & Methoden',
+    faq: 'Häufige Fragen', faqTitle: 'Gut zu wissen.',
+    others: 'Weitere Leistungen',
+    askTitle: 'Passt das zu Ihrem Vorhaben?', askText: 'Im kostenlosen Erstgespräch klären wir Ziel, Ausgangslage und das passende Vorgehen.',
+  },
+  en: {
+    home: 'Home', services: 'Services', breadcrumb: 'Breadcrumb', eyebrow: 'Service',
+    cta: 'Start a project', all: 'All services',
+    scope: 'Scope', scopeTitle: 'What’s included.',
+    situations: 'Typical situations', situationsTitle: 'When I can help.',
+    tech: 'Technologies & methods',
+    faq: 'FAQ', faqTitle: 'Good to know.',
+    others: 'More services',
+    askTitle: 'Sounds like your project?', askText: 'In a free intro call we clarify goals, starting point and the right approach.',
+  },
+}[lang];
+
+const arrow = 'M5 12h14M13 5l7 7-7 7';
+const check = 'M20 6L9 17l-5-5';
+---
+
+<Layout
+  lang={lang}
+  title={service.metaTitle}
+  description={service.metaDescription}
+  alternates={{ [lang]: path, [otherLang]: servicePath(otherLang, altSlug) }}
+  structuredData={serviceStructuredData(lang, service, path)}
+  ogImage={ogImagePath(path)}
+  ogImageAlt={`${service.title} – ${service.tagline}`}
+>
+  <Nav lang={lang} base={home} altHref={servicePath(otherLang, altSlug)} />
+
+  <main
+    data-og-eyebrow={t.eyebrow}
+    data-og-title={service.title}
+    data-og-tagline={service.tagline}
+    data-og-icon={service.icon}
+    data-og-tags={service.tags.join("|")}
+  >
+    <header class="detail-hero">
+      <Floaters set="detail" />
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <nav class="crumbs reveal rv-down" aria-label={t.breadcrumb}>
+            <a href={home}>{t.home}</a>
+            <span aria-hidden="true">/</span>
+            <a href={`${home}#leistungen`}>{t.services}</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">{service.title}</span>
+          </nav>
+          <p class="eyebrow reveal rv-left">{t.eyebrow}</p>
+          <h1 class="reveal rv-blur d1" style={`--chars:${longestWord}`}>{service.title}</h1>
+          <p class="tagline reveal rv-left d2">{service.tagline}</p>
+          <p class="hero-lead reveal d2">{service.intro[0]}</p>
+          <div class="actions reveal rv-stagger rv-pop d3">
+            <a href={`${home}#kontakt`} class="btn btn-primary">
+              {t.cta}
+              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={arrow}/></svg>
+            </a>
+            <a href={`${home}#leistungen`} class="btn btn-ghost">{t.all}</a>
+          </div>
+        </div>
+
+        <div class="visual reveal rv-zoom d2" aria-hidden="true">
+          <div class="panel">
+            <span class="panel-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d={service.icon}/></svg>
+            </span>
+          </div>
+          {service.tags.map((tag, i) => <span class={`chip chip-${i + 1}`}>{tag}</span>)}
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <Floaters set="services" />
+      <div class="wrap">
+        <div class="scope-head">
+          <div class="section-head reveal rv-stagger rv-blur">
+            <p class="eyebrow">{t.scope}</p>
+            <h2 class="section-title">{t.scopeTitle}</h2>
+          </div>
+          <p class="scope-intro reveal rv-right">{service.intro[1]}</p>
+        </div>
+
+        <ul class="deliverables">
+          {service.deliverables.map((d, i) => (
+            <li class={`reveal rv-tilt d${(i % 4) + 1}`}>
+              <span class="d-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d={check}/></svg>
+              </span>
+              <h3>{d.title}</h3>
+              <p>{d.desc}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <Floaters set="experience" />
+      <div class="wrap fit-grid">
+        <div class="reveal rv-left">
+          <p class="eyebrow">{t.situations}</p>
+          <h2 class="section-title">{t.situationsTitle}</h2>
+          <ul class="situations reveal rv-stagger rv-left">
+            {service.situations.map((s) => (
+              <li>
+                <span class="s-dot" aria-hidden="true"></span>
+                {s}
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <aside class="tech-card reveal rv-right d1">
+          <h2 class="tech-title">{t.tech}</h2>
+          <div class="tags reveal rv-stagger rv-pop">
+            {service.tech.map((tag) => <span class="tag">{tag}</span>)}
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section process-section">
+      <div class="wrap">
+        <ProcessSteps lang={lang} />
+      </div>
+    </section>
+
+    <section class="section">
+      <Floaters set="about" />
+      <div class="wrap faq-grid">
+        <div class="section-head reveal rv-stagger rv-blur">
+          <p class="eyebrow">{t.faq}</p>
+          <h2 class="section-title">{t.faqTitle}</h2>
+        </div>
+
+        <div class="faq reveal rv-stagger rv-up">
+          {service.faq.map((f, i) => (
+            <details open={i === 0}>
+              <summary>
+                <h3>{f.q}</h3>
+                <span class="toggle" aria-hidden="true"></span>
+              </summary>
+              <p>{f.a}</p>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section others-section">
+      <Floaters set="contact" />
+      <div class="wrap">
+        <h2 class="others-title reveal rv-blur">{t.others}</h2>
+        <ul class="others reveal rv-stagger rv-up">
+          {others.map((o) => (
+            <li>
+              <a href={servicePath(lang, o.slug)} class="other">
+                <span class="o-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={o.icon}/></svg>
+                </span>
+                <span class="o-title">{o.title}</span>
+                <span class="o-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <div class="ask reveal rv-zoom">
+          <div>
+            <h2>{t.askTitle}</h2>
+            <p>{t.askText}</p>
+          </div>
+          <a href={`${home}#kontakt`} class="btn ask-btn">
+            {t.cta}
+            <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d={arrow}/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer lang={lang} />
+</Layout>
+
+<style>
+  /* ── Hero ─────────────────────────────── */
+  .detail-hero {
+    position: relative;
+    padding: 128px 0 clamp(32px, 5vw, 64px);
+  }
+
+  .detail-hero > .wrap { position: relative; z-index: 1; }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    gap: clamp(32px, 6vw, 88px);
+    align-items: center;
+  }
+
+  .crumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: var(--faint);
+  }
+
+  .crumbs a { color: var(--muted); text-decoration: none; transition: color 0.2s ease; }
+  .crumbs a:hover { color: var(--accent); }
+  .crumbs [aria-current] { color: var(--ink); font-weight: 500; }
+
+  .hero-copy { container-type: inline-size; }
+  .hero-copy .eyebrow { display: flex; }
+
+  h1 {
+    font-family: var(--font-display);
+    font-stretch: 125%;
+    /* Never larger than what fits the longest word (~1em per uppercase glyph at this width) */
+    font-size: min(clamp(1.9rem, 4.6vw, 3.8rem), calc(100cqi / (var(--chars) * 1.02)));
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 1rem;
+    text-shadow: 3px 3px 0 var(--bg-elev), 5px 5px 0 var(--name-shadow);
+  }
+
+  .tagline {
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    color: var(--accent);
+    font-weight: 600;
+    margin: 0 0 1.25rem;
+  }
+
+  .hero-lead {
+    color: var(--muted);
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 52ch;
+    margin: 0 0 2rem;
+  }
+
+  .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+  .visual {
+    position: relative;
+    padding: 28px;
+  }
+
+  .panel {
+    aspect-ratio: 1;
+    max-width: 440px;
+    margin-inline: auto;
+    border-radius: 36px;
+    background: linear-gradient(140deg, #5fb3f7, var(--accent) 55%, #0f63b8);
+    display: grid;
+    place-items: center;
+    box-shadow: var(--glow), var(--shadow-lg);
+    color: #ffffff;
+  }
+
+  .panel-icon {
+    width: 46%;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border-radius: 32px;
+    background: color-mix(in srgb, #ffffff 18%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, #ffffff 30%, transparent), 0 20px 40px -12px rgba(0, 0, 0, 0.25);
+  }
+
+  .panel-icon svg { width: 52%; height: 52%; }
+
+  .chip {
+    position: absolute;
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    background: var(--bg-elev);
+    color: var(--ink);
+    font-size: 0.88rem;
+    font-weight: 600;
+    box-shadow: var(--shadow);
+    white-space: nowrap;
+    animation: chip-float 6s ease-in-out infinite;
+  }
+
+  .chip-1 { top: 10%; left: 0; }
+  .chip-2 { top: 30%; right: 0; animation-delay: -1.5s; }
+  .chip-3 { bottom: 24%; left: 2%; animation-delay: -3s; }
+  .chip-4 { bottom: 6%; right: 8%; animation-delay: -4.5s; }
+
+  @keyframes chip-float {
+    0%, 100% { translate: 0 0; }
+    50%      { translate: 0 -8px; }
+  }
+
+  /* ── Scope ───────────────────────────── */
+  .scope-head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: clamp(24px, 5vw, 72px);
+    align-items: end;
+    margin-bottom: clamp(36px, 5vw, 60px);
+  }
+
+  .scope-head .section-head { margin-bottom: 0; }
+
+  .scope-intro { margin: 0; color: var(--muted); line-height: 1.8; }
+
+  .deliverables {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: clamp(16px, 2vw, 24px);
+  }
+
+  .deliverables li {
+    padding: 1.6rem;
+    border-radius: var(--radius-sm);
+    background: var(--bg-elev);
+    box-shadow: var(--shadow);
+    transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  }
+
+  .deliverables li:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+
+  .d-icon {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+
+  .deliverables h3 {
+    margin: 1rem 0 0.4rem;
+    font-family: var(--font-display);
+    font-stretch: 112%;
+    font-size: 1.05rem;
+    font-weight: 750;
+    color: var(--ink);
+  }
+
+  .deliverables p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.6; }
+
+  /* ── Situations & tech ───────────────── */
+  .fit-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+    gap: clamp(32px, 6vw, 88px);
+    align-items: start;
+  }
+
+  .fit-grid .section-title { margin-bottom: 1.75rem; }
+
+  .situations {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.9rem;
+  }
+
+  .situations li {
+    display: flex;
+    gap: 0.9rem;
+    align-items: baseline;
+    color: var(--text);
+    font-size: 1.05rem;
+    line-height: 1.6;
+  }
+
+  .s-dot {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 5px var(--accent-soft);
+    translate: 0 -1px;
+  }
+
+  .tech-card {
+    padding: clamp(24px, 3vw, 36px);
+    border-radius: var(--radius);
+    background: var(--bg-elev);
+    box-shadow: var(--shadow);
+  }
+
+  .tech-title {
+    margin: 0 0 1.25rem;
+    font-family: var(--font-display);
+    font-stretch: 112%;
+    font-size: 1.1rem;
+    font-weight: 750;
+    color: var(--ink);
+  }
+
+  /* ── Process ─────────────────────────── */
+  .process-section { padding-top: 0; }
+
+  /* ── FAQ ─────────────────────────────── */
+  .faq-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: clamp(24px, 6vw, 88px);
+    align-items: start;
+  }
+
+  .faq { display: grid; gap: 0.9rem; }
+
+  .faq details {
+    border-radius: var(--radius-sm);
+    background: var(--bg-elev);
+    box-shadow: var(--shadow);
+    padding: 0 1.5rem;
+  }
+
+  .faq summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 0;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq summary::-webkit-details-marker { display: none; }
+
+  .faq h3 { margin: 0; font-size: 1.02rem; font-weight: 600; color: var(--ink); line-height: 1.45; }
+
+  .toggle {
+    position: relative;
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    transition: transform 0.3s var(--ease);
+  }
+
+  .toggle::before, .toggle::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 12px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--accent);
+    translate: -50% -50%;
+  }
+
+  .toggle::after { rotate: 90deg; transition: rotate 0.3s var(--ease); }
+  details[open] .toggle::after { rotate: 0deg; }
+  .faq summary:hover h3 { color: var(--accent); }
+
+  .faq details p { margin: 0; padding: 0 0 1.4rem; color: var(--muted); line-height: 1.75; }
+
+  /* ── Other services & CTA ────────────── */
+  .others-section { padding-top: 0; }
+
+  .others-title {
+    margin: 0 0 1.5rem;
+    font-family: var(--font-display);
+    font-stretch: 115%;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--ink);
+  }
+
+  .others {
+    list-style: none;
+    margin: 0 0 clamp(32px, 5vw, 56px);
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 0.9rem;
+  }
+
+  .other {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    padding: 1rem 1.1rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line);
+    color: var(--ink);
+    text-decoration: none;
+    font-weight: 600;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
+  }
+
+  .other:hover { border-color: var(--accent); background: var(--bg-elev); }
+
+  .o-icon {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    color: #ffffff;
+    background: linear-gradient(140deg, #5fb3f7, var(--accent));
+  }
+
+  .o-title { flex: 1; line-height: 1.35; }
+  .o-arrow { color: var(--accent); transition: transform 0.3s var(--ease); }
+  .other:hover .o-arrow { transform: translateX(4px); }
+
+  .ask {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem 3rem;
+    flex-wrap: wrap;
+    padding: clamp(28px, 4vw, 52px);
+    border-radius: var(--radius);
+    background: linear-gradient(135deg, #4aa8f0, var(--accent) 60%, #0f63b8);
+    color: #ffffff;
+    box-shadow: var(--glow);
+  }
+
+  .ask h2 {
+    margin: 0 0 0.5rem;
+    font-family: var(--font-display);
+    font-stretch: 120%;
+    font-size: clamp(1.4rem, 2.8vw, 1.9rem);
+    font-weight: 850;
+  }
+
+  .ask p { margin: 0; opacity: 0.9; max-width: 52ch; }
+
+  .ask-btn { background: #ffffff; color: var(--accent); box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.4); }
+
+  @media (max-width: 900px) {
+    .hero-grid, .scope-head, .fit-grid, .faq-grid { grid-template-columns: minmax(0, 1fr); }
+    .visual { max-width: 420px; }
+  }
+
+  @media (max-width: 560px) {
+    .detail-hero { padding-top: 104px; }
+    .chip { font-size: 0.78rem; padding: 0.45rem 0.8rem; }
+    .actions .btn { flex: 1 1 auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .chip { animation: none; }
+  }
+</style>

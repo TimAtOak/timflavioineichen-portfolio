@@ -1,4 +1,5 @@
 ---
+import Floaters from './Floaters.astro';
 import type { Lang } from '../i18n';
 
 interface Props {
@@ -46,16 +47,17 @@ const stack = t.groups.map((group, i) => ({ group, items: stackItems[i] }));
 const education = t.edu;
 ---
 <section id="ueber-mich" class="section">
+  <Floaters set="about" />
   <div class="wrap">
     <div class="about-grid">
       <div class="about-text">
-        <div class="section-head reveal">
+        <div class="section-head reveal rv-stagger rv-blur">
           <p class="eyebrow">{t.eyebrow}</p>
           <h2 class="section-title">{t.title}</h2>
         </div>
 
         {lang === 'de' ? (
-          <div class="reveal d1">
+          <div class="reveal rv-left d1">
             <p class="lead">
               Ich bin Senior Software Engineer &amp; Architect aus der Region Luzern und arbeite
               als Freelancer. Daneben bin ich CTO bei
@@ -76,7 +78,7 @@ const education = t.edu;
             </p>
           </div>
         ) : (
-          <div class="reveal d1">
+          <div class="reveal rv-left d1">
             <p class="lead">
               I'm a Senior Software Engineer &amp; Architect based near Lucerne, Switzerland, working
               as a freelancer. I'm also CTO at
@@ -98,7 +100,7 @@ const education = t.edu;
           </div>
         )}
 
-        <div class="edu reveal d2">
+        <div class="edu reveal rv-up d2">
           <h3 class="block-title">
             <span class="block-icon" aria-hidden="true">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10L12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg>
@@ -117,7 +119,7 @@ const education = t.edu;
         </div>
       </div>
 
-      <div class="stack reveal d1">
+      <div class="stack reveal rv-right d1">
         <h3 class="block-title">
           <span class="block-icon" aria-hidden="true">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
@@ -128,7 +130,7 @@ const education = t.edu;
           {stack.map((s) => (
             <div class="stack-row">
               <dt>{s.group}</dt>
-              <dd class="tags">{s.items.map((i) => <span class="tag">{i}</span>)}</dd>
+              <dd class="tags reveal rv-stagger rv-pop">{s.items.map((i) => <span class="tag">{i}</span>)}</dd>
             </div>
           ))}
         </dl>

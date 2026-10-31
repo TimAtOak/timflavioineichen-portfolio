@@ -1,0 +1,83 @@
+---
+import { processSteps } from '../data/services';
+import type { Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const title = { de: 'So arbeiten wir zusammen', en: 'How we work together' }[lang];
+const steps = processSteps[lang];
+---
+<div class="process">
+  <h2 class="process-title reveal rv-blur">{title}</h2>
+  <ol class="steps reveal rv-stagger rv-pop">
+    {steps.map((s, i) => (
+      <li>
+        <span class="step-num">{i + 1}</span>
+        <h3>{s.title}</h3>
+        <p>{s.desc}</p>
+      </li>
+    ))}
+  </ol>
+</div>
+
+<style>
+  .process-title {
+    font-family: var(--font-display);
+    font-stretch: 115%;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 2rem;
+    text-align: center;
+  }
+
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(16px, 3vw, 40px);
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    left: 12%;
+    right: 12%;
+    border-top: 2px dashed var(--line);
+  }
+
+  .steps li { position: relative; text-align: center; }
+
+  .step-num {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: var(--bg-elev);
+    color: var(--accent);
+    font-family: var(--font-display);
+    font-weight: 800;
+    box-shadow: var(--shadow), inset 0 0 0 2px var(--accent-soft);
+  }
+
+  .steps h3 { margin: 0 0 0.35rem; font-size: 1.05rem; color: var(--ink); font-weight: 600; }
+  .steps p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
+
+  @media (max-width: 1000px) {
+    .steps { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; }
+    .steps::before { display: none; }
+  }
+
+  @media (max-width: 620px) {
+    .steps { grid-template-columns: minmax(0, 1fr); }
+  }
+</style>
