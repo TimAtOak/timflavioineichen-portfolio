@@ -1,298 +1,205 @@
 ---
-// Flag to track if all experiences should be shown
-const showAllExperiences = false;
+import { positions } from '../data/experience';
 ---
-<section class="experience-section">
-    <div class="timeline-container">
-        <h2>Berufserfahrung</h2>
-        <div class="timeline">
-                <div class="timeline-item visible">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Software-Architekt</h3>
-                        <p class="company">Synprovis GmbH</p>
-                        <p class="period">Januar 2023 – heute</p>
-                        <ul>
-                            <li>Konzeption und Umsetzung skalierbarer Software-Architekturen für QM-Software (Frontend & APIs)</li>
-                            <li>Fundierte technische Entscheidungsfindung</li>
-                            <li>Sicherstellung hoher Code-Qualitätsstandards</li>
-                            <li>Konsequente Ausrichtung der Lösungen an Qualitätsmanagement-Anforderungen</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item visible">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Management-Assistent & Requirements Engineer</h3>
-                        <p class="company">Klett und Balmer Verlag</p>
-                        <p class="period">Oktober 2022 – Januar 2023</p>
-                        <ul>
-                            <li>Analyse von Geschäftsanforderungen und Dokumentation relevanter Prozesse</li>
-                            <li>Unterstützung digitaler Produktentwicklungsinitiativen</li>
-                            <li>Kommunikationsbrücke zwischen Stakeholdern und Entwicklungsteams</li>
-                            <li>Führung eines Teams aus Frontend- und Backend-Entwicklern</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item hidden">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Full-Stack-Entwickler</h3>
-                        <p class="company">H2G Internetagentur</p>
-                        <p class="period">Oktober 2021 – Januar 2023</p>
-                        <ul>
-                            <li>Umsetzung vollständiger Lösungen von Frontend bis Backend über den gesamten Entwicklungszyklus</li>
-                            <li>Direkter Kundenkontakt inkl. Anforderungsanalyse, Feedback und regelmässige Meetings</li>
-                            <li>Sicherstellung von Performance, Skalierbarkeit und Benutzerfreundlichkeit</li>
-                            <li>Entwicklung und Wartung von Webanwendungen mit modernen Frameworks</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="timeline-item hidden">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Junior Full-Stack-Entwickler</h3>
-                        <p class="company">pixel Ahoi GmbH</p>
-                        <p class="period">August 2019 – August 2021</p>
-                        <ul>
-                            <li>Begleitung von Webprojekten über den gesamten Zyklus von Design bis Deployment</li>
-                            <li>Entwicklung responsiver Websites und Beteiligung an Frontend- und Backend-Integration</li>
-                            <li>Durchführung aller Projektphasen von Konzeption bis Umsetzung im Rahmen der Lehre</li>
-                            <li>Abschluss Eidgenössisches Fähigkeitszeugnis (EFZ) in Applikationsentwicklung</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <button class="show-more-btn" id="showMoreBtn">
-                Mehr anzeigen
-                <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M6 9l6 6 6-6"/>
-                </svg>
-            </button>
-        </div>
-
-        <h2>Ausbildung</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>Professional Bachelor in Applikationsentwicklung HF</h3>
-                    <p class="company">TEKO Schweizerische Fachschule AG</p>
-                    <p class="period">Oktober 2024 – heute</p>
-                </div>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <h3>EFZ in Applikationsentwicklung</h3>
-                    <p class="company">Berufsschule Benedict Switzerland</p>
-                    <p class="period">August 2017 – August 2021</p>
-                </div>
-            </div>
-        </div>
+<section id="werdegang" class="section">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Werdegang</p>
+      <h2 class="section-title">Vom Applikationsentwickler zum Architekten.</h2>
+      <p class="section-lead">
+        Stationen in Agenturen, Produktunternehmen und Start-ups – vom Entwickeln über das
+        Führen von Teams bis zur technischen Gesamtverantwortung.
+      </p>
     </div>
+
+    <ol class="timeline reveal">
+      {positions.map((p, i) => (
+        <li class={`entry${p.current ? ' is-current' : ''}`}>
+          <span class="marker" aria-hidden="true"></span>
+          <details open={i < 3}>
+            <summary>
+              <span class="period">
+                {p.current && <span class="dot" aria-hidden="true"></span>}
+                {p.period}
+              </span>
+              <span class="entry-head">
+                <span class="role">{p.role}</span>
+                <span class="company">
+                  {p.url
+                    ? <a href={p.url} target="_blank" rel="noopener">{p.company} ↗</a>
+                    : p.company}
+                </span>
+              </span>
+              <span class="toggle" aria-hidden="true"></span>
+            </summary>
+            <div class="entry-body">
+              <p class="summary">{p.summary}</p>
+              <ul class="points">
+                {p.points.map((pt) => <li>{pt}</li>)}
+              </ul>
+              {p.stack && (
+                <div class="tags">{p.stack.map((t) => <span class="tag">{t}</span>)}</div>
+              )}
+            </div>
+          </details>
+        </li>
+      ))}
+    </ol>
+  </div>
 </section>
 
 <style>
-    .experience-section {
-        padding: 4rem 2rem;
-        max-width: 800px;
-        margin: 0 auto;
-        width: 100%;
-    }
+  .timeline {
+    list-style: none;
+    margin: 0 auto;
+    max-width: 980px;
+    padding: 0;
+  }
 
-    .timeline-container {
-        width: 100%;
-    }
+  .entry {
+    position: relative;
+    padding: 1.5rem 0 1.5rem 2rem;
+    border-bottom: 1px solid var(--line);
+  }
 
-    .timeline-container h2 {
-        color: #fff;
-        margin-bottom: 2rem;
-        font-size: 2.5rem;
-        text-align: center;
-    }
+  .entry:last-child { border-bottom: 0; }
 
-    .timeline {
-        position: relative;
-        padding: 2rem 0;
-        width: 100%;
-        max-width: 700px;
-        margin: 0 auto;
-    }
+  /* Vertical rail */
+  .entry::before {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--line);
+  }
 
-    .timeline::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0;
-        height: 100%;
-        width: 2px;
-        background: #3b82f6;
-    }
+  .entry:first-child::before { top: 2.1rem; }
+  .entry:last-child::before { bottom: calc(100% - 2.1rem); }
 
-    .timeline-item {
-        position: relative;
-        padding-left: 3rem;
-        margin-bottom: 3rem;
-    }
+  .marker {
+    position: absolute;
+    left: 0;
+    top: 1.85rem;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--bg-elev);
+    box-shadow: inset 0 0 0 2px var(--faint);
+  }
 
-    .timeline-dot {
-        position: absolute;
-        left: -6px;
-        top: 0;
-        width: 14px;
-        height: 14px;
-        background: #3b82f6;
-        border-radius: 50%;
-    }
+  .is-current .marker { background: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
 
-    .timeline-content {
-        background: rgba(59, 130, 246, 0.1);
-        padding: 1.5rem;
-        border-radius: 0.5rem;
-        border-left: 4px solid #3b82f6;
-    }
+  summary {
+    list-style: none;
+    display: grid;
+    grid-template-columns: 170px 1fr auto;
+    gap: 1.25rem;
+    align-items: start;
+    cursor: pointer;
+  }
 
-    .timeline-content h3 {
-        color: #fff;
-        margin: 0 0 0.5rem 0;
-        font-size: 1.25rem;
-    }
+  summary::-webkit-details-marker { display: none; }
 
-    .timeline-content .company {
-        color: #3b82f6;
-        margin: 0;
-        font-weight: 500;
-    }
+  .period {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    justify-self: start;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--muted);
+    background: var(--bg-sunken);
+    padding: 0.25rem 0.7rem;
+    border-radius: 999px;
+    margin-top: 0.2rem;
+    white-space: nowrap;
+  }
 
-    .timeline-content .period {
-        color: #9ca3af;
-        font-size: 0.875rem;
-        margin: 0.5rem 0;
-    }
+  .is-current .period { color: var(--accent); background: var(--accent-soft); }
 
-    .timeline-content ul {
-        margin: 1rem 0 0 0;
-        padding-left: 1.25rem;
-        color: #d1d5db;
-    }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); }
 
-    .timeline-content li {
-        margin-bottom: 0.5rem;
-    }
+  .entry-head { display: grid; gap: 0.1rem; }
 
-    .timeline-items {
-        position: relative;
-    }
+  .role {
+    font-family: var(--font-display);
+    font-stretch: 112%;
+    font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    font-weight: 750;
+    color: var(--ink);
+    line-height: 1.35;
+  }
 
-    .timeline-item {
-        opacity: 1;
-        transform: translateY(0);
-        max-height: 500px;
-        overflow: hidden;
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+  .company { color: var(--muted); font-size: 0.95rem; }
+  .company a { color: var(--accent); text-decoration: none; font-weight: 500; }
+  .company a:hover { text-decoration: underline; }
 
-    .timeline-item.hidden {
-        opacity: 0;
-        transform: translateY(20px);
-        max-height: 0;
-        margin-bottom: 0;
-        pointer-events: none;
-    }
+  .toggle {
+    position: relative;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--bg-elev);
+    box-shadow: var(--shadow);
+    transition: transform 0.3s var(--ease);
+  }
 
-    .timeline-item.visible {
-        opacity: 1;
-        transform: translateY(0);
-        margin-bottom: 3rem;
-        pointer-events: all;
-    }
+  .toggle::before,
+  .toggle::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 11px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--accent);
+    translate: -50% -50%;
+  }
 
-    .show-more-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        margin: 2rem auto;
-        padding: 0.75rem 1.5rem;
-        background: rgba(59, 130, 246, 0.1);
-        border: 1px solid #3b82f6;
-        color: #3b82f6;
-        border-radius: 0.5rem;
-        cursor: pointer;
-        font-family: inherit;
-        font-size: 1rem;
-        transition: all 0.3s ease;
-        width: fit-content;
-        min-width: 140px;
-    }
+  .toggle::after { rotate: 90deg; transition: rotate 0.3s var(--ease); }
+  details[open] .toggle::after { rotate: 0deg; }
+  summary:hover .toggle { transform: scale(1.08); }
 
-    .show-more-btn:hover {
-        background: rgba(59, 130, 246, 0.2);
-        transform: translateY(-2px);
-    }
+  .entry-body { padding: 0.9rem 0 0 calc(170px + 1.25rem); }
 
-    .show-more-btn .arrow-icon {
-        width: 16px;
-        height: 16px;
-        transition: transform 0.3s ease;
-    }
+  .summary { margin: 0 0 0.75rem; color: var(--text); max-width: 64ch; }
 
-    .show-more-btn.expanded .arrow-icon {
-        transform: rotate(180deg);
-    }
+  .points {
+    margin: 0 0 1rem;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.35rem;
+    max-width: 64ch;
+  }
 
-    .timeline-items {
-        width: 100%;
-    }
+  .points li {
+    position: relative;
+    padding-left: 1.3rem;
+    color: var(--muted);
+    font-size: 0.97rem;
+  }
 
-    @media (max-width: 768px) {
-        .experience-section {
-            padding: 3rem 1rem;
-        }
+  .points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.62em;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    box-shadow: inset 0 0 0 2px var(--accent);
+  }
 
-        .timeline-container h2 {
-            font-size: 2rem;
-        }
-    }
+  @media (max-width: 760px) {
+    summary { grid-template-columns: 1fr auto; }
+    .period { grid-column: 1 / -1; grid-row: 1; margin-top: 0; }
+    .entry-head { grid-row: 2; }
+    .toggle { grid-row: 2; }
+    .entry-body { padding-left: 0; }
+  }
 </style>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const showMoreBtn = document.getElementById('showMoreBtn');
-        const hiddenItems = document.querySelectorAll('.timeline-item.hidden');
-        let isExpanded = false;
-
-        if (showMoreBtn && hiddenItems.length > 0) {
-            showMoreBtn.addEventListener('click', () => {
-                isExpanded = !isExpanded;
-                
-                // Add transition class to all items for smooth height animation
-                const allItems = document.querySelectorAll('.timeline-item');
-                
-                if (isExpanded) {
-                    // Expand items one by one with a slight delay
-                    hiddenItems.forEach((item, index) => {
-                        setTimeout(() => {
-                            item.classList.remove('hidden');
-                            item.classList.add('visible');
-                        }, index * 100);
-                    });
-                } else {
-                    // Collapse items in reverse order with a slight delay
-                    Array.from(hiddenItems).reverse().forEach((item, index) => {
-                        setTimeout(() => {
-                            item.classList.remove('visible');
-                            item.classList.add('hidden');
-                        }, index * 100);
-                    });
-                }
-
-                showMoreBtn.classList.toggle('expanded');
-                showMoreBtn.innerHTML = isExpanded ?
-                    `Weniger anzeigen <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>` :
-                    `Mehr anzeigen <svg class="arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg>`;
-            });
-        }
-    });
-</script>

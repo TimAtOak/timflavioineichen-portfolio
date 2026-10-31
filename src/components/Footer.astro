@@ -1,158 +1,57 @@
 ---
+const year = new Date().getFullYear();
 ---
-
-<footer id="footer">
-  <div class="footer-container">
-    <div class="footer-content">
-      <div class="footer-left">
-        <div class="copyright">
-          <span>©</span>
-          <span>2025</span>
-          <span class="copyright-name">Tim Flavio Ineichen</span>
-          <span>– Alle Rechte vorbehalten</span>
-        </div>
-      </div>
-
-      <div class="footer-center">
-        <nav class="social-links">
-          <a href="https://github.com/TimAtOak" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
-            <i class="fab fa-github"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/tim-flavio-ineichen-269a231a8/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="mailto:ineichen.tim@gmail.com" class="social-link" aria-label="E-Mail">
-            <i class="fas fa-envelope"></i>
-          </a>
-        </nav>
-      </div>
-
-      <div class="footer-right">
-        <nav class="legal-links">
-          <a href="/impressum" class="legal-link">Impressum</a>
-          <span class="separator">|</span>
-          <a href="/dsgvo" class="legal-link">Datenschutz</a>
-        </nav>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="made-with">
-        Gebaut mit <span class="tech">Astro</span> & <span class="heart">♥</span>
-      </div>
-    </div>
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <a href="/" class="brand">tim<span>.</span></a>
+    <p class="footer-name">© {year} Tim Flavio Ineichen</p>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="https://www.linkedin.com/in/tim-flavio-ineichen-269a231a8/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a href="https://github.com/TimAtOak" target="_blank" rel="noopener noreferrer">GitHub</a>
+      <a href="mailto:kontakt@alpzen-group.ch">E-Mail</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="/impressum">Impressum</a>
+      <a href="/dsgvo">Datenschutz</a>
+    </nav>
   </div>
 </footer>
 
 <style>
-  #footer {
-    width: 100%;
-    background: rgba(8, 14, 28, 0.98);
-    border-top: 1px solid rgba(59, 130, 246, 0.12);
-    padding: 40px 0 20px 0;
-    font-family: inherit;
-    color: #8b949e;
+  .footer {
+    padding: 1.5rem 0 2.5rem;
+    font-size: 0.92rem;
+    color: var(--muted);
   }
 
-  .footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  .footer-content {
+  .footer-inner {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    margin-bottom: 30px;
+    gap: 1.5rem;
+    flex-wrap: wrap;
   }
 
-  .copyright {
-    font-size: 13px;
-    color: #6b7280;
-    display: flex;
-    gap: 5px;
-    align-items: center;
-  }
-
-  .copyright-name {
-    color: #58a6ff;
-  }
-
-  .social-links {
-    display: flex;
-    gap: 22px;
-    align-items: center;
-  }
-
-  .social-link {
-    color: #6b7280;
+  .brand {
+    font-family: var(--font-display);
+    font-stretch: 115%;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--ink);
     text-decoration: none;
-    font-size: 20px;
-    transition: all 0.25s ease;
   }
 
-  .social-link:hover {
-    color: #58a6ff;
-    transform: translateY(-2px);
-  }
+  .brand span { color: var(--accent); }
 
-  .legal-links {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-  }
+  .footer-name { margin: 0; flex: 1; }
 
-  .legal-link {
-    color: #6b7280;
+  .footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 1.25rem; }
+
+  .footer-links a {
+    color: var(--muted);
     text-decoration: none;
-    font-size: 13px;
-    transition: color 0.25s ease;
+    transition: color 0.2s ease;
   }
 
-  .legal-link:hover {
-    color: #58a6ff;
-  }
+  .footer-links a:hover { color: var(--accent); }
 
-  .separator {
-    color: #30363d;
-  }
-
-  .footer-bottom {
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid rgba(59, 130, 246, 0.08);
-  }
-
-  .made-with {
-    font-size: 13px;
-    color: #6b7280;
-  }
-
-  .tech {
-    color: #58a6ff;
-  }
-
-  .heart {
-    color: #f85149;
-    display: inline-block;
-    animation: pulse 1.8s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50%       { transform: scale(1.15); }
-  }
-
-  @media (max-width: 768px) {
-    .footer-content {
-      flex-direction: column;
-      gap: 20px;
-      text-align: center;
-    }
-
-    .social-links { justify-content: center; }
-    .legal-links  { justify-content: center; }
-    .copyright    { justify-content: center; flex-wrap: wrap; }
-  }
+  .sep { width: 1px; height: 14px; background: var(--line); }
 </style>

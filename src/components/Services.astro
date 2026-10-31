@@ -1,192 +1,197 @@
 ---
+const services = [
+  {
+    title: 'Software-Architektur',
+    text: 'Tragfähige System- und API-Architekturen, fundierte Technologieentscheide und Architektur-Reviews bestehender Systeme – mit Blick auf Skalierbarkeit, Qualität und Wartbarkeit.',
+    tags: ['System Design', 'API-Design', 'Reviews', 'Cloud'],
+    icon: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
+  },
+  {
+    title: 'Full-Stack-Entwicklung',
+    text: 'Umsetzung kompletter Webanwendungen von Frontend bis Backend – inklusive Datenbank, Schnittstellen und produktivem Deployment.',
+    tags: ['React / TS', 'Symfony', 'Python', 'C#'],
+    icon: 'M8 6l-6 6 6 6M16 6l6 6-6 6',
+  },
+  {
+    title: 'Technische Leitung',
+    text: 'Tech Lead auf Zeit oder Interim-CTO: Entwicklungsstandards, Prozesse, Code Reviews und Coaching von Teams – damit Ihr Team schneller und sicherer liefert.',
+    tags: ['Tech Lead', 'Interim CTO', 'Scrum', 'Code Reviews'],
+    icon: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
+  },
+  {
+    title: 'Requirements & Konzeption',
+    text: 'Fachliche Anforderungen verstehen, strukturieren und in User Stories, technische Konzepte und realistische Machbarkeitsbewertungen übersetzen.',
+    tags: ['Requirements', 'User Stories', 'Workshops', 'Machbarkeit'],
+    icon: 'M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 14l2 2 4-4',
+  },
+  {
+    title: 'KI, ERP & Integrationen',
+    text: 'Anbindung von Drittsystemen, Automatisierung von Geschäftsprozessen mit KI und Erweiterungen von Plattformen wie Odoo über saubere Schnittstellen.',
+    tags: ['KI', 'Odoo', 'REST / APIs', 'Automatisierung'],
+    icon: 'M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z',
+  },
+  {
+    title: 'Frontend & Design Systems',
+    text: 'Komponentenbibliotheken in React, konsistente UI/UX und performante Frontends, die Entwickler gerne verwenden und Nutzer gerne bedienen.',
+    tags: ['Component Library', 'UI/UX', 'Accessibility', 'Performance'],
+    icon: 'M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0L12 2.69z',
+  },
+];
+
+const steps = [
+  { title: 'Erstgespräch', text: 'Kostenlos und unverbindlich: Wir klären Ziel, Ausgangslage und Rahmenbedingungen.' },
+  { title: 'Konzept & Angebot', text: 'Sie erhalten einen klaren Vorschlag zu Vorgehen, Aufwand und Zeitplan.' },
+  { title: 'Umsetzung', text: 'Iterativ, transparent und mit regelmässigen Abstimmungen – remote oder vor Ort.' },
+  { title: 'Übergabe & Begleitung', text: 'Dokumentation, Wissenstransfer an Ihr Team und auf Wunsch langfristige Betreuung.' },
+];
 ---
-<section class="services-section">
-    <div class="services-container">
-        <div class="section-header reveal">
-            <span class="section-label">Was ich anbiete</span>
-            <h2>Leistungen</h2>
-        </div>
-        <p class="services-intro reveal d1">Als freiberuflicher Software-Architekt und Entwickler biete ich massgeschneiderte Lösungen für Ihr Projekt.</p>
-        <div class="services-grid">
-            <div class="service-card reveal d1">
-                <div class="service-icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <rect x="3" y="3" width="18" height="18" rx="2"/>
-                        <path d="M3 9h18M9 21V9"/>
-                    </svg>
-                </div>
-                <h3>Software-Architektur</h3>
-                <p>Konzeption skalierbarer Systemarchitekturen, fundierte technische Entscheidungen und Qualitätssicherung für komplexe Softwareprojekte.</p>
-                <div class="service-tags">
-                    <span>System Design</span>
-                    <span>Cloud</span>
-                    <span>APIs</span>
-                    <span>QM-Software</span>
-                </div>
-            </div>
-
-            <div class="service-card reveal d2">
-                <div class="service-icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <polyline points="16 18 22 12 16 6"/>
-                        <polyline points="8 6 2 12 8 18"/>
-                    </svg>
-                </div>
-                <h3>Full-Stack-Entwicklung</h3>
-                <p>Umsetzung vollständiger Lösungen von Frontend bis Backend mit modernen Frameworks und hohen Code-Qualitätsstandards.</p>
-                <div class="service-tags">
-                    <span>TypeScript</span>
-                    <span>React</span>
-                    <span>Python</span>
-                    <span>PHP</span>
-                </div>
-            </div>
-
-            <div class="service-card reveal d3">
-                <div class="service-icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                        <circle cx="9" cy="7" r="4"/>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                    </svg>
-                </div>
-                <h3>Technische Beratung</h3>
-                <p>Analyse von Geschäftsanforderungen, Prozessdokumentation und Brückenfunktion zwischen Fachabteilungen und Entwicklungsteams.</p>
-                <div class="service-tags">
-                    <span>Requirements</span>
-                    <span>Stakeholder</span>
-                    <span>Prozesse</span>
-                    <span>Dokumentation</span>
-                </div>
-            </div>
-
-            <div class="service-card reveal d4">
-                <div class="service-icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                        <circle cx="12" cy="12" r="10"/>
-                        <line x1="2" y1="12" x2="22" y2="12"/>
-                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                    </svg>
-                </div>
-                <h3>Webanwendungen</h3>
-                <p>Entwicklung performanter, skalierbarer und nutzerfreundlicher Webanwendungen für Unternehmen jeder Grösse.</p>
-                <div class="service-tags">
-                    <span>Astro</span>
-                    <span>Node.js</span>
-                    <span>Cloud</span>
-                    <span>Responsive</span>
-                </div>
-            </div>
-        </div>
+<section id="leistungen" class="section">
+  <div class="wrap">
+    <div class="section-head center reveal">
+      <p class="eyebrow">Leistungen</p>
+      <h2 class="section-title">Was ich für Ihr Projekt übernehme.</h2>
+      <p class="section-lead">
+        Ich steige dort ein, wo Sie Unterstützung brauchen – als Architekt, Entwickler oder
+        technische Leitung. Projektbasiert oder als Verstärkung Ihres Teams.
+      </p>
     </div>
+
+    <ul class="services">
+      {services.map((s, i) => (
+        <li class={`service reveal d${(i % 3) + 1}`}>
+          <span class="service-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d={s.icon}/></svg>
+          </span>
+          <h3>{s.title}</h3>
+          <p>{s.text}</p>
+          <div class="tags">{s.tags.map((t) => <span class="tag">{t}</span>)}</div>
+        </li>
+      ))}
+    </ul>
+
+    <div class="process reveal">
+      <h3 class="process-title">So arbeiten wir zusammen</h3>
+      <ol class="steps">
+        {steps.map((s, i) => (
+          <li>
+            <span class="step-num">{i + 1}</span>
+            <h4>{s.title}</h4>
+            <p>{s.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </div>
 </section>
 
 <style>
-    .services-section {
-        padding: 5rem 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+  .services {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(36px, 4vw, 56px) clamp(24px, 4vw, 56px);
+  }
 
-    .section-header {
-        text-align: center;
-        margin-bottom: 1rem;
-    }
+  .service {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--line);
+  }
 
-    .section-label {
-        display: inline-block;
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--accent-soft);
-        margin-bottom: 0.75rem;
-    }
+  .service-icon { transition: transform 0.35s var(--ease); }
+  .service:hover .service-icon { transform: translateY(-4px) rotate(-4deg); }
 
-    .section-header h2 {
-        color: var(--heading);
-        font-size: 3rem;
-        font-weight: 800;
-        margin: 0;
-        line-height: 1;
-    }
+  .service-icon {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    border-radius: 16px;
+    color: #ffffff;
+    background: linear-gradient(140deg, #5fb3f7, var(--accent));
+    box-shadow: var(--glow);
+    margin-bottom: 1.5rem;
+  }
 
-    .services-intro {
-        color: var(--text-muted);
-        text-align: center;
-        font-size: 1.05rem;
-        line-height: 1.7;
-        margin: 1.25rem auto 3rem;
-        max-width: 560px;
-    }
+  .service h3 {
+    font-family: var(--font-display);
+    font-stretch: 112%;
+    font-size: 1.15rem;
+    font-weight: 750;
+    color: var(--ink);
+    margin: 0 0 0.6rem;
+  }
 
-    .services-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.5rem;
-    }
+  .service p {
+    color: var(--muted);
+    font-size: 0.97rem;
+    line-height: 1.7;
+    margin: 0 0 1.4rem;
+    flex: 1;
+  }
 
-    .service-card {
-        background: var(--surface);
-        border: 1px solid var(--border);
-        border-radius: 1.25rem;
-        padding: 2rem 2.25rem;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
-        box-shadow: var(--shadow-card);
-    }
+  /* Process */
+  .process { margin-top: clamp(72px, 9vw, 112px); }
 
-    .service-card:hover {
-        border-color: var(--border-hover);
-        box-shadow: 0 8px 32px rgba(59, 130, 246, 0.10);
-        transform: translateY(-4px);
-    }
+  .process-title {
+    font-family: var(--font-display);
+    font-stretch: 115%;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: var(--ink);
+    margin: 0 0 2rem;
+    text-align: center;
+  }
 
-    .service-icon {
-        color: var(--accent-soft);
-        margin-bottom: 1.25rem;
-    }
+  .steps {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(16px, 3vw, 40px);
+    position: relative;
+  }
 
-    .service-card h3 {
-        color: var(--heading);
-        margin: 0 0 0.7rem 0;
-        font-size: 1.15rem;
-        font-weight: 700;
-    }
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    left: 12%;
+    right: 12%;
+    border-top: 2px dashed var(--line);
+  }
 
-    .service-card p {
-        color: var(--text-muted);
-        line-height: 1.7;
-        margin-bottom: 1.5rem;
-        font-size: 0.92rem;
-    }
+  .steps li { position: relative; text-align: center; }
 
-    .service-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-    }
+  .step-num {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: var(--bg-elev);
+    color: var(--accent);
+    font-family: var(--font-display);
+    font-weight: 800;
+    box-shadow: var(--shadow), inset 0 0 0 2px var(--accent-soft);
+  }
 
-    .service-tags span {
-        background: var(--tag-bg);
-        color: var(--tag-text);
-        padding: 0.2rem 0.65rem;
-        border-radius: 9999px;
-        font-size: 0.79rem;
-        font-weight: 500;
-    }
+  .steps h4 { margin: 0 0 0.35rem; font-size: 1.05rem; color: var(--ink); font-weight: 600; }
+  .steps p { margin: 0; color: var(--muted); font-size: 0.92rem; line-height: 1.6; }
 
-    @media (max-width: 768px) {
-        .services-section {
-            padding: 4rem 1rem;
-        }
+  @media (max-width: 1000px) {
+    .services { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); row-gap: 2rem; }
+    .steps::before { display: none; }
+  }
 
-        .section-header h2 {
-            font-size: 2.25rem;
-        }
-
-        .services-grid {
-            grid-template-columns: 1fr;
-        }
-    }
+  @media (max-width: 620px) {
+    .services { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+  }
 </style>

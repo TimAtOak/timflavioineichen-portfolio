@@ -1,0 +1,81 @@
+---
+import Layout from './Layout.astro';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+<Layout title={`${title} | Tim Flavio Ineichen`}>
+  <Nav base="/" />
+  <main class="legal">
+    <div class="wrap">
+      <article class="legal-card">
+        <a href="/" class="back"><span aria-hidden="true">←</span> Startseite</a>
+        <h1>{title}</h1>
+        <slot />
+      </article>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .legal { padding: 104px 0 clamp(48px, 8vw, 96px); }
+
+  .legal-card {
+    max-width: 860px;
+    margin: 0 auto;
+    padding-top: clamp(16px, 3vw, 40px);
+  }
+
+  .back {
+    display: inline-flex;
+    gap: 0.5rem;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+  }
+
+  .back:hover { color: var(--accent); }
+
+  h1 {
+    font-family: var(--font-display);
+    font-stretch: 125%;
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+    font-weight: 900;
+    line-height: 1;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 2.5rem;
+    text-shadow: 3px 3px 0 var(--bg-elev), 5px 5px 0 var(--name-shadow);
+  }
+
+  article :global(section) {
+    border-top: 1px solid var(--line);
+    padding: 1.5rem 0;
+  }
+
+  article :global(h2) {
+    font-family: var(--font-display);
+    font-stretch: 112%;
+    font-size: 1.1rem;
+    font-weight: 750;
+    color: var(--ink);
+    margin: 0 0 0.75rem;
+  }
+
+  article :global(p),
+  article :global(li) {
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  article :global(p) { margin: 0 0 0.75rem; }
+  article :global(ul) { margin: 0 0 0.75rem; padding-left: 1.2rem; }
+  article :global(a) { color: var(--accent); }
+</style>

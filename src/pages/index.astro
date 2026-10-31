@@ -1,50 +1,24 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
 import Hero from "../components/Hero.astro";
 import About from "../components/About.astro";
 import Services from "../components/Services.astro";
+import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
 import CTA from "../components/CTA.astro";
 import Footer from "../components/Footer.astro";
 ---
 
 <Layout>
-  <header>
-    <Hero />
-  </header>
+  <Nav />
   <main>
-    <div id="container">
-      <About />
-      <section id="services">
-        <Services />
-      </section>
-      <section id="projects">
-        <Projects />
-      </section>
-      <section id="contact">
-        <CTA />
-      </section>
-    </div>
+    <Hero />
+    <About />
+    <Services />
+    <Experience />
+    <Projects />
+    <CTA />
   </main>
   <Footer />
 </Layout>
-
-<style>
-  #container {
-    background-color: transparent;
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  #container section {
-    width: 100%;
-  }
-
-  header {
-    position: relative;
-  }
-</style>
