@@ -1,21 +1,33 @@
 ---
+import { homePath, type Lang } from '../i18n';
+
 interface Props {
-  /** Prefix for section anchors, e.g. "/" on sub pages so links point back to the home page. */
+  lang?: Lang;
+  /** Prefix for section anchors, e.g. the home page URL on sub pages. */
   base?: string;
+  /** URL of the current page in the other language. */
+  altHref?: string;
 }
 
-const { base = '' } = Astro.props;
+const { lang = 'de', base = '', altHref } = Astro.props;
+const otherLang: Lang = lang === 'de' ? 'en' : 'de';
 
-const links = [
-  { id: 'ueber-mich', label: 'Über mich' },
-  { id: 'leistungen', label: 'Leistungen' },
-  { id: 'werdegang', label: 'Werdegang' },
-  { id: 'projekte', label: 'Projekte' },
-];
+const t = {
+  de: {
+    nav: 'Hauptnavigation', home: 'Startseite', theme: 'Farbschema wechseln', contact: 'Kontakt', switchTo: 'English version',
+    links: [['ueber-mich', 'Über mich'], ['leistungen', 'Leistungen'], ['werdegang', 'Werdegang'], ['projekte', 'Projekte']],
+  },
+  en: {
+    nav: 'Main navigation', home: 'Home', theme: 'Toggle colour scheme', contact: 'Contact', switchTo: 'Deutsche Version',
+    links: [['ueber-mich', 'About'], ['leistungen', 'Services'], ['werdegang', 'Experience'], ['projekte', 'Projects']],
+  },
+}[lang];
+
+const links = t.links.map(([id, label]) => ({ id, label }));
 ---
-<nav class="nav" id="main-nav" aria-label="Hauptnavigation">
+<nav class="nav" id="main-nav" aria-label={t.nav}>
   <div class="wrap nav-inner">
-    <a href={base || '#top'} class="brand" aria-label="Tim Flavio Ineichen – Startseite">
+    <a href={base || '#top'} class="brand" aria-label={`Tim Flavio Ineichen – ${t.home}`}>
       tim<span class="brand-dot">.</span>
     </a>
 
@@ -26,7 +38,10 @@ const links = [
     </div>
 
     <div class="nav-actions">
-      <button class="icon-btn" data-theme-toggle aria-label="Farbschema wechseln">
+      <a href={altHref ?? homePath(otherLang)} class="lang-switch" hreflang={otherLang} lang={otherLang} aria-label={t.switchTo}>
+        {otherLang.toUpperCase()}
+      </a>
+      <button class="icon-btn" data-theme-toggle aria-label={t.theme}>
         <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="4.5"/>
           <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
@@ -35,7 +50,7 @@ const links = [
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
       </button>
-      <a href={`${base}#kontakt`} class="nav-cta">Kontakt</a>
+      <a href={`${base}#kontakt`} class="nav-cta">{t.contact}</a>
     </div>
   </div>
 </nav>
@@ -120,6 +135,25 @@ const links = [
     cursor: pointer;
     transition: color 0.2s ease, transform 0.3s var(--ease);
   }
+
+  .lang-switch {
+    height: 44px;
+    min-width: 44px;
+    display: grid;
+    place-items: center;
+    padding: 0 0.75rem;
+    border-radius: 999px;
+    background: var(--bg-elev);
+    box-shadow: var(--shadow);
+    color: var(--ink);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .lang-switch:hover { color: var(--accent); }
 
   .icon-btn:hover { color: var(--accent); transform: rotate(20deg); }
 

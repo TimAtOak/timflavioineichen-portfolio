@@ -1,17 +1,29 @@
 ---
+import { homePath, type Lang } from '../i18n';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'de' } = Astro.props;
 const year = new Date().getFullYear();
+
+const t = {
+  de: { email: 'E-Mail', imprint: 'Impressum', privacy: 'Datenschutz' },
+  en: { email: 'Email', imprint: 'Legal notice', privacy: 'Privacy' },
+}[lang];
 ---
 <footer class="footer">
   <div class="wrap footer-inner">
-    <a href="/" class="brand">tim<span>.</span></a>
+    <a href={homePath(lang)} class="brand">tim<span>.</span></a>
     <p class="footer-name">© {year} Tim Flavio Ineichen</p>
     <nav class="footer-links" aria-label="Footer">
       <a href="https://www.linkedin.com/in/tim-flavio-ineichen-269a231a8/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       <a href="https://github.com/TimAtOak" target="_blank" rel="noopener noreferrer">GitHub</a>
-      <a href="mailto:kontakt@alpzen-group.ch">E-Mail</a>
+      <a href="mailto:kontakt@alpzen-group.ch">{t.email}</a>
       <span class="sep" aria-hidden="true"></span>
-      <a href="/impressum">Impressum</a>
-      <a href="/dsgvo">Datenschutz</a>
+      <a href="/impressum" hreflang="de">{t.imprint}</a>
+      <a href="/dsgvo" hreflang="de">{t.privacy}</a>
     </nav>
   </div>
 </footer>

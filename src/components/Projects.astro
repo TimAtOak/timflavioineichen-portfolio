@@ -1,23 +1,53 @@
 ---
-import { projects, panelStyle } from '../data/projects';
+import { getProjects, panelStyle } from '../data/projects';
+import { projectPath, type Lang } from '../i18n';
+import ProjectShot from './ProjectShot.astro';
 
-const [featured, ...rest] = projects;
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'de' } = Astro.props;
+const [featured, ...rest] = getProjects(lang);
+
+const t = {
+  de: {
+    eyebrow: 'Projekte',
+    title: 'Ausgewählte Arbeiten.',
+    lead: 'Unternehmen und Produkte, die ich technisch verantworte oder verantwortet habe.',
+    viewProject: 'Projekt ansehen',
+    view: 'Ansehen',
+  },
+  en: {
+    eyebrow: 'Projects',
+    title: 'Selected work.',
+    lead: 'Companies and products I am or have been technically responsible for.',
+    viewProject: 'View project',
+    view: 'View',
+  },
+}[lang];
 ---
 <section id="projekte" class="section">
   <div class="wrap">
     <div class="section-head center reveal">
-      <p class="eyebrow">Projekte</p>
-      <h2 class="section-title">Ausgewählte Arbeiten.</h2>
-      <p class="section-lead">Unternehmen und Produkte, die ich technisch verantworte oder verantwortet habe.</p>
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h2 class="section-title">{t.title}</h2>
+      <p class="section-lead">{t.lead}</p>
     </div>
 
     <div class="projects">
-      <a href={`/projekte/${featured.slug}`} class="project card is-featured reveal" style={panelStyle(featured)}>
+      <a href={projectPath(lang, featured.slug)} class="project card is-featured reveal" style={panelStyle(featured)}>
         <div class="panel">
-          <span class="panel-num">{featured.number}</span>
-          <span class="panel-icon" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d={featured.iconPath}/></svg>
-          </span>
+          {featured.image && featured.url ? (
+            <ProjectShot image={featured.image} url={featured.url} width={1000} />
+          ) : (
+            <Fragment>
+              <span class="panel-num">{featured.number}</span>
+              <span class="panel-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d={featured.iconPath}/></svg>
+              </span>
+            </Fragment>
+          )}
           {featured.badge && <span class="badge">{featured.badge}</span>}
         </div>
         <div class="body">
@@ -26,17 +56,23 @@ const [featured, ...rest] = projects;
           <p class="tagline">{featured.tagline}</p>
           <p class="desc">{featured.shortDescription}</p>
           <div class="tags">{featured.techStack.slice(0, 5).map((t) => <span class="tag">{t}</span>)}</div>
-          <span class="more">Projekt ansehen <span aria-hidden="true">→</span></span>
+          <span class="more">{t.viewProject} <span aria-hidden="true">→</span></span>
         </div>
       </a>
 
       {rest.map((p, i) => (
-        <a href={`/projekte/${p.slug}`} class={`project card reveal d${i + 1}`} style={panelStyle(p)}>
+        <a href={projectPath(lang, p.slug)} class={`project card reveal d${i + 1}`} style={panelStyle(p)}>
           <div class="panel">
-            <span class="panel-num">{p.number}</span>
-            <span class="panel-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d={p.iconPath}/></svg>
-            </span>
+            {p.image && p.url ? (
+              <ProjectShot image={p.image} url={p.url} width={800} />
+            ) : (
+              <Fragment>
+                <span class="panel-num">{p.number}</span>
+                <span class="panel-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d={p.iconPath}/></svg>
+                </span>
+              </Fragment>
+            )}
             {p.badge && <span class="badge">{p.badge}</span>}
           </div>
           <div class="body">
@@ -45,7 +81,7 @@ const [featured, ...rest] = projects;
             <p class="tagline">{p.tagline}</p>
             <p class="desc">{p.shortDescription}</p>
             <div class="tags">{p.techStack.slice(0, 4).map((t) => <span class="tag">{t}</span>)}</div>
-            <span class="more">Ansehen <span aria-hidden="true">→</span></span>
+            <span class="more">{t.view} <span aria-hidden="true">→</span></span>
           </div>
         </a>
       ))}
@@ -56,14 +92,15 @@ const [featured, ...rest] = projects;
 <style>
   .projects {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: clamp(16px, 2vw, 28px);
   }
 
   .project {
+    min-width: 0;
     display: flex;
     flex-direction: column;
-    padding: 12px;
+    overflow: hidden;
     text-decoration: none;
     color: inherit;
     transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
@@ -75,8 +112,8 @@ const [featured, ...rest] = projects;
 
   .panel {
     position: relative;
+    width: 100%;
     aspect-ratio: 16 / 9;
-    border-radius: calc(var(--radius) - 8px);
     background: linear-gradient(135deg, var(--panel-from), var(--panel-to));
     color: var(--panel-ink);
     overflow: hidden;
@@ -113,11 +150,13 @@ const [featured, ...rest] = projects;
   .panel-icon svg { width: 50px; height: 50px; }
 
   .project:hover .panel-icon { transform: translateY(-6px) rotate(-4deg); }
+  .project:hover .panel :global(.shot img) { transform: scale(1.04); }
 
   .badge {
     position: absolute;
+    z-index: 2;
     top: 1rem;
-    left: 1rem;
+    right: 1rem;
     font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.08em;
@@ -130,10 +169,11 @@ const [featured, ...rest] = projects;
   }
 
   .body {
-    padding: clamp(18px, 3vw, 32px) clamp(14px, 2.5vw, 28px) clamp(14px, 2vw, 20px);
+    padding: clamp(20px, 3vw, 32px) clamp(20px, 3vw, 36px) clamp(22px, 3vw, 32px);
     display: flex;
     flex-direction: column;
     flex: 1;
+    min-width: 0;
   }
 
   .is-featured .body { justify-content: center; padding-left: clamp(20px, 4vw, 48px); }
@@ -169,9 +209,11 @@ const [featured, ...rest] = projects;
   .project:hover .more span { transform: translateX(4px); }
 
   @media (max-width: 860px) {
-    .projects { grid-template-columns: 1fr; }
+    .projects { grid-template-columns: minmax(0, 1fr); }
     .is-featured { flex-direction: column; }
-    .is-featured .panel { min-height: 0; aspect-ratio: 16 / 9; }
-    .is-featured .body { padding-left: clamp(14px, 2.5vw, 28px); }
+    /* Reset the row-layout flex-basis: in a column, Safari resolves it as a height
+       and derives an over-wide width from the aspect ratio. */
+    .is-featured .panel { flex: none; width: 100%; min-height: 0; aspect-ratio: 16 / 9; }
+    .is-featured .body { padding-left: clamp(20px, 3vw, 36px); }
   }
 </style>

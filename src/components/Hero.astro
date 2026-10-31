@@ -2,10 +2,53 @@
 import { Image } from 'astro:assets';
 import timPhoto from '../assets/tim-ineichen.png';
 
+import type { Lang } from '../i18n';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'de' } = Astro.props;
+
+const t = {
+  de: {
+    status: 'Offen für Freelance-Mandate',
+    hello: 'Hallo, ich bin',
+    lead: 'Ich konzipiere, baue und verantworte Software – von der ersten Anforderung über eine tragfähige Architektur bis zum stabilen Betrieb.',
+    cta: 'Projekt anfragen',
+    cv: 'Lebenslauf',
+    mail: 'E-Mail senden',
+    roles: 'Aktuelle Tätigkeiten',
+    freelance: 'Software Engineering & Architektur',
+    facts: [
+      { value: '7+', label: 'Jahre Berufserfahrung in der Softwareentwicklung' },
+      { value: 'End-to-End', label: 'Von Requirements über Architektur bis Deployment' },
+      { value: 'ISO 9001', label: 'Erfahrung mit QM-Software in regulierten Umfeldern' },
+      { value: 'DE · EN', label: 'Deutsch & Englisch (C1) – Basis Kriens / Luzern' },
+    ],
+  },
+  en: {
+    status: 'Available for freelance projects',
+    hello: "Hi, I'm",
+    lead: 'I design, build and take ownership of software – from the first requirement through a solid architecture to stable operation.',
+    cta: 'Start a project',
+    cv: 'CV (German)',
+    mail: 'Send an email',
+    roles: 'Current roles',
+    freelance: 'Software Engineering & Architecture',
+    facts: [
+      { value: '7+', label: 'Years of professional software development' },
+      { value: 'End-to-End', label: 'From requirements and architecture to deployment' },
+      { value: 'ISO 9001', label: 'Experience with QMS software in regulated environments' },
+      { value: 'DE · EN', label: 'German & English (C1) – based in Kriens / Lucerne' },
+    ],
+  },
+}[lang];
+
 const roles = [
   {
     role: 'Freelance',
-    org: 'Software Engineering & Architektur',
+    org: t.freelance,
     icon: 'M8 6l-6 6 6 6M16 6l6 6-6 6M14 4l-4 16',
   },
   {
@@ -22,12 +65,7 @@ const roles = [
   },
 ];
 
-const facts = [
-  { value: '7+', label: 'Jahre Berufserfahrung in der Softwareentwicklung' },
-  { value: 'End-to-End', label: 'Von Requirements über Architektur bis Deployment' },
-  { value: 'ISO 9001', label: 'Erfahrung mit QM-Software in regulierten Umfeldern' },
-  { value: 'DE · EN', label: 'Deutsch & Englisch (C1) – Basis Kriens / Luzern' },
-];
+const facts = t.facts;
 ---
 <section id="top" class="hero">
   <span class="bubble b1" aria-hidden="true"></span>
@@ -42,31 +80,30 @@ const facts = [
       <div class="copy">
         <p class="status reveal">
           <span class="status-dot" aria-hidden="true"></span>
-          Offen für Freelance-Mandate
+          {t.status}
         </p>
-        <p class="hello reveal d1">Hallo, ich bin</p>
+        <p class="hello reveal d1">{t.hello}</p>
         <h1 class="name reveal d1">Tim Flavio<br />Ineichen</h1>
         <p class="title reveal d2">Senior Software Engineer &amp; Architect</p>
         <p class="lead reveal d2">
-          Ich konzipiere, baue und verantworte Software – von der ersten Anforderung über eine
-          tragfähige Architektur bis zum stabilen Betrieb.
+          {t.lead}
         </p>
 
         <div class="actions reveal d3">
           <a href="#kontakt" class="btn btn-primary">
-            Projekt anfragen
+            {t.cta}
             <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
           </a>
           <a href="/Tim_Ineichen_Lebenslauf.pdf" class="btn btn-ghost" target="_blank" rel="noopener">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
-            Lebenslauf
+            {t.cv}
           </a>
         </div>
 
         <div class="reach reveal d4">
           <span class="mail-bubble">kontakt@alpzen-group.ch</span>
           <div class="socials">
-            <a href="mailto:kontakt@alpzen-group.ch" class="social is-primary" aria-label="E-Mail senden">
+            <a href="mailto:kontakt@alpzen-group.ch" class="social is-primary" aria-label={t.mail}>
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
             </a>
             <a href="https://www.linkedin.com/in/tim-flavio-ineichen-269a231a8/" class="social" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
@@ -84,7 +121,7 @@ const facts = [
         <Image src={timPhoto} alt="Tim Flavio Ineichen" width={760} loading="eager" class="portrait" />
       </div>
 
-      <ul class="roles" aria-label="Aktuelle Tätigkeiten">
+      <ul class="roles" aria-label={t.roles}>
         {roles.map((r, i) => (
           <li class={`role reveal d${i + 2}`} style={`--i:${i}`}>
             <div class="tile" aria-hidden="true">
@@ -119,6 +156,7 @@ const facts = [
   .hero {
     position: relative;
     padding: 80px 0 clamp(24px, 4vw, 48px);
+    overflow: hidden; /* fallback for Safari < 16 */
     overflow: clip;
   }
 
@@ -464,7 +502,7 @@ const facts = [
     }
     .name { font-size: clamp(1.7rem, 9.2vw, 2.6rem); }
     .torus, .sphere { display: none; }
-    .roles { padding: 2rem 0 0; grid-template-columns: 1fr; gap: 1rem; }
+    .roles { padding: 2rem 0 0; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
     .role { width: 100%; animation: none; flex-direction: row; }
     .tile { width: 64px; height: 64px; flex-shrink: 0; }
     .tile-icon { width: 40px; height: 40px; border-radius: 12px; }
@@ -473,7 +511,7 @@ const facts = [
     .label { justify-items: start; text-align: left; }
     .visual { min-height: 0; padding-top: 1rem; }
     .visual :global(.portrait) { height: auto; width: 100%; max-width: 380px; }
-    .halo { width: 110%; top: 6%; }
+    .halo { width: 100%; top: 6%; }
     .facts { grid-template-columns: 1fr 1fr; }
     .fact { padding-top: 1.1rem; }
     .fact dt { font-size: 1.1rem; font-stretch: 100%; }

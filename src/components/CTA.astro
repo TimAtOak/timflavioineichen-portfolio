@@ -1,16 +1,49 @@
 ---
+import type { Lang } from '../i18n';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'de' } = Astro.props;
+
+const t = {
+  de: {
+    eyebrow: 'Kontakt',
+    title: 'Lassen Sie uns über Ihr Projekt sprechen.',
+    lead: 'Ob Architektur-Review, Verstärkung für Ihr Team oder ein neues Produkt von Grund auf – schreiben Sie mir. Das Erstgespräch ist kostenlos und unverbindlich.',
+    email: 'E-Mail', location: 'Standort', locationValue: 'Kriens / Luzern · remote oder vor Ort',
+    languages: 'Sprachen', languagesValue: 'Deutsch, Englisch', cv: 'Lebenslauf',
+    name: 'Name', namePh: 'Ihr Name', mailPh: 'ihre@email.ch',
+    company: 'Unternehmen', optional: '(optional)', companyPh: 'Ihr Unternehmen',
+    message: 'Worum geht es?', messagePh: 'Kurz zu Ihrem Projekt, Zeitrahmen und Ihren Zielen …',
+    error: 'Bitte füllen Sie Name, E-Mail und Nachricht aus.',
+    submit: 'Nachricht senden', note: 'Öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht.',
+    mail: { subject: 'Projektanfrage von', email: 'E-Mail', company: 'Unternehmen', message: 'Nachricht' },
+  },
+  en: {
+    eyebrow: 'Contact',
+    title: "Let's talk about your project.",
+    lead: 'Whether it is an architecture review, extra capacity for your team or a new product from scratch – drop me a line. The intro call is free and without obligation.',
+    email: 'Email', location: 'Location', locationValue: 'Kriens / Lucerne · remote or on site',
+    languages: 'Languages', languagesValue: 'German, English', cv: 'CV (German)',
+    name: 'Name', namePh: 'Your name', mailPh: 'you@company.com',
+    company: 'Company', optional: '(optional)', companyPh: 'Your company',
+    message: 'What is it about?', messagePh: 'A few words about your project, timeline and goals …',
+    error: 'Please fill in your name, email and message.',
+    submit: 'Send message', note: 'Opens your email app with a pre-filled message.',
+    mail: { subject: 'Project enquiry from', email: 'Email', company: 'Company', message: 'Message' },
+  },
+}[lang];
 ---
 <section id="kontakt" class="section contact">
   <div class="wrap">
     <div class="contact-card">
 
       <div class="contact-intro reveal">
-        <p class="eyebrow">Kontakt</p>
-        <h2>Lassen Sie uns über Ihr Projekt sprechen.</h2>
-        <p class="contact-lead">
-          Ob Architektur-Review, Verstärkung für Ihr Team oder ein neues Produkt von Grund auf –
-          schreiben Sie mir. Das Erstgespräch ist kostenlos und unverbindlich.
-        </p>
+        <p class="eyebrow">{t.eyebrow}</p>
+        <h2>{t.title}</h2>
+        <p class="contact-lead">{t.lead}</p>
 
         <ul class="contact-list">
           <li>
@@ -18,7 +51,7 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
             </span>
             <div>
-              <span class="cl">E-Mail</span>
+              <span class="cl">{t.email}</span>
               <a href="mailto:kontakt@alpzen-group.ch">kontakt@alpzen-group.ch</a>
             </div>
           </li>
@@ -27,8 +60,8 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             </span>
             <div>
-              <span class="cl">Standort</span>
-              <span>Kriens / Luzern · remote oder vor Ort</span>
+              <span class="cl">{t.location}</span>
+              <span>{t.locationValue}</span>
             </div>
           </li>
           <li>
@@ -36,8 +69,8 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
             </span>
             <div>
-              <span class="cl">Sprachen</span>
-              <span>Deutsch, Englisch</span>
+              <span class="cl">{t.languages}</span>
+              <span>{t.languagesValue}</span>
             </div>
           </li>
         </ul>
@@ -45,35 +78,35 @@
         <div class="links">
           <a href="https://www.linkedin.com/in/tim-flavio-ineichen-269a231a8/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           <a href="https://github.com/TimAtOak" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-          <a href="/Tim_Ineichen_Lebenslauf.pdf" target="_blank" rel="noopener">Lebenslauf ↗</a>
+          <a href="/Tim_Ineichen_Lebenslauf.pdf" target="_blank" rel="noopener">{t.cv} ↗</a>
         </div>
       </div>
 
-      <form class="form reveal d1" id="contactForm" novalidate>
+      <form class="form reveal d1" id="contactForm" novalidate data-mail={JSON.stringify(t.mail)}>
         <div class="row">
           <label>
-            <span>Name</span>
-            <input type="text" id="contact-name" name="name" autocomplete="name" placeholder="Ihr Name" required />
+            <span>{t.name}</span>
+            <input type="text" id="contact-name" name="name" autocomplete="name" placeholder={t.namePh} required />
           </label>
           <label>
-            <span>E-Mail</span>
-            <input type="email" id="contact-email" name="email" autocomplete="email" placeholder="ihre@email.ch" required />
+            <span>{t.email}</span>
+            <input type="email" id="contact-email" name="email" autocomplete="email" placeholder={t.mailPh} required />
           </label>
         </div>
         <label>
-          <span>Unternehmen <em>(optional)</em></span>
-          <input type="text" id="contact-company" name="company" autocomplete="organization" placeholder="Ihr Unternehmen" />
+          <span>{t.company} <em>{t.optional}</em></span>
+          <input type="text" id="contact-company" name="company" autocomplete="organization" placeholder={t.companyPh} />
         </label>
         <label>
-          <span>Worum geht es?</span>
-          <textarea id="contact-message" name="message" rows="5" placeholder="Kurz zu Ihrem Projekt, Zeitrahmen und Ihren Zielen …" required></textarea>
+          <span>{t.message}</span>
+          <textarea id="contact-message" name="message" rows="5" placeholder={t.messagePh} required></textarea>
         </label>
-        <p class="form-error" id="contact-error" role="alert" hidden>Bitte füllen Sie Name, E-Mail und Nachricht aus.</p>
+        <p class="form-error" id="contact-error" role="alert" hidden>{t.error}</p>
         <button type="submit" class="btn btn-primary submit">
-          Nachricht senden
+          {t.submit}
           <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </button>
-        <p class="form-note">Öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht.</p>
+        <p class="form-note">{t.note}</p>
       </form>
     </div>
   </div>
@@ -198,19 +231,21 @@
   .form-note { margin: 0; font-size: 0.82rem; color: var(--faint); }
 
   @media (max-width: 900px) {
-    .contact-card { grid-template-columns: 1fr; }
+    .contact-card { grid-template-columns: minmax(0, 1fr); }
     .orb { display: none; }
   }
 
   @media (max-width: 560px) {
-    .row { grid-template-columns: 1fr; }
+    .row { grid-template-columns: minmax(0, 1fr); }
     .submit { justify-self: stretch; }
   }
 </style>
 
 <script>
-  document.getElementById('contactForm')?.addEventListener('submit', (e) => {
+  const form = document.getElementById('contactForm');
+  form?.addEventListener('submit', (e) => {
     e.preventDefault();
+    const labels = JSON.parse(form.dataset.mail || '{}');
     const value = (id: string) =>
       (document.getElementById(id) as HTMLInputElement | HTMLTextAreaElement).value.trim();
 
@@ -226,9 +261,9 @@
     }
     if (error) error.hidden = true;
 
-    const companyLine = company ? `Unternehmen: ${company}\n` : '';
-    const subject = encodeURIComponent(`Projektanfrage von ${name}`);
-    const body = encodeURIComponent(`Name: ${name}\nE-Mail: ${email}\n${companyLine}\nNachricht:\n${message}`);
+    const companyLine = company ? `${labels.company}: ${company}\n` : '';
+    const subject = encodeURIComponent(`${labels.subject} ${name}`);
+    const body = encodeURIComponent(`Name: ${name}\n${labels.email}: ${email}\n${companyLine}\n${labels.message}:\n${message}`);
     window.location.href = `mailto:kontakt@alpzen-group.ch?subject=${subject}&body=${body}`;
   });
 </script>

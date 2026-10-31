@@ -1,59 +1,73 @@
 ---
-const services = [
-  {
-    title: 'Software-Architektur',
-    text: 'Tragfähige System- und API-Architekturen, fundierte Technologieentscheide und Architektur-Reviews bestehender Systeme – mit Blick auf Skalierbarkeit, Qualität und Wartbarkeit.',
-    tags: ['System Design', 'API-Design', 'Reviews', 'Cloud'],
-    icon: 'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
-  },
-  {
-    title: 'Full-Stack-Entwicklung',
-    text: 'Umsetzung kompletter Webanwendungen von Frontend bis Backend – inklusive Datenbank, Schnittstellen und produktivem Deployment.',
-    tags: ['React / TS', 'Symfony', 'Python', 'C#'],
-    icon: 'M8 6l-6 6 6 6M16 6l6 6-6 6',
-  },
-  {
-    title: 'Technische Leitung',
-    text: 'Tech Lead auf Zeit oder Interim-CTO: Entwicklungsstandards, Prozesse, Code Reviews und Coaching von Teams – damit Ihr Team schneller und sicherer liefert.',
-    tags: ['Tech Lead', 'Interim CTO', 'Scrum', 'Code Reviews'],
-    icon: 'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
-  },
-  {
-    title: 'Requirements & Konzeption',
-    text: 'Fachliche Anforderungen verstehen, strukturieren und in User Stories, technische Konzepte und realistische Machbarkeitsbewertungen übersetzen.',
-    tags: ['Requirements', 'User Stories', 'Workshops', 'Machbarkeit'],
-    icon: 'M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 14l2 2 4-4',
-  },
-  {
-    title: 'KI, ERP & Integrationen',
-    text: 'Anbindung von Drittsystemen, Automatisierung von Geschäftsprozessen mit KI und Erweiterungen von Plattformen wie Odoo über saubere Schnittstellen.',
-    tags: ['KI', 'Odoo', 'REST / APIs', 'Automatisierung'],
-    icon: 'M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z',
-  },
-  {
-    title: 'Frontend & Design Systems',
-    text: 'Komponentenbibliotheken in React, konsistente UI/UX und performante Frontends, die Entwickler gerne verwenden und Nutzer gerne bedienen.',
-    tags: ['Component Library', 'UI/UX', 'Accessibility', 'Performance'],
-    icon: 'M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0L12 2.69z',
-  },
+import type { Lang } from '../i18n';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'de' } = Astro.props;
+
+const icons = [
+  'M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z',
+  'M8 6l-6 6 6 6M16 6l6 6-6 6',
+  'M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75',
+  'M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2M9 5a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2M9 14l2 2 4-4',
+  'M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z',
+  'M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0L12 2.69z',
 ];
 
-const steps = [
-  { title: 'Erstgespräch', text: 'Kostenlos und unverbindlich: Wir klären Ziel, Ausgangslage und Rahmenbedingungen.' },
-  { title: 'Konzept & Angebot', text: 'Sie erhalten einen klaren Vorschlag zu Vorgehen, Aufwand und Zeitplan.' },
-  { title: 'Umsetzung', text: 'Iterativ, transparent und mit regelmässigen Abstimmungen – remote oder vor Ort.' },
-  { title: 'Übergabe & Begleitung', text: 'Dokumentation, Wissenstransfer an Ihr Team und auf Wunsch langfristige Betreuung.' },
-];
+const t = {
+  de: {
+    eyebrow: 'Leistungen',
+    title: 'Was ich für Ihr Projekt übernehme.',
+    lead: 'Ich steige dort ein, wo Sie Unterstützung brauchen – als Architekt, Entwickler oder technische Leitung. Projektbasiert oder als Verstärkung Ihres Teams.',
+    process: 'So arbeiten wir zusammen',
+    services: [
+      { title: 'Software-Architektur', text: 'Tragfähige System- und API-Architekturen, fundierte Technologieentscheide und Architektur-Reviews bestehender Systeme – mit Blick auf Skalierbarkeit, Qualität und Wartbarkeit.', tags: ['System Design', 'API-Design', 'Reviews', 'Cloud'] },
+      { title: 'Full-Stack-Entwicklung', text: 'Umsetzung kompletter Webanwendungen von Frontend bis Backend – inklusive Datenbank, Schnittstellen und produktivem Deployment.', tags: ['React / TS', 'Symfony', 'Python', 'C#'] },
+      { title: 'Technische Leitung', text: 'Tech Lead auf Zeit oder Interim-CTO: Entwicklungsstandards, Prozesse, Code Reviews und Coaching von Teams – damit Ihr Team schneller und sicherer liefert.', tags: ['Tech Lead', 'Interim CTO', 'Scrum', 'Code Reviews'] },
+      { title: 'Requirements & Konzeption', text: 'Fachliche Anforderungen verstehen, strukturieren und in User Stories, technische Konzepte und realistische Machbarkeitsbewertungen übersetzen.', tags: ['Requirements', 'User Stories', 'Workshops', 'Machbarkeit'] },
+      { title: 'KI, ERP & Integrationen', text: 'Anbindung von Drittsystemen, Automatisierung von Geschäftsprozessen mit KI und Erweiterungen von Plattformen wie Odoo über saubere Schnittstellen.', tags: ['KI', 'Odoo', 'REST / APIs', 'Automatisierung'] },
+      { title: 'Frontend & Design Systems', text: 'Komponentenbibliotheken in React, konsistente UI/UX und performante Frontends, die Entwickler gerne verwenden und Nutzer gerne bedienen.', tags: ['Component Library', 'UI/UX', 'Accessibility', 'Performance'] },
+    ],
+    steps: [
+      { title: 'Erstgespräch', text: 'Kostenlos und unverbindlich: Wir klären Ziel, Ausgangslage und Rahmenbedingungen.' },
+      { title: 'Konzept & Angebot', text: 'Sie erhalten einen klaren Vorschlag zu Vorgehen, Aufwand und Zeitplan.' },
+      { title: 'Umsetzung', text: 'Iterativ, transparent und mit regelmässigen Abstimmungen – remote oder vor Ort.' },
+      { title: 'Übergabe & Begleitung', text: 'Dokumentation, Wissenstransfer an Ihr Team und auf Wunsch langfristige Betreuung.' },
+    ],
+  },
+  en: {
+    eyebrow: 'Services',
+    title: 'What I take on for your project.',
+    lead: 'I step in wherever you need support – as architect, developer or technical lead. On a project basis or as an extension of your team.',
+    process: 'How we work together',
+    services: [
+      { title: 'Software Architecture', text: 'Robust system and API architectures, well-founded technology decisions and architecture reviews of existing systems – with scalability, quality and maintainability in mind.', tags: ['System Design', 'API Design', 'Reviews', 'Cloud'] },
+      { title: 'Full-Stack Development', text: 'Delivery of complete web applications from frontend to backend – including database, integrations and production deployment.', tags: ['React / TS', 'Symfony', 'Python', 'C#'] },
+      { title: 'Technical Leadership', text: 'Interim tech lead or CTO: development standards, processes, code reviews and team coaching – so your team ships faster and more safely.', tags: ['Tech Lead', 'Interim CTO', 'Scrum', 'Code Reviews'] },
+      { title: 'Requirements & Concepts', text: 'Understanding and structuring business requirements and turning them into user stories, technical concepts and realistic feasibility assessments.', tags: ['Requirements', 'User Stories', 'Workshops', 'Feasibility'] },
+      { title: 'AI, ERP & Integrations', text: 'Connecting third-party systems, automating business processes with AI and extending platforms such as Odoo through clean interfaces.', tags: ['AI', 'Odoo', 'REST / APIs', 'Automation'] },
+      { title: 'Frontend & Design Systems', text: 'React component libraries, consistent UI/UX and fast frontends that developers like to build with and users like to use.', tags: ['Component Library', 'UI/UX', 'Accessibility', 'Performance'] },
+    ],
+    steps: [
+      { title: 'Intro call', text: 'Free and without obligation: we clarify goals, starting point and constraints.' },
+      { title: 'Concept & proposal', text: 'You receive a clear proposal covering approach, effort and timeline.' },
+      { title: 'Delivery', text: 'Iterative, transparent and with regular check-ins – remote or on site.' },
+      { title: 'Handover & support', text: 'Documentation, knowledge transfer to your team and long-term support if needed.' },
+    ],
+  },
+}[lang];
+
+const services = t.services.map((s, i) => ({ ...s, icon: icons[i] }));
+const steps = t.steps;
 ---
 <section id="leistungen" class="section">
   <div class="wrap">
     <div class="section-head center reveal">
-      <p class="eyebrow">Leistungen</p>
-      <h2 class="section-title">Was ich für Ihr Projekt übernehme.</h2>
-      <p class="section-lead">
-        Ich steige dort ein, wo Sie Unterstützung brauchen – als Architekt, Entwickler oder
-        technische Leitung. Projektbasiert oder als Verstärkung Ihres Teams.
-      </p>
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h2 class="section-title">{t.title}</h2>
+      <p class="section-lead">{t.lead}</p>
     </div>
 
     <ul class="services">
@@ -70,7 +84,7 @@ const steps = [
     </ul>
 
     <div class="process reveal">
-      <h3 class="process-title">So arbeiten wir zusammen</h3>
+      <h3 class="process-title">{t.process}</h3>
       <ol class="steps">
         {steps.map((s, i) => (
           <li>
@@ -191,7 +205,7 @@ const steps = [
   }
 
   @media (max-width: 620px) {
-    .services { grid-template-columns: 1fr; }
-    .steps { grid-template-columns: 1fr; }
+    .services { grid-template-columns: minmax(0, 1fr); }
+    .steps { grid-template-columns: minmax(0, 1fr); }
   }
 </style>

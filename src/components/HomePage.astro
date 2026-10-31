@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from './Nav.astro';
+import Hero from './Hero.astro';
+import About from './About.astro';
+import Services from './Services.astro';
+import Experience from './Experience.astro';
+import Projects from './Projects.astro';
+import CTA from './CTA.astro';
+import Footer from './Footer.astro';
+import { homePath, type Lang } from '../i18n';
+import { homeStructuredData } from '../data/structuredData';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const otherLang: Lang = lang === 'de' ? 'en' : 'de';
+---
+
+<Layout
+  lang={lang}
+  alternates={{ de: homePath('de'), en: homePath('en') }}
+  structuredData={homeStructuredData(lang)}
+>
+  <Nav lang={lang} altHref={homePath(otherLang)} />
+  <main>
+    <Hero lang={lang} />
+    <About lang={lang} />
+    <Services lang={lang} />
+    <Experience lang={lang} />
+    <Projects lang={lang} />
+    <CTA lang={lang} />
+  </main>
+  <Footer lang={lang} />
+</Layout>

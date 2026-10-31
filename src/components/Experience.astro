@@ -1,15 +1,33 @@
 ---
-import { positions } from '../data/experience';
+import { positions as positionsByLang } from '../data/experience';
+import type { Lang } from '../i18n';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'de' } = Astro.props;
+const positions = positionsByLang[lang];
+
+const t = {
+  de: {
+    eyebrow: 'Werdegang',
+    title: 'Vom Applikationsentwickler zum Architekten.',
+    lead: 'Stationen in Agenturen, Produktunternehmen und Start-ups – vom Entwickeln über das Führen von Teams bis zur technischen Gesamtverantwortung.',
+  },
+  en: {
+    eyebrow: 'Experience',
+    title: 'From application developer to architect.',
+    lead: 'Roles at agencies, product companies and start-ups – from writing code to leading teams to overall technical responsibility.',
+  },
+}[lang];
 ---
 <section id="werdegang" class="section">
   <div class="wrap">
     <div class="section-head center reveal">
-      <p class="eyebrow">Werdegang</p>
-      <h2 class="section-title">Vom Applikationsentwickler zum Architekten.</h2>
-      <p class="section-lead">
-        Stationen in Agenturen, Produktunternehmen und Start-ups – vom Entwickeln über das
-        Führen von Teams bis zur technischen Gesamtverantwortung.
-      </p>
+      <p class="eyebrow">{t.eyebrow}</p>
+      <h2 class="section-title">{t.title}</h2>
+      <p class="section-lead">{t.lead}</p>
     </div>
 
     <ol class="timeline reveal">
