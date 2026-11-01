@@ -1,5 +1,7 @@
 ---
+import QRCode from 'qrcode';
 import Floaters from './Floaters.astro';
+import { vcardPath } from '../data/contact';
 import type { Lang } from '../i18n';
 
 interface Props {
@@ -19,6 +21,10 @@ const t = {
     company: 'Unternehmen', optional: '(optional)', companyPh: 'Ihr Unternehmen',
     message: 'Worum geht es?', messagePh: 'Kurz zu Ihrem Projekt, Zeitrahmen und Ihren Zielen …',
     error: 'Bitte füllen Sie Name, E-Mail und Nachricht aus.',
+    saveTitle: 'Kontakt speichern',
+    saveText: 'Code mit der Handy-Kamera scannen und meine Kontaktdaten mit einem Tipp im Adressbuch speichern.',
+    saveTextTouch: 'Meine Kontaktdaten mit einem Tipp in Ihrem Adressbuch speichern.',
+    saveBtn: 'vCard herunterladen', saveBtnTouch: 'Kontakt speichern',
     submit: 'Nachricht senden', note: 'Öffnet Ihr E-Mail-Programm mit einer vorausgefüllten Nachricht.',
     mail: { subject: 'Projektanfrage von', email: 'E-Mail', company: 'Unternehmen', message: 'Nachricht' },
   },
@@ -32,10 +38,23 @@ const t = {
     company: 'Company', optional: '(optional)', companyPh: 'Your company',
     message: 'What is it about?', messagePh: 'A few words about your project, timeline and goals …',
     error: 'Please fill in your name, email and message.',
+    saveTitle: 'Save my contact',
+    saveText: 'Scan the code with your phone camera and save my contact details with one tap.',
+    saveTextTouch: 'Save my contact details to your address book with one tap.',
+    saveBtn: 'Download vCard', saveBtnTouch: 'Save contact',
     submit: 'Send message', note: 'Opens your email app with a pre-filled message.',
     mail: { subject: 'Project enquiry from', email: 'Email', company: 'Company', message: 'Message' },
   },
 }[lang];
+
+// QR code pointing to the vCard file. A short URL keeps the code coarse and easy to scan
+// (embedding the whole card made it too dense); the file also carries the photo.
+const qrSvg = await QRCode.toString(new URL(vcardPath, Astro.site).href, {
+  type: 'svg',
+  errorCorrectionLevel: 'M',
+  margin: 0,
+  color: { dark: '#222833', light: '#ffffff' },
+});
 ---
 <section id="kontakt" class="section contact">
   <Floaters set="contact" />
@@ -81,6 +100,20 @@ const t = {
           <a href="https://www.linkedin.com/in/tim-flavio-ineichen-269a231a8/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
           <a href="https://github.com/TimAtOak" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
           <a href="/Tim_Ineichen_Lebenslauf.pdf" target="_blank" rel="noopener">{t.cv} ↗</a>
+        </div>
+
+        <div class="save-contact reveal rv-zoom">
+          <div class="qr" aria-hidden="true" set:html={qrSvg} />
+          <div class="save-text">
+            <strong>{t.saveTitle}</strong>
+            <p class="for-pointer">{t.saveText}</p>
+            <p class="for-touch">{t.saveTextTouch}</p>
+            <a href={vcardPath} download="Tim-Flavio-Ineichen.vcf" class="save-btn">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM19 8v6M22 11h-6"/></svg>
+              <span class="for-pointer">{t.saveBtn}</span>
+              <span class="for-touch">{t.saveBtnTouch}</span>
+            </a>
+          </div>
         </div>
       </div>
 
@@ -189,6 +222,66 @@ const t = {
   }
 
   .links a:hover { color: var(--accent); transform: translateY(-2px); }
+
+  /* Save contact (QR + vCard) */
+  .save-contact {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 2rem;
+    padding: 1.1rem 1.4rem 1.1rem 1.1rem;
+    max-width: 460px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-elev);
+    box-shadow: var(--shadow);
+  }
+
+  /* Always dark on white, also in dark mode – scanners need the contrast */
+  .qr {
+    flex-shrink: 0;
+    width: 124px;
+    padding: 8px;
+    border-radius: 12px;
+    background: #ffffff;
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+
+  .qr :global(svg) { display: block; width: 100%; height: auto; }
+
+  .save-text { display: grid; gap: 0.35rem; justify-items: start; }
+  .save-text strong { color: var(--ink); font-size: 1.02rem; }
+  .save-text p { margin: 0 0 0.4rem; color: var(--muted); font-size: 0.9rem; line-height: 1.55; }
+
+  .save-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .save-btn:hover { color: var(--accent-hover); }
+
+  /* Phones & tablets can't scan their own screen: hide the QR, offer the one-tap download */
+  .for-touch { display: none; }
+
+  @media (hover: none) and (pointer: coarse) {
+    .qr, .for-pointer { display: none; }
+    .for-touch { display: revert; }
+    .save-contact { padding: 1.1rem 1.4rem; }
+    .save-btn {
+      margin-top: 0.2rem;
+      padding: 0.6rem 1.1rem;
+      border-radius: 999px;
+      background: var(--accent);
+      color: var(--on-accent);
+      box-shadow: var(--glow);
+    }
+    .save-btn:hover { color: var(--on-accent); }
+  }
 
   /* Form */
   .form {
