@@ -29,6 +29,8 @@ const defaults = {
 };
 
 const { lang = 'de', alternates, structuredData } = Astro.props;
+// Cloudflare Web Analytics (cookieless). The token is public by design; only rendered in production builds.
+const cfBeaconToken = import.meta.env.PROD ? 'b0e4cbc2db364447b76d279bfbc5a105' : undefined;
 const title = Astro.props.title ?? defaults[lang].title;
 const description = Astro.props.description ?? defaults[lang].description;
 
@@ -88,6 +90,14 @@ const alternateLinks = Object.entries(alternates ?? {}).map(([hreflang, path]) =
   </head>
   <body>
     <slot />
+    {cfBeaconToken && (
+      <script
+        is:inline
+        defer
+        src="https://static.cloudflareinsights.com/beacon.min.js"
+        data-cf-beacon={JSON.stringify({ token: cfBeaconToken })}
+      ></script>
+    )}
   </body>
 </html>
 
