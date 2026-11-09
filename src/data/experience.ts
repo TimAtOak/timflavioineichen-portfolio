@@ -13,7 +13,7 @@ export interface Position {
 
 const de: Position[] = [
   {
-    period: 'Aktuell',
+    period: 'Offen für Neues',
     role: 'Freelance Software Engineer & Architect',
     company: 'Selbstständig',
     current: true,
@@ -25,11 +25,10 @@ const de: Position[] = [
     ],
   },
   {
-    period: 'Seit Apr 2026',
+    period: 'Apr 2026 – Jun 2026',
     role: 'CTO',
     company: 'kimuno GmbH',
     url: 'https://kimuno.ch/',
-    current: true,
     summary: 'Luzerner Unternehmen für Beratung, Digitalisierung und Software-Entwicklung mit Fokus auf Prozessoptimierung und KI – für öffentliche Institutionen und KMU.',
     points: [
       'Technische Gesamtverantwortung für Architektur, Technologieauswahl und Weiterentwicklung digitaler Lösungen',
@@ -39,11 +38,10 @@ const de: Position[] = [
     ],
   },
   {
-    period: 'Aktuell',
+    period: 'Bis Jun 2026',
     role: 'Lead Developer',
     company: "Let's Doo GmbH",
     url: 'https://letsdoo.it/',
-    current: true,
     summary: 'Odoo-Partner aus Horw, der KMU in der Zentralschweiz bei Einführung, Anpassung und Betrieb von Odoo begleitet.',
     points: [
       'Entwicklung und Erweiterung von Odoo-Modulen',
@@ -127,7 +125,7 @@ const de: Position[] = [
 
 const en: Position[] = [
   {
-    period: 'Current',
+    period: 'Open to new roles',
     role: 'Freelance Software Engineer & Architect',
     company: 'Self-employed',
     current: true,
@@ -139,11 +137,10 @@ const en: Position[] = [
     ],
   },
   {
-    period: 'Since Apr 2026',
+    period: 'Apr 2026 – Jun 2026',
     role: 'CTO',
     company: 'kimuno GmbH',
     url: 'https://kimuno.ch/',
-    current: true,
     summary: 'Lucerne-based company for consulting, digitalisation and software development with a focus on process optimisation and AI – for public institutions and SMEs.',
     points: [
       'Overall technical responsibility for architecture, technology choices and the evolution of digital solutions',
@@ -153,11 +150,10 @@ const en: Position[] = [
     ],
   },
   {
-    period: 'Current',
+    period: 'Until Jun 2026',
     role: 'Lead Developer',
     company: "Let's Doo GmbH",
     url: 'https://letsdoo.it/',
-    current: true,
     summary: 'Odoo partner based in Horw, helping SMEs in Central Switzerland introduce, customise and run Odoo.',
     points: [
       'Development and extension of Odoo modules',

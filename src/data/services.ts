@@ -189,7 +189,7 @@ const serviceData: ServiceBase[] = [
       de: {
         slug: 'technische-leitung',
         title: 'Technische Leitung',
-        text: 'Tech Lead auf Zeit oder Interim-CTO: Entwicklungsstandards, Prozesse, Code Reviews und Coaching von Teams – damit Ihr Team schneller und sicherer liefert.',
+        text: 'Tech Lead und CTO: Entwicklungsstandards, Prozesse, Code Reviews und Coaching von Teams – damit Teams schneller und sicherer liefern.',
         tags: ['Tech Lead', 'Interim CTO', 'Scrum', 'Code Reviews'],
         metaTitle: 'Tech Lead auf Zeit & Interim-CTO | Tim Flavio Ineichen',
         metaDescription: 'Technische Leitung auf Zeit: Interim-CTO oder Tech Lead für Start-ups und KMU – Entwicklungsstandards, Prozesse, Code Reviews und Team-Coaching.',
@@ -222,7 +222,7 @@ const serviceData: ServiceBase[] = [
       en: {
         slug: 'technical-leadership',
         title: 'Technical Leadership',
-        text: 'Interim tech lead or CTO: development standards, processes, code reviews and team coaching – so your team ships faster and more safely.',
+        text: 'Tech lead and CTO: development standards, processes, code reviews and team coaching – so teams ship faster and more safely.',
         tags: ['Tech Lead', 'Interim CTO', 'Scrum', 'Code Reviews'],
         metaTitle: 'Interim CTO & Fractional Tech Lead | Tim Flavio Ineichen',
         metaDescription: 'Technical leadership on demand: interim CTO or tech lead for start-ups and SMEs – development standards, processes, code reviews and team coaching.',
@@ -502,15 +502,15 @@ export function getService(lang: Lang, id: string): Service {
 /** How a collaboration works – shown on the home page and on every service page. */
 export const processSteps: Record<Lang, ServiceItem[]> = {
   de: [
-    { title: 'Erstgespräch', desc: 'Kostenlos und unverbindlich: Wir klären Ziel, Ausgangslage und Rahmenbedingungen.' },
-    { title: 'Konzept & Angebot', desc: 'Sie erhalten einen klaren Vorschlag zu Vorgehen, Aufwand und Zeitplan.' },
-    { title: 'Umsetzung', desc: 'Iterativ, transparent und mit regelmässigen Abstimmungen – remote oder vor Ort.' },
-    { title: 'Übergabe & Begleitung', desc: 'Dokumentation, Wissenstransfer an Ihr Team und auf Wunsch langfristige Betreuung.' },
+    { title: 'Verstehen', desc: 'Zuerst kläre ich Ziel, Ausgangslage und Rahmenbedingungen.' },
+    { title: 'Konzept', desc: 'Daraus entsteht ein klarer Plan zu Vorgehen, Aufwand und Zeitplan.' },
+    { title: 'Umsetzung', desc: 'Iterativ, transparent und mit regelmässigen Abstimmungen.' },
+    { title: 'Übergabe & Betrieb', desc: 'Dokumentation, Wissenstransfer ans Team und ein stabiler Betrieb.' },
   ],
   en: [
-    { title: 'Intro call', desc: 'Free and without obligation: we clarify goals, starting point and constraints.' },
-    { title: 'Concept & proposal', desc: 'You receive a clear proposal covering approach, effort and timeline.' },
-    { title: 'Delivery', desc: 'Iterative, transparent and with regular check-ins – remote or on site.' },
-    { title: 'Handover & support', desc: 'Documentation, knowledge transfer to your team and long-term support if needed.' },
+    { title: 'Understand', desc: 'First, I clarify goals, starting point and constraints.' },
+    { title: 'Concept', desc: 'This leads to a clear plan covering approach, effort and timeline.' },
+    { title: 'Delivery', desc: 'Iterative, transparent and with regular check-ins.' },
+    { title: 'Handover & operation', desc: 'Documentation, knowledge transfer to the team and stable operation.' },
   ],
 };
