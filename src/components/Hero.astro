@@ -163,7 +163,7 @@ const facts = t.facts;
     display: grid;
     grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.95fr) minmax(0, 0.7fr);
     grid-template-areas: "copy visual roles";
-    min-height: clamp(560px, calc(100vh - 200px), 720px);
+    min-height: clamp(500px, calc(100vh - 260px), 720px);
   }
 
   /* Copy */
@@ -172,7 +172,7 @@ const facts = t.facts;
     align-self: center;
     position: relative;
     z-index: 2;
-    padding: clamp(40px, 6vw, 72px) 0;
+    padding: clamp(24px, 4vw, 72px) 0;
   }
 
   .status {
@@ -308,7 +308,7 @@ const facts = t.facts;
   .visual :global(.portrait) {
     position: relative;
     width: auto;
-    height: min(92%, 680px);
+    height: clamp(460px, calc(100vh - 290px), 680px);
     max-width: none;
     object-fit: contain;
     object-position: bottom;
