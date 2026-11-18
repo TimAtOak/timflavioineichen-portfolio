@@ -8,7 +8,7 @@ export const contact = {
   linkedin: 'https://www.linkedin.com/in/tim-flavio-ineichen-269a231a8/',
   github: 'https://github.com/TimAtOak',
   address: { locality: 'Kriens', region: 'LU', postalCode: '6010', country: 'Switzerland' },
-  note: "Freelance Software Engineer & Architect · CTO kimuno · Lead Developer Let's Doo",
+  note: 'Senior Software Engineer & Architect · Offen für Freelance oder neue Stelle',
 };
 
 /** Published path of the vCard file (see src/pages/tim-flavio-ineichen.vcf.ts). */

@@ -17,11 +17,11 @@ export const GET: APIRoute = ({ site }) => {
 
   const body = `# Tim Flavio Ineichen
 
-> Freelance Senior Software Engineer & Architect based in Kriens near Lucerne, Switzerland. Software architecture, full-stack web applications, websites, technical leadership and requirements engineering for SMEs, start-ups and public institutions – remote across the DACH region or on site in Central Switzerland.
+> Senior Software Engineer & Architect based in Kriens near Lucerne, Switzerland, open to freelance engagements or a new permanent role. Software architecture, full-stack web applications, websites, technical leadership and requirements engineering for SMEs, start-ups and public institutions – remote across the DACH region or on site in Central Switzerland.
 
 Key facts:
 
-- Role: Freelance Senior Software Engineer & Architect; additionally CTO at kimuno GmbH (https://kimuno.ch/) and Lead Developer at Let's Doo GmbH (https://letsdoo.it/), an Odoo partner.
+- Role: Senior Software Engineer & Architect, open to freelance engagements or a new permanent role. Previously CTO at kimuno GmbH (https://kimuno.ch/) and Lead Developer at Let's Doo GmbH (https://letsdoo.it/), an Odoo partner (both until 2026).
 - Experience: 7+ years of professional software development, end to end from requirements and architecture to deployment and operations; experience with quality management software in ISO 9001 regulated environments.
 - Location: Kriens / Lucerne, Switzerland. Works remotely or on site.
 - Languages: German and English (C1).

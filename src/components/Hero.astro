@@ -19,8 +19,10 @@ const t = {
     cta: 'Kontakt aufnehmen',
     cv: 'Lebenslauf',
     mail: 'E-Mail senden',
-    roles: 'Aktuelle Tätigkeiten',
-    freelance: 'Software Engineering & Architektur',
+    roles: 'Stationen',
+    open: 'Freelance oder neue Stelle',
+    openOrg: 'Software Engineering & Architektur',
+    former: 'bis 2026',
     facts: [
       { value: '7+', label: 'Jahre Berufserfahrung in der Softwareentwicklung' },
       { value: 'End-to-End', label: 'Von Requirements über Architektur bis Deployment' },
@@ -35,8 +37,10 @@ const t = {
     cta: 'Get in touch',
     cv: 'CV (German)',
     mail: 'Send an email',
-    roles: 'Current roles',
-    freelance: 'Software Engineering & Architecture',
+    roles: 'Roles',
+    open: 'Freelance or new role',
+    openOrg: 'Software Engineering & Architecture',
+    former: 'until 2026',
     facts: [
       { value: '7+', label: 'Years of professional software development' },
       { value: 'End-to-End', label: 'From requirements and architecture to deployment' },
@@ -48,19 +52,19 @@ const t = {
 
 const roles = [
   {
-    role: 'Freelance',
-    org: t.freelance,
+    role: t.open,
+    org: t.openOrg,
     icon: 'M8 6l-6 6 6 6M16 6l6 6-6 6M14 4l-4 16',
   },
   {
     role: 'CTO',
-    org: 'kimuno GmbH',
+    org: `kimuno GmbH · ${t.former}`,
     url: 'https://kimuno.ch/',
     icon: 'M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z',
   },
   {
     role: 'Lead Developer',
-    org: "Let's Doo GmbH",
+    org: `Let's Doo GmbH · ${t.former}`,
     url: 'https://letsdoo.it/',
     icon: 'M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM17 14v6M14 17h6',
   },

@@ -49,15 +49,14 @@ const projectData: ProjectBase[] = [
     iconPath: 'M4 4h6v6H4zM14 4h6v6h-6zM4 14h6v6H4zM17 14v6M14 17h6',
     text: {
       de: {
-        badge: 'Aktuell',
         role: 'Lead Developer',
-        period: 'Aktuell',
+        period: 'bis 2026',
         tagline: 'Odoo-Module & Integrationen für KMU',
         shortDescription:
-          "Als Lead Developer beim Odoo-Partner Let's Doo entwickle und erweitere ich Odoo-Module und binde weitere Open-Source-Lösungen an.",
+          "Als Lead Developer beim Odoo-Partner Let's Doo habe ich Odoo-Module entwickelt und erweitert sowie weitere Open-Source-Lösungen angebunden.",
         fullDescription: [
           "Let's Doo ist ein Odoo-Partner aus Horw bei Luzern. Das Team unterstützt KMU in der Zentralschweiz bei der Einführung, Anpassung, dem Betrieb und der Weiterentwicklung von Odoo – dem modularen Open-Source-ERP, das CRM, Verkauf, Einkauf, Lager, Projekte und Buchhaltung in einem System vereint.",
-          'Als Lead Developer verantworte ich die technische Umsetzung: Ich entwickle und erweitere Odoo-Module, setze kundenspezifische Anpassungen wie Felder, Workflows und Reports um und binde weitere Open-Source-Lösungen und Drittsysteme an.',
+          'Als Lead Developer habe ich die technische Umsetzung verantwortet: Ich habe Odoo-Module entwickelt und erweitert, kundenspezifische Anpassungen wie Felder, Workflows und Reports umgesetzt und weitere Open-Source-Lösungen und Drittsysteme angebunden.',
           'Ziel ist immer dasselbe: Betriebe sollen weg von Excel-Chaos und Insellösungen und mit einem durchgängigen System einfacher, schneller und entspannter arbeiten.',
         ],
         techStack: ['Odoo', 'Python', 'PostgreSQL', 'Schnittstellen', 'Open Source'],
@@ -69,15 +68,14 @@ const projectData: ProjectBase[] = [
         ],
       },
       en: {
-        badge: 'Current',
         role: 'Lead Developer',
-        period: 'Current',
+        period: 'until 2026',
         tagline: 'Odoo modules & integrations for SMEs',
         shortDescription:
-          "As Lead Developer at the Odoo partner Let's Doo, I build and extend Odoo modules and integrate further open-source solutions.",
+          "As Lead Developer at the Odoo partner Let's Doo, I built and extended Odoo modules and integrated further open-source solutions.",
         fullDescription: [
           "Let's Doo is an Odoo partner based in Horw near Lucerne. The team helps SMEs in Central Switzerland introduce, customise, run and evolve Odoo – the modular open-source ERP that brings CRM, sales, purchasing, inventory, projects and accounting together in one system.",
-          'As Lead Developer I own the technical delivery: I build and extend Odoo modules, implement client-specific customisations such as fields, workflows and reports, and integrate further open-source solutions and third-party systems.',
+          'As Lead Developer I owned the technical delivery: I built and extended Odoo modules, implemented client-specific customisations such as fields, workflows and reports, and integrated further open-source solutions and third-party systems.',
           'The goal is always the same: moving businesses away from spreadsheet chaos and isolated tools towards one consistent system that makes work simpler, faster and more relaxed.',
         ],
         techStack: ['Odoo', 'Python', 'PostgreSQL', 'Integrations', 'Open Source'],
@@ -101,17 +99,16 @@ const projectData: ProjectBase[] = [
     iconPath: 'M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3zM19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15z',
     text: {
       de: {
-        badge: 'Aktuell',
         role: 'CTO',
-        period: 'seit 2026',
+        period: '2026',
         tagline: 'KI, Digitalisierung & Software aus Luzern',
         shortDescription:
-          'Als CTO von kimuno verantworte ich die Technik hinter Beratung, Digitalisierung und Software-Entwicklung für öffentliche Institutionen und KMU – mit Fokus auf Prozessoptimierung und KI.',
+          'Als CTO von kimuno habe ich die Technik hinter Beratung, Digitalisierung und Software-Entwicklung für öffentliche Institutionen und KMU verantwortet – mit Fokus auf Prozessoptimierung und KI.',
         metaDescription:
-          'Als CTO von kimuno verantworte ich die Technik hinter Digitalisierung und Software für öffentliche Institutionen und KMU – mit Fokus auf KI.',
+          'Als CTO von kimuno habe ich die Technik hinter Digitalisierung und Software für öffentliche Institutionen und KMU verantwortet – mit Fokus auf KI.',
         fullDescription: [
           'kimuno ist ein Unternehmen aus Luzern, das öffentliche Institutionen und KMU mit Beratung, Digitalisierung und Software-Entwicklung unterstützt. Im Zentrum stehen Prozessoptimierung und der gezielte Einsatz von künstlicher Intelligenz – damit mehr Zeit für das Wesentliche bleibt.',
-          'Als CTO trage ich die technische Gesamtverantwortung: Ich definiere Architektur, Technologieauswahl und Entwicklungsstandards und verantworte Entscheidungen von Frontend und Backend über Datenbanken und APIs bis zur Infrastruktur.',
+          'Als CTO trug ich die technische Gesamtverantwortung: Ich habe Architektur, Technologieauswahl und Entwicklungsstandards definiert und Entscheidungen von Frontend und Backend über Datenbanken und APIs bis zur Infrastruktur verantwortet.',
           'Zum Portfolio gehören eigene Lösungen wie govcom, ein Kommunikations-Management für Gemeinden und öffentliche Einrichtungen, sowie Automatisierungs- und KI-Projekte für Kunden.',
         ],
         techStack: ['KI', 'Automatisierung', 'Software-Architektur', 'Cloud', 'APIs'],
@@ -123,17 +120,16 @@ const projectData: ProjectBase[] = [
         ],
       },
       en: {
-        badge: 'Current',
         role: 'CTO',
-        period: 'since 2026',
+        period: '2026',
         tagline: 'AI, digitalisation & software from Lucerne',
         shortDescription:
-          'As CTO of kimuno, I own the technology behind consulting, digitalisation and software development for public institutions and SMEs – with a focus on process optimisation and AI.',
+          'As CTO of kimuno, I owned the technology behind consulting, digitalisation and software development for public institutions and SMEs – with a focus on process optimisation and AI.',
         metaDescription:
-          'As CTO of kimuno, I own the technology behind digitalisation and software for public institutions and SMEs – with a focus on AI and process optimisation.',
+          'As CTO of kimuno, I owned the technology behind digitalisation and software for public institutions and SMEs – with a focus on AI and process optimisation.',
         fullDescription: [
           'kimuno is a Lucerne-based company that supports public institutions and SMEs with consulting, digitalisation and software development. Its focus is process optimisation and the targeted use of artificial intelligence – so that more time is left for what matters.',
-          'As CTO I carry overall technical responsibility: I define architecture, technology choices and development standards, and own decisions from frontend and backend through databases and APIs to infrastructure.',
+          'As CTO I carried overall technical responsibility: I defined architecture, technology choices and development standards, and owned decisions from frontend and backend through databases and APIs to infrastructure.',
           'The portfolio includes in-house solutions such as govcom, a communication management platform for municipalities and public bodies, as well as automation and AI projects for clients.',
         ],
         techStack: ['AI', 'Automation', 'Software Architecture', 'Cloud', 'APIs'],

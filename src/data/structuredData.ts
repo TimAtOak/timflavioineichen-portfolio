@@ -28,11 +28,9 @@ export function homeStructuredData(lang: Lang) {
         image: `${SITE}/tim-ineichen.jpg`,
         email: 'mailto:kontakt@alpzen-group.ch',
         address,
-        worksFor: [
+        alumniOf: [
           { '@type': 'Organization', name: 'kimuno GmbH', url: 'https://kimuno.ch/' },
           { '@type': 'Organization', name: "Let's Doo GmbH", url: 'https://letsdoo.it/' },
-        ],
-        alumniOf: [
           { '@type': 'EducationalOrganization', name: 'TEKO Schweizerische Fachschule' },
           { '@type': 'EducationalOrganization', name: 'Benedict Schulen Schweiz' },
         ],

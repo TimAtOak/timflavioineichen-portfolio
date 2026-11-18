@@ -48,7 +48,7 @@ const serviceData: ServiceBase[] = [
         text: 'Tragfähige System- und API-Architekturen, fundierte Technologieentscheide und Architektur-Reviews bestehender Systeme – mit Blick auf Skalierbarkeit, Qualität und Wartbarkeit.',
         tags: ['System Design', 'API-Design', 'Reviews', 'Cloud'],
         metaTitle: 'Software-Architektur & Architektur-Reviews | Tim Flavio Ineichen',
-        metaDescription: 'Freelance Software-Architekt aus Luzern: System- und API-Architekturen, Technologieentscheide und Reviews bestehender Systeme – skalierbar und wartbar.',
+        metaDescription: 'Software-Architekt aus Luzern: System- und API-Architekturen, Technologieentscheide und Reviews bestehender Systeme – skalierbar und wartbar.',
         tagline: 'Systeme, die mit Ihren Anforderungen wachsen.',
         intro: [
           'Eine gute Architektur merkt man nicht – eine schlechte spürt man bei jedem neuen Feature. Ich entwerfe Systeme, die heute funktionieren und sich in zwei Jahren noch gerne weiterentwickeln lassen.',
@@ -81,7 +81,7 @@ const serviceData: ServiceBase[] = [
         text: 'Robust system and API architectures, well-founded technology decisions and architecture reviews of existing systems – with scalability, quality and maintainability in mind.',
         tags: ['System Design', 'API Design', 'Reviews', 'Cloud'],
         metaTitle: 'Software Architecture & Architecture Reviews | Tim Flavio Ineichen',
-        metaDescription: 'Freelance software architect from Lucerne, Switzerland: system and API architectures, technology decisions and reviews of existing systems.',
+        metaDescription: 'Software architect from Lucerne, Switzerland: system and API architectures, technology decisions and reviews of existing systems.',
         tagline: 'Systems that grow with your requirements.',
         intro: [
           "You don't notice good architecture – but you feel bad architecture with every new feature. I design systems that work today and are still a pleasure to evolve two years from now.",
@@ -196,7 +196,7 @@ const serviceData: ServiceBase[] = [
         tagline: 'Technische Verantwortung, wenn Sie sie brauchen.',
         intro: [
           'Nicht jedes Unternehmen braucht sofort einen festangestellten CTO – aber fast jedes braucht jemanden, der technische Verantwortung übernimmt. Als Tech Lead oder Interim-CTO schliesse ich genau diese Lücke.',
-          'Ich bringe Struktur in die Entwicklung, treffe tragfähige Entscheide und befähige Ihr Team, selbstständig und mit hoher Qualität zu liefern. Diese Rolle lebe ich als CTO bei kimuno und als Lead Developer bei Let’s Doo täglich.',
+          'Ich bringe Struktur in die Entwicklung, treffe tragfähige Entscheide und befähige Ihr Team, selbstständig und mit hoher Qualität zu liefern. Genau diese Rolle habe ich als CTO bei kimuno und als Lead Developer bei Let’s Doo ausgefüllt.',
         ],
         deliverables: [
           { title: 'Interim-CTO', desc: 'Technische Gesamtverantwortung auf Zeit – von der Roadmap bis zum Gespräch mit Investoren und Partnern.' },
@@ -229,7 +229,7 @@ const serviceData: ServiceBase[] = [
         tagline: 'Technical ownership when you need it.',
         intro: [
           'Not every company needs a full-time CTO right away – but almost every company needs someone to take technical ownership. As tech lead or interim CTO I fill exactly that gap.',
-          'I bring structure to development, make sound decisions and enable your team to deliver independently and with high quality. I live this role every day as CTO at kimuno and Lead Developer at Let’s Doo.',
+          'I bring structure to development, make sound decisions and enable your team to deliver independently and with high quality. I filled exactly this role as CTO at kimuno and as Lead Developer at Let’s Doo.',
         ],
         deliverables: [
           { title: 'Interim CTO', desc: 'Overall technical responsibility for a set period – from roadmap to conversations with investors and partners.' },

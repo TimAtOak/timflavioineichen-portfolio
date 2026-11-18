@@ -17,7 +17,7 @@ const de: Position[] = [
     role: 'Freelance Software Engineer & Architect',
     company: 'Selbstständig',
     current: true,
-    summary: 'Unabhängige Mandate in Software-Architektur, Full-Stack-Entwicklung und technischer Leitung.',
+    summary: 'Offen für Freelance-Mandate oder eine neue Stelle in Software-Architektur, Full-Stack-Entwicklung und technischer Leitung.',
     points: [
       'Konzeption und Umsetzung von Webanwendungen und Schnittstellen für Unternehmen und Start-ups',
       'Architektur-Reviews, Technologieentscheide und Begleitung von Entwicklungsteams',
@@ -129,7 +129,7 @@ const en: Position[] = [
     role: 'Freelance Software Engineer & Architect',
     company: 'Self-employed',
     current: true,
-    summary: 'Independent engagements in software architecture, full-stack development and technical leadership.',
+    summary: 'Open to freelance engagements or a new role in software architecture, full-stack development and technical leadership.',
     points: [
       'Design and delivery of web applications and integrations for companies and start-ups',
       'Architecture reviews, technology decisions and guidance for development teams',
